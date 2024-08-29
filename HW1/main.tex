@@ -1,0 +1,108 @@
+\input{../preamble.tex}
+\def\HWnum{1}
+\def\duedate{08/27/24}
+
+\usepackage{tensor}
+\usepackage{slashed}
+
+
+\begin{document}
+
+\prob{1}{
+
+What is the matrix representation of the metric tensor $g^{\mu\nu}$ in \underline{lightcone variables}?
+What is the matrix representation for a Lorentz transformation $\tensor{\Lambda}{^\mu_\nu}$ that is a boost by rapidity $y$ in \underline{lightcone variables}?
+
+}
+
+\sol{
+
+Consider two arbitrary 4-vectors $x$ and $y$.
+Their dot product is independent of our coodinate representation.
+That is,
+\begin{align}
+    x \cdot y &= g_{\mu\nu} x^{\mu} y^{\nu} = x^{0} y^{0} - \vb*{x}_{T} \cdot \vb*{y}_{T} - x^{z} y^{z} \nonumber \\
+              &= \Big( \frac{x^{+} + x^{-}}{\sqrt{2}} \Big) \Big( \frac{y^{+} + y^{-}}{\sqrt{2}} \Big) - \vb*{x}_{T} \cdot \vb*{y}_{T} - \Big( \frac{x^{+} - x^{-}}{\sqrt{2}} \Big) \Big( \frac{y^{+} - y^{-}}{\sqrt{2}} \Big) \nonumber \\
+              &= \frac{x^{+} y^{+} + x^{+} y^{-} + x^{-} y^{+} + x^{-} y^{-}}{2} - \vb*{x}_{T} \cdot \vb*{y}_{T} - \frac{x^{+} y^{+} - x^{+} y^{-} - x^{-} y^{+} + x^{-} y^{-}}{2} \nonumber \\
+              &= x^{+} y^{-} + x^{-} y^{+} - \vb*{x}_{T} \cdot \vb*{y}_{T} = g_{++} x^{+} y^{+} + g_{+-} x^{+} y^{-} + g_{-+} x^{-} y^{+} + g^{--} x^{-} y^{-} - \vb*{x}_{T} \cdot \vb*{y}_{T}
+.\end{align}
+Identifying the coefficients on the left side with those on the right of the last equality above, we can write the matrix representation of the metric tensor with upper and lower indices in lightcone coordinates as
+\begin{align}
+    g_{\mu\nu} = g^{\mu\nu} = 
+    \begin{pmatrix}
+        0 & 1 & 0 & 0 \\
+        1 & 0 & 0 & 0 \\
+        0 & 0 & -1 & 0 \\
+        0 & 0 & 0 & -1
+    \end{pmatrix}
+.\end{align}
+
+}
+
+
+\prob{2}{
+
+What is the matrix representation of a rotation $\tensor{R}{^\mu_\nu}$ around the $y$-axis in lightcone variables by an angle $\theta$.
+
+}
+
+\sol{}
+
+
+\prob{3}{
+
+Say I encounter a 4-vector
+\begin{align}
+    V^{\mu} = (V^{0},V^{x},0,V^{z})
+,\end{align}
+with $V^{0},~V^{x},~{\rm and}~V^{z}$ nonzero and positive and $V^2 > 0$.
+What are the components in lightcone variables?
+What if I want to transform coordinates to a primed frame where $\vb*{V}'$ only has a z-component and $V'^{+} = 10 V'^{-}$?
+By combining a rotation and a boost, write down the matrix representation for this transformation in lightcone variables and contravariant index notation.
+Express the answer in terms of the components $V^{0},~V^{x},~{\rm and}~V^{z}$ of the original frame.
+
+}
+
+\sol{}
+
+
+\prob{4}{
+
+Prove the following Dirac matrix identities:
+\begin{gather}
+    \gamma_{\mu} \gamma^{\mu} = 4, \quad \slashed{p} \slashed{p} = p^2, \quad \gamma_\mu \slashed{p} \gamma^{\mu} = -2 \slashed{p} \\
+    \gamma_\mu \slashed{p} \slashed{k} \gamma^{\mu} = 4 p \cdot k, \quad \gamma_\mu \slashed{p} \slashed{k} \slashed{k} \slashed{q} \gamma^{\mu} = -2 \slashed{q} \slashed{k} \slashed{p}
+\end{gather}
+
+}
+
+\sol{}
+
+
+\prob{5}{
+
+Derive the following relations for Dirac spinors:
+\begin{align}
+    \sum_s u^{s}(p) \bar{u}^{s}(p) = \slashed{p} + m \\
+    \sum_s v^{s}(p) \bar{v}^{s}(p) = \slashed{p} - m
+.\end{align}
+
+}
+
+\sol{}
+
+
+\prob{6}{
+
+Derive the Gordon identity:
+\begin{align}
+    \bar{u}^{s'}(p') \gamma^{\mu} u^{s}(p) = \frac{1}{2m} \bar{u}^{s'}(p') [p'^{\mu} + p^{\mu} + i \sigma^{\mu\nu} q_{\nu}] u^{s}(p)
+,\end{align}
+where $q = p' - p$ and $\sigma^{\mu\nu} = \frac{i}{2} [\gamma^{\mu}, \gamma^{\nu}]$.
+This will be useful later on.
+
+}
+
+
+    
+\end{document}
