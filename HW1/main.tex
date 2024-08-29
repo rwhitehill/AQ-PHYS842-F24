@@ -1,6 +1,6 @@
 \input{../preamble.tex}
 \def\HWnum{1}
-\def\duedate{08/27/24}
+\def\duedate{September 10, 2024}
 
 \usepackage{tensor}
 \usepackage{slashed}
@@ -24,10 +24,11 @@ That is,
     x \cdot y &= g_{\mu\nu} x^{\mu} y^{\nu} = x^{0} y^{0} - \vb*{x}_{T} \cdot \vb*{y}_{T} - x^{z} y^{z} \nonumber \\
               &= \Big( \frac{x^{+} + x^{-}}{\sqrt{2}} \Big) \Big( \frac{y^{+} + y^{-}}{\sqrt{2}} \Big) - \vb*{x}_{T} \cdot \vb*{y}_{T} - \Big( \frac{x^{+} - x^{-}}{\sqrt{2}} \Big) \Big( \frac{y^{+} - y^{-}}{\sqrt{2}} \Big) \nonumber \\
               &= \frac{x^{+} y^{+} + x^{+} y^{-} + x^{-} y^{+} + x^{-} y^{-}}{2} - \vb*{x}_{T} \cdot \vb*{y}_{T} - \frac{x^{+} y^{+} - x^{+} y^{-} - x^{-} y^{+} + x^{-} y^{-}}{2} \nonumber \\
-              &= x^{+} y^{-} + x^{-} y^{+} - \vb*{x}_{T} \cdot \vb*{y}_{T} = g_{++} x^{+} y^{+} + g_{+-} x^{+} y^{-} + g_{-+} x^{-} y^{+} + g^{--} x^{-} y^{-} - \vb*{x}_{T} \cdot \vb*{y}_{T}
+              &= x^{+} y^{-} + x^{-} y^{+} - \vb*{x}_{T} \cdot \vb*{y}_{T} 
 .\end{align}
 Identifying the coefficients on the left side with those on the right of the last equality above, we can write the matrix representation of the metric tensor with upper and lower indices in lightcone coordinates as
 \begin{align}
+\eqbox{
     g_{\mu\nu} = g^{\mu\nu} = 
     \begin{pmatrix}
         0 & 1 & 0 & 0 \\
@@ -35,7 +36,32 @@ Identifying the coefficients on the left side with those on the right of the las
         0 & 0 & -1 & 0 \\
         0 & 0 & 0 & -1
     \end{pmatrix}
+}
 .\end{align}
+
+Next, we identify the Lorentz transformation coefficients for a boost by rapidity $y$.
+First, recall that the light cone representation of a 4-momentum is 
+\begin{align}
+    p^{\mu} = \Bigg[ \frac{m_T}{\sqrt{2}} e^{y}, \frac{m_T}{\sqrt{2}} e^{-y}, \vb*{p}_{T} \Bigg]
+,\end{align}
+where $m_T = \sqrt{m^2 + \vb*{p}_{T}^2}$.
+If we boost such that the rapidity $y \mapsto y' = y + \delta y$, then in the new frame
+\begin{align}
+    p'^{\mu} = \Bigg[ \frac{m_{T}}{\sqrt{2}} e^{y'}, \frac{m_{T}}{\sqrt{2}} e^{-y'}, \vb*{p}_{T} \Bigg] = \Bigg[ p^{+} e^{\delta y}, p^{-} e^{-\delta y}, \vb*{p}_{T} \Bigg] 
+.\end{align}
+Thus, we can immediately write that
+\begin{align}
+\eqbox{
+    \Lambda^{\mu}_{\;\nu} = 
+    \begin{pmatrix}
+        e^{\delta y} & 0 & 0 & 0 \\
+        0 & e^{-\delta y} & 0 & 0 \\
+        0 & 0 & 1 & 0 \\
+        0 & 0 & 0 & 1
+    \end{pmatrix}
+}
+.\end{align}
+
 
 }
 
@@ -46,7 +72,48 @@ What is the matrix representation of a rotation $\tensor{R}{^\mu_\nu}$ around th
 
 }
 
-\sol{}
+\sol{
+
+In Minkowski coordinates, the (active) rotation matrix takes the form
+\begin{align}
+    R^{\mu}_{\;\nu} =
+    \begin{pmatrix} 
+        1 & 0 & 0 & 0 \\
+        0 & \cos{\theta} & 0 & \sin{\theta} \\
+        0 & 0 & 1 & 0 \\
+        0 & -\sin{\theta} & 0 & \cos{\theta}
+    \end{pmatrix}
+\end{align}
+such that the vector after rotation $x'^{\mu} = R^{\mu}_{\;\nu} x^{\nu}$.
+Observe that we can define a transformation matrix which takes us from Minkowski to lightcone variables $T^{\mu}_{\;\nu}$ 
+\begin{align}
+    T^{\mu}_{\;\nu} =
+    \begin{pmatrix}
+        1/\sqrt{2} & 0 & 0 & 1/\sqrt{2} \\
+        1/\sqrt{2} & 0 & 0 & -1/\sqrt{2} \\
+        0 & 1 & 0 & 0 \\
+        0 & 0 & 1 & 0 
+    \end{pmatrix}
+\end{align}
+such that $x^{\mu}_{\rm LC} = T^{\mu}_{\;\nu} x^{\nu}_{M}$.
+Of course, we then have
+\begin{gather}
+    x^{' \mu}_{LC} = T^{\mu}_{\;\nu} x^{'\nu}_{M} = T^{\mu}_{\;\nu} R^{\nu}_{\;\rho} (T^{-1})^{\rho}_{\;\sigma} T^{\sigma}_{\;\alpha} x_{M}^{\alpha} = T^{\mu}_{\;\nu} R^{\nu}_{\;\rho} (T^{-1})^{\rho}_{\;\sigma} x_{LC}^{\sigma}
+.\end{gather}
+Thus, the lightcone representation of the rotation matrix is just
+\begin{align}
+\eqbox{
+    \overline{R}^{\mu}_{\;\nu} = T^{\mu}_{\;\rho} R^{\rho}_{\;\sigma} (T^{-1})^{\sigma}_{\;\nu} = 
+    \begin{pmatrix}
+        \cos^2{\frac{\theta}{2}} & \sin^2{\frac{\theta}{2}} & -\frac{1}{\sqrt{2}} \sin{\theta} & 0 \\
+        \sin^2{\frac{\theta}{2}} & \cos^2{\frac{\theta}{2}} & \frac{1}{\sqrt{2}} \sin{\theta} & 0 \\
+        \frac{1}{\sqrt{2}} \sin{\theta} & -\frac{1}{\sqrt{2}} \sin{\theta} & \cos{\theta} & 0 \\
+        0 & 0 & 0 & 1
+    \end{pmatrix}
+}
+.\end{align}
+
+}
 
 
 \prob{3}{
@@ -63,7 +130,54 @@ Express the answer in terms of the components $V^{0},~V^{x},~{\rm and}~V^{z}$ of
 
 }
 
-\sol{}
+\sol{
+
+The lightcone 4-vector
+\begin{align}
+    V^{\mu} = \Bigg[ \frac{V^{0} + V^{z}}{\sqrt{2}}, \frac{V^{0} - V^{z}}{\sqrt{2}}, V^{x}, 0 \Bigg]
+.\end{align}
+If we want to rotate into a frame where $\vb*{V}$ is entirely aligned with the $z$-axis, we can choose to rotate with the matrix of problem 2 with $\theta = -\arctan(V^{x} / V^{z})$:
+\begin{align}
+    \overline{R}^{\mu}_{\;\nu}(\theta) = 
+    \begin{pmatrix}
+        \frac{1}{2}(1 + V^{z}/|\vb*{V}|) & \frac{1}{2}(1 - V^{z}/|\vb*{V}|) & V^{x}/(\sqrt{2} |\vb*{V}|) & 0 \\
+        \frac{1}{2}(1 - V^{z}/|\vb*{V}|) & \frac{1}{2}(1 + V^{z}/|\vb*{V}|) & -V^{x}/(\sqrt{2} |\vb*{V}|) & 0 \\
+        -V^{x}/(\sqrt{2} |\vb*{V}|) & V^{x}/(\sqrt{2} |\vb*{V}|) & V^{z}/|\vb*{V}| & 0 \\
+        0 & 0 & 0 & 1
+    \end{pmatrix}
+,\end{align}
+where $|\vb*{V}| = \sqrt{(V^{x})^2 + (V^{z})^2}$.
+Note that this matrix must be applied to a lightcone 4-vector, implying that the rotation 
+After rotation, we can determine the boost parameter such that a boost along the $z$-axis lands $V^{\mu}$ in a frame where $V^{+} = 10 V^{-}$:
+\begin{align}
+    \frac{V'^{+}}{V'^{-}} = \frac{V^{+}}{V^{-}} e^{2 \delta y} = 10 \Rightarrow e^{\delta y} = \sqrt{\frac{10 V^{-}}{V^{+}}}
+.\end{align}
+This gives us the boost as
+\begin{align}
+    B^{\mu}_{\;\nu} = 
+    \begin{pmatrix}
+        \sqrt{10} \sqrt{\frac{V^{0} - |\vb*{V}|}{V^{0} + |\vb*{V}|}} & 0 & 0 & 0 \\
+        0 & \frac{1}{\sqrt{10}} \sqrt{\frac{V^{0} + |\vb*{V}|}{V^{0} - |\vb*{V}|}} & 0 & 0 \\
+        0 & 0 & 1 & 0 \\
+        0 & 0 & 0 & 1
+    \end{pmatrix}
+.\end{align}
+After constructing and composing these matrices, the overall lightcone transformation matrix is of the form
+\begin{align}
+\eqbox{
+    \Lambda^{\mu}_{\;\nu} = 
+    \begin{pmatrix}
+        \frac{\sqrt{10} (V^{z} + |\vb*{V}|)}{2 |\vb*{V}|} \sqrt{\frac{V^{0} - |\vb*{V}|}{V^{0} + |\vb*{V}|}} & \frac{\sqrt{10} (-V^{z} + |\vb*{V}|)}{2 |\vb*{V}|} \sqrt{\frac{V^{0} - |\vb*{V}|}{V^{0} + |\vb*{V}|}} & \frac{\sqrt{5} V^{x}}{|\vb*{V}|} \sqrt{\frac{V^{0} - |\vb*{V}|}{V^{0} + |\vb*{V}|}} & 0 \\
+        \frac{-V^{z} + |\vb*{V}|}{2\sqrt{10} |\vb*{V}|} \sqrt{\frac{V^{0} + |\vb*{V}|}{V^{0} - |\vb*{V}|}} & \frac{V^{z} + |\vb*{V}|}{2 \sqrt{10} |\vb*{V}|} \sqrt{\frac{V^{0} + |\vb*{V}|}{V^{0} - |\vb*{V}|}} & -\frac{V^{x}}{2 \sqrt{5} |\vb*{V}|} \sqrt{\frac{V^{0} + |\vb*{V}|}{V^{0} - |\vb*{V}|}} & 0 \\
+        -\frac{V^{x}}{\sqrt{2} |\vb*{V}|} & \frac{V^{x}}{\sqrt{2} |\vb*{V}|} & \frac{V^{z}}{|\vb*{V}|} & 0 \\
+        0 & 0 & 0 & 1
+    \end{pmatrix}
+}
+.\end{align}
+
+
+
+}
 
 
 \prob{4}{
@@ -71,12 +185,40 @@ Express the answer in terms of the components $V^{0},~V^{x},~{\rm and}~V^{z}$ of
 Prove the following Dirac matrix identities:
 \begin{gather}
     \gamma_{\mu} \gamma^{\mu} = 4, \quad \slashed{p} \slashed{p} = p^2, \quad \gamma_\mu \slashed{p} \gamma^{\mu} = -2 \slashed{p} \\
-    \gamma_\mu \slashed{p} \slashed{k} \gamma^{\mu} = 4 p \cdot k, \quad \gamma_\mu \slashed{p} \slashed{k} \slashed{k} \slashed{q} \gamma^{\mu} = -2 \slashed{q} \slashed{k} \slashed{p}
+    \gamma_\mu \slashed{p} \slashed{k} \gamma^{\mu} = 4 p \cdot k, \quad \gamma_\mu \slashed{p} \slashed{k} \slashed{q} \gamma^{\mu} = -2 \slashed{q} \slashed{k} \slashed{p}
 \end{gather}
 
 }
 
-\sol{}
+\sol{
+
+First
+\begin{align}
+    \eqbox{ \gamma_{\mu} \gamma^{\mu} = g_{\mu\nu} \gamma^{\nu} \gamma^{\mu} = \frac{1}{2} g_{\mu\nu} \{ \gamma^{\nu}, \gamma^{\mu} \} = g_{\mu\nu} g^{\nu\mu} = 4 }
+.\end{align}
+Second,
+\begin{align}
+    \eqbox{ \slashed{p} \slashed{p} = p_{\mu} p_{\nu} \gamma^{\mu} \gamma^{\nu} = \frac{1}{2} p_{\mu} p_{\nu} \{ \gamma^{\mu}, \gamma^{\nu} \} = p_{\mu} p_{\nu} g^{\mu\nu} = p^2 = m^2 }
+.\end{align}
+Third,
+\begin{align}
+    \eqbox{ \gamma_{\mu} \slashed{p} \gamma^{\mu} = p_{\nu} \gamma_{\mu} \gamma^{\nu} \gamma^{\mu} = p_{\nu} \gamma_{\mu} (2 g^{\mu\nu} - \gamma^{\mu} \gamma^{\nu}) = 2 p_{\nu} \gamma^{\nu} - 4 \slashed{p} = -2 \slashed{p} }
+.\end{align}
+
+For the fourth identity, observe
+\begin{align}
+    \eqbox{ \slashed{p} \slashed{k} = p_{\mu} k_{\nu} \gamma^{\mu} \gamma^{\nu} = p_{\mu} k_{\nu} (2 g^{\mu\nu} - \gamma^{\nu} \gamma^{\mu}) = 2 p \cdot k - \slashed{k} \slashed{p} }
+.\end{align}
+Thus,
+\begin{align}
+    \eqbox{ \gamma_{\mu} \slashed{p} \slashed{k} \gamma^{\mu} = \gamma_{\mu} \slashed{p} (2 k^{\mu} - \gamma^{\mu} \slashed{k}) = 2 \{ \slashed{k}, \slashed{p} \} = 4 p \cdot k }
+.\end{align}
+Fifth,
+\begin{align}
+    \eqbox{ \gamma_{\mu} \slashed{p} \slashed{k} \slashed{q} \gamma^{\mu} = \gamma_{\mu} \slashed{p} \slashed{k} (2 q^{\mu} - \gamma^{\mu} \slashed{q}) = 2 \slashed{q} \slashed{p} \slashed{k} - 4 p \cdot k \slashed{q} = 2 \slashed{q} (2 p \cdot k - \slashed{k} \slashed{p}) - 4 p \cdot k \slashed{q} = -2 \slashed{q} \slashed{k} \slashed{p} }
+.\end{align}
+
+}
 
 
 \prob{5}{
@@ -89,7 +231,38 @@ Derive the following relations for Dirac spinors:
 
 }
 
-\sol{}
+\sol{
+
+Let us define the spin sum matrix
+\begin{align}
+    A(p) = \sum_s u^{s}(p) \bar{u}^{s}(p)
+.\end{align}
+If we act this matrix on the spinors themselves, we find
+\begin{gather}
+    A(p) u^{s}(p) = \sum_{s'} u^{s'}(p) \bar{u}^{s'}(p) u^{s}(p) = \sum_{s'} u^{s'}(p) [2m \delta_{s's}] = 2m u^{s}(p) = (\slashed{p} + m) u^{s}(p) \\
+    A(p) v^{s}(p) = \sum_{s'} u^{s'}(p) \bar{u}^{s'}(p) v^{s}(p) = 0
+.\end{gather}
+Since $A(p)$ acts on the spinors in the exact same way as $\slashed{p} + m$, they must be equivalent.
+That is,
+\begin{align}
+    \eqbox{ \sum_s u^{s}(p) \bar{u}^{s}(p) = \slashed{p} + m }
+.\end{align}
+
+In a completely analogous way, we define
+\begin{align}
+    B(p) = \sum_s v^{s}(p) \bar{v}^{s}(p)
+,\end{align}
+and observe
+\begin{gather}
+    B(p) u^{s}(p) = \sum_{s'} v^{s'}(p) \bar{v}^{s'}(p) u^{s}(p) = 0 \\
+    B(p) v^{s}(p) = \sum_{s'} v^{s'}(p) \bar{v}^{s'}(p) v^{s}(p) = \sum_{s'} v^{s'}(p) [-2m\delta_{ss'}] = -2m v^{s}(p) = (\slashed{p} - m) v^{s}(p)
+.\end{gather}
+Thus, by similar reasoning as for the $u$-spinors, we conclude
+\begin{align}
+    \eqbox{ \sum_{s} v^{s}(p) \bar{v}^{s}(p) = \slashed{p} - m }
+.\end{align}
+
+}
 
 
 \prob{6}{
