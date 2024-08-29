@@ -276,6 +276,27 @@ This will be useful later on.
 
 }
 
+\sol{
+
+
+Observe that $u^{s}(p) = \frac{\slashed{p}}{m} u^{s}(p)$.
+Hence,
+\begin{align}
+    \bar{u}^{s'}(p') \gamma^{\mu} u^{s}(p) &= \frac{1}{2m} \Big[ \bar{u}^{s'}(p') \slashed{p}' \gamma^{\mu} u^{s}(p) + \bar{u}^{s'}(p') \gamma^{\mu} \slashed{p} u^{s}(p) \Big] \nonumber \\
+                                           &= \frac{1}{2m} \bar{u}^{s'}(p') ( \slashed{p}' \gamma^{\mu} + \gamma^{\mu} \slashed{p} ) u^{s}(p) \nonumber \\
+                                           &= \frac{1}{2m} \bar{u}^{s'}(p') ([\slashed{p}',\gamma^{\mu}] + [\gamma^{\mu},\slashed{p}] + \gamma^{\mu} \slashed{p}' + \slashed{p} \gamma^{\mu}) u^{s}(p) \nonumber \\
+                                           &= \frac{1}{2m} \bar{u}^{s'}(p') ( -[\gamma^{\mu},\slashed{p}' - \slashed{p}] + \gamma^{\mu} \slashed{p}' + \slashed{p} \gamma^{\mu} ) u^{s}(p) \nonumber \\
+                                           &= \frac{1}{2m} \bar{u}^{s'}(p') ( \gamma^{\mu} \slashed{p}' + \slashed{p} \gamma^{\mu} + 2 i \sigma^{\mu\nu} q_{\nu} ) \nonumber \\
+                                           &= \frac{1}{2m} \bar{u}^{s'}(p') ( -\slashed{p} \gamma^{\mu} + 2 p'^{\mu} - \gamma^{\mu} \slashed{p} + 2 p^{\mu} + 2 i \sigma^{\mu\nu} q_{\nu} ) u^{s}(p) \nonumber \\
+                                           &= -\bar{u}^{s'}(p) \gamma^{\mu} u^{s}(p) + \frac{1}{2m} \bar{u}^{s'}(p') ( 2 p'^{\mu} 2 p^{\mu} + 2 i \sigma^{\mu\nu} q_{\nu} ) u^{s}(p)
+.\end{align}
+Thus, we have the desired identity
+\begin{align}
+    \eqbox{ \bar{u}^{s'}(p') \gamma^{\mu} u^{s}(p) = \bar{u}^{s'}(p') [ p'^{\mu} + p^{\mu} + i \sigma^{\mu\nu} q_{\nu} ] u^{s}(p) }
+.\end{align}
+
+}
+
 
     
 \end{document}
