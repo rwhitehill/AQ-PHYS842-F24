@@ -1,0 +1,226 @@
+\input{../preamble.tex}
+\def\HWnum{2}
+\def\duedate{September 19, 2024}
+
+\usepackage{slashed}
+
+\begin{document}
+
+\prob{1}{
+
+Define the handedness (left/right-handed) projection operators,
+\begin{align}
+    P_{R} \equiv \frac{1}{2} (1 + \gamma^{5}), \quad P_{L} = \frac{1}{2} (1 - \gamma^{5})
+.\end{align}
+Show that they have the formal properties of a projection,
+\begin{align}
+    P_{R,L}^2 = P_{R,L}, \quad P_{L} + P_{R} = 1, \quad P_{R} P_{L} = 0
+,\end{align}
+and show that handedness is \underline{not} a good quantum number.
+
+Consider a nonzero mass Dirac fermion.
+Show that in the Dirac representation, the high energy limit gives
+\begin{align}
+    \gamma^{5} u^{(s)}(p) \rightarrow \hat{h} u^{(s)}(p)
+,\end{align}
+where $\hat{h}$ is the helicity operator.
+That is, show that the chirality operator equals the helicity operator in the high energy limit, and that $P_{R}$ projects out particles with right handed helicity while $P_{L}$ projects out particles with left handed helicity.
+
+}
+
+\sol{
+
+Observe that
+\begin{align}
+\eqbox{
+\begin{gathered}    
+    P_{R,L}^2 = \frac{1}{4} (1 \pm \gamma^{5}) (1 \pm \gamma^{5}) = \frac{1}{4} [ 1 + \pm 2 \gamma^{5} + (\gamma^{5})^2 ] = \frac{1}{2} (1 \pm \gamma^{5}) = P_{R,L}
+\\
+    P_{R} + P_{L} = \frac{1}{2} [1 + \gamma^{5} + 1 - \gamma^{5}] = 1 \\
+    P_{R} P_{L} = \frac{1}{4} [1 + \gamma^{5} - \gamma^{5} - (\gamma^{5})^2] = 0
+.\end{gathered}
+}
+\end{align}
+
+We can simply show that handedness is not a good quantum number by simply proving that $\gamma^{5}$ does not commute with the Dirac Hamiltonian:
+\begin{align}
+    [H,\gamma^{5}] = p^{i} [\alpha^{i},\gamma^{5}] + m [\beta,\gamma^{5}] = p^{i} [\gamma^{0} \gamma^{i},\gamma^{5}] + m [\gamma^{0},\gamma^{5}]
+,\end{align}
+where we recall that $\beta = \gamma^{0}$ and $\gamma^{i} = \beta \alpha^{i}$.
+Thus, it remains to follow through with the commutators of the $\gamma$-matrices:
+\begin{align}
+    [\gamma^{0},\gamma^{5}] &= \gamma^{0} \gamma^{5} - \gamma^{5} \gamma^{0} = 2 \gamma^{0} \gamma^{5} = 
+    \begin{pmatrix}
+        1 & 0 \\
+        0 & -1
+    \end{pmatrix}
+    \begin{pmatrix}
+        0 & 1 \\
+        1 & 0
+    \end{pmatrix}
+    =
+    \begin{pmatrix}
+        0 & 1 \\
+        -1 & 0
+    \end{pmatrix}
+    \ne 0
+    \\
+    [\gamma^{0} \gamma^{i},\gamma^{5}] &= \gamma^{0} [\gamma^{i},\gamma^{5}] + [\gamma^{0},\gamma^{5}] \gamma^{i} = 2 \gamma^{0} \gamma^{i} \gamma^{5} + 2 \gamma^{0} \gamma^{5} \gamma^{i} = 0
+.\end{align}
+Note that we have used the fact $\{ \gamma^{\mu}, \gamma^{5} \} = 0$ for $\mu=0,1,2,3$.
+Hence, 
+\begin{align}
+    [H,\gamma^{5}] = 2 m \gamma^{0} \gamma^{5} \ne 0
+,\end{align}
+implying that we cannot simultaneously diagonalize the Dirac Hamiltonian and handedness operator.
+
+In the Dirac representation, we have the positive energy spinor solutions
+\begin{align}
+    u^{(s)}(\vb*{p}) = 
+    \sqrt{E_{\vb*{p}} + m}
+    \begin{pmatrix}
+        \chi_{s} \\ \frac{\vb*{p} \cdot \vb*{\sigma}}{E_{\vb*{p}} + m} \chi_{s}
+    \end{pmatrix} 
+,\end{align}
+where $E_{\vb*{p}} = \sqrt{\vb*{p}^2 + m^2}$.
+Thus,
+\begin{align}
+    \gamma^{5} u^{(s)}(\vb*{p}) = 
+    \sqrt{E_{\vb*{p}} + m}
+    \begin{pmatrix}
+        \frac{\vb*{p} \cdot \vb*{\sigma}}{E_{\vb*{p}} + m} \chi_{s} \\ \chi_{s}
+    \end{pmatrix} 
+    \approx
+    \sqrt{|\vb*{p}|}
+    \begin{pmatrix}
+        \frac{\vb*{p} \cdot \vb*{\sigma}}{|\vb*{p}|} \chi_{s} \\ \chi_{s}
+    \end{pmatrix} 
+,\end{align}
+where the approximation is made in the ultra-relativistic limit, where $\vb*{p}^2 \gg m^2$.
+Recall that the helicity operator
+\begin{align}    
+    \hat{h} = \vb*{\Sigma} \cdot \vb*{p} / |\vb*{p}| = 
+    \begin{pmatrix}
+        \frac{\vb*{p} \cdot \vb*{\sigma}}{|\vb*{p}|} & 0 \\
+        0 & \frac{\vb*{p} \cdot \vb*{\sigma}}{|\vb*{p}|}
+    \end{pmatrix} 
+.\end{align}
+Thus,
+\begin{align}
+    \hat{h} u^{(s)}(\vb*{p}) = \sqrt{E_{\vb*{p}} + m} 
+    \begin{pmatrix}
+        \frac{\vb*{p} \cdot \vb*{\sigma}}{|\vb*{p}|} \chi_{s} \\
+        \frac{(\vb*{p} \cdot \vb*{\sigma})^2}{|\vb*{p}|(E_{\vb*{p}} + m)} \chi_{s}
+    \end{pmatrix} 
+    =
+    \sqrt{E_{\vb*{p}} + m} 
+    \begin{pmatrix}
+        \frac{\vb*{p} \cdot \vb*{\sigma}}{|\vb*{p}|} \chi_{s} \\
+        \frac{|\vb*{p}|}{E_{\vb*{p}} + m} \chi_{s}
+    \end{pmatrix}
+    \approx
+    \sqrt{|\vb*{p}|}
+    \begin{pmatrix}
+        \frac{\vb*{p} \cdot \vb*{\sigma}}{|\vb*{p}|} \chi_{s} \\
+        \chi_{s}
+    \end{pmatrix} 
+.\end{align}
+From this, we see that in the ultra-relativistic or massless limit, helicity and chirality are effectively the same.
+
+}
+
+
+\prob{2}{
+
+Consider 4-momenta $p_1,~p_2,~p_3,~{\rm and}~p_4$.
+Show the following:
+\begin{align}
+    \Tr_{D}(\slashed{p}_{1} \slashed{p}_{2}) &= 4 p_1 \cdot p_2 \\
+    \Tr_{D}(\slashed{p}_{1} \slashed{p}_{2} \slashed{p}_{3} \slashed{p}_{4}) &= 4 \Big[ (p_1 \cdot p_2) (p_3 \cdot p_4) - (p_1 \cdot p_3) (p_2 \cdot p_4) + (p_1 \cdot p_4) (p_2 \cdot p_3) \Big]
+.\end{align}
+
+}
+
+\sol{
+
+We can prove these by considering traces of $\gamma$-matrices as follows:
+\begin{align}
+    \Tr(\gamma^{\mu} \gamma^{\nu}) = \frac{1}{2} \Tr(\{ \gamma^{\mu}, \gamma^{\nu} \}) = 4 g^{\mu\nu}
+\end{align}
+and
+\begin{align}
+    \Tr(\gamma^{\mu} \gamma^{\nu} \gamma^{\rho} \gamma^{\sigma}) &= 2 g^{\mu\nu} \Tr(\gamma^{\rho} \gamma^{\sigma}) - \Tr(\gamma^{\nu} \gamma^{\mu} \gamma^{\rho} \gamma^{\sigma}) \nonumber \\
+    &= 8 g^{\mu\nu} g^{\rho\sigma} - 8 g^{\mu\rho} g^{\nu\sigma} + 8 g^{\mu\sigma} g^{\nu\rho} - \Tr(\gamma^{\nu} \gamma^{\rho} \gamma^{\sigma} \gamma^{\mu}) \nonumber \\
+    \Rightarrow \Tr(\gamma^{\mu} \gamma^{\nu} \gamma^{\rho} \gamma^{\sigma}) &= 4 \Big( g^{\mu\nu} g^{\rho\sigma} - g^{\mu\rho} g^{\nu\sigma} + g^{\mu\sigma} g^{\nu\rho} \Big)
+.\end{align}
+Inserting the momenta, we have
+\begin{align}
+\eqbox{
+\begin{aligned} 
+    \Tr_{D}(\slashed{p}_{1} \slashed{p}_{2}) &= p_{1,\mu} p_{2,\nu} \Tr_{D}(\gamma^{\mu} \gamma^{\nu}) = 4 p_1 \cdot p_2 \\
+    \Tr_{D}(\slashed{p}_{1} \slashed{p}_{2} \slashed{p}_{3} \slashed{p}_{4}) &= p_{1,\mu} p_{2,\nu} p_{3,\rho} p_{4,\sigma} \Tr_{D}(\gamma^{\mu} \gamma^{\nu} \gamma^{\rho} \gamma^{\sigma}) \nonumber \\
+    &= 4 \Big[ (p_1 \cdot p_2) (p_3 \cdot p_4) - (p_1 \cdot p_3) (p_2 \cdot p_4) + (p_1 \cdot p_4) (p_2 \cdot p_3) \Big]
+\end{aligned}
+}
+.\end{align}
+
+}
+
+
+\prob{3}{
+
+Read the original 1929 paper by Dirac, ``A Theory of Electrons and Protons,'' as well as the comments in the historical introduction of S. Weinberg's textbook, ``The Quantum Theory of Fields.''
+Then, answer the following questions.
+
+\begin{parts}
+
+\item Explain to me how Dirac arrives at the idea that ``holes'' need to be protons.
+
+\item Identify and explain all the places in Weinberg's discussion where he note that, despite arriving at a correct equation, the original logic leading to the Dirac equation was somewhat backwards.
+    
+\end{parts}
+
+}
+
+\sol{
+
+(a) 
+
+\begin{itemize}
+
+    \item In the text following Eq. (2), Dirac notes that if one makes the matrix representation of the operators $\rho_i \sigma_{i}$ real, then the complex conjugate of any solution of Eq. (1) is a solution of Eq. (1) with the sign of the potential reversed (i.e. $e \rightarrow -e$), but either $\psi$ or $\psi^{*}$ must refer to $E < 0$.
+
+    \item When theory coupled to non-static or perturbation applied, transitions may occur between $E > 0$ and $E < 0$ states.
+
+    \item Dirac notices that ``an electron with negative energy moves in an external field as though it carries a positive charge''
+
+    \item Dirac enumerates paradoxes with the interpretation of negative energy electrons as protons: (1) transitions from $E > 0$ to $E < 0$ convert negative to positive charge without creating any extra charge which violates charge conservation, (2) the negative-energy electron, although its motion appears as though a positively charge electron, produces a field as though it possesses negative charge, and (3) a negative-energy electron should have less energy the faster it moves and must absorb energy to be brought to rest.
+
+    \item In the Dirac theory, the most stable electrons are those with negative energy and high velocity, and all electrons will tend to fall to these states by emitting radiation.
+
+    \item Dirac supposes that perhaps the vacuum is (mostly) filled with negative-energy electrons. Thus, by the Pauli exclusion principle, positive-energy electrons are very unlikely to fall into a negative-energy state.
+
+    \item Taking inspiration from the X-ray levels of many electron atoms, Dirac supposes that the holes will have positive energy and behave like ordinary particles with motion corresponding to that of the negative-energy electron, which behaves as though it has positive charge.
+
+    \item The only other known particle with such properties is the proton, so Dirac assumes that the holes must be protons, and when a positive energy-electron drops to fill the hole, the electron and proton annihilate and emit radiation.
+
+    \item Dirac makes note of the asymmetry in the masses of the electrons and protons.
+
+\end{itemize}
+
+}
+
+
+(b) Weinberg makes note of many ``dissatisfying'' issues with the rationale Dirac used to motivate and develop his theory.
+
+\begin{itemize}
+
+    \item First, Weinberg points out that Dirac's rejection of the Klein-Gordon equation is simply wrong. There are many known elementary particles with spin-0 (not known at the time) as well as composite spin-0 systems (e.g. the hydrogen and helium atoms). Weinberg makes the point that even with the negative probabilities, it is difficult to see the case that there is anything fundamentally wrong with the KG equation which spurred the development of Dirac's equation.
+
+    \item While the hole theory correctly predicts the existence of particle-antiparticle pairs for every fermion, its motivation does not apply to bosons. Fundamentally, bosons do not obey the Pauli-exclusion principle, and hence, the occupance of the negative-energy states does not prohibit particles in the positive-energy states from falling down the energy spectrum. That is, creating a vacuum which is filled with negative-energy states does not correct the problem of stability in the first place.
+
+    \item Weinberg remarks that while one of the purported discoveries of the Dirac theory is its prediction of the electron's magnetic moment, consistent with experimental values at odds with classical predictions, there is nothing prohibiting a Pauli term proportional to $[\gamma^{\mu},\gamma^{\nu}] F_{\mu\nu}$, which would make an additional contribution to the electron's magnetic moment. Essentially, Weinberg points out that the prediction of the electron's magnetic moment from Dirac's theory is merely a happy accident of missing a possible interaction piece. 
+    
+\end{itemize}
+    
+\end{document}
