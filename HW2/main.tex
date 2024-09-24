@@ -34,7 +34,7 @@ Observe that
 \begin{align}
 \eqbox{
 \begin{gathered}    
-    P_{R,L}^2 = \frac{1}{4} (1 \pm \gamma^{5}) (1 \pm \gamma^{5}) = \frac{1}{4} [ 1 + \pm 2 \gamma^{5} + (\gamma^{5})^2 ] = \frac{1}{2} (1 \pm \gamma^{5}) = P_{R,L}
+    P_{R,L}^2 = \frac{1}{4} (1 \pm \gamma^{5}) (1 \pm \gamma^{5}) = \frac{1}{4} [ 1 \pm 2 \gamma^{5} + (\gamma^{5})^2 ] = \frac{1}{2} (1 \pm \gamma^{5}) = P_{R,L}
 \\
     P_{R} + P_{L} = \frac{1}{2} [1 + \gamma^{5} + 1 - \gamma^{5}] = 1 \\
     P_{R} P_{L} = \frac{1}{4} [1 + \gamma^{5} - \gamma^{5} - (\gamma^{5})^2] = 0
@@ -47,7 +47,7 @@ We can simply show that handedness is not a good quantum number by simply provin
     [H,\gamma^{5}] = p^{i} [\alpha^{i},\gamma^{5}] + m [\beta,\gamma^{5}] = p^{i} [\gamma^{0} \gamma^{i},\gamma^{5}] + m [\gamma^{0},\gamma^{5}]
 ,\end{align}
 where we recall that $\beta = \gamma^{0}$ and $\gamma^{i} = \beta \alpha^{i}$.
-Thus, it remains to follow through with the commutators of the $\gamma$-matrices:
+Following through with the commutators of the $\gamma$-matrices:
 \begin{align}
     [\gamma^{0},\gamma^{5}] &= \gamma^{0} \gamma^{5} - \gamma^{5} \gamma^{0} = 2 \gamma^{0} \gamma^{5} = 
     \begin{pmatrix}
@@ -184,43 +184,36 @@ Then, answer the following questions.
 
 \sol{
 
-(a) 
+(a) In the first section of the reading, Dirac notes a mathematical property of his equation and its solutions: that if $\psi$ is a solution of the Diract equation, then $\psi^{*}$ is a solution of an analogous equation with the potential's sign flipped, assuming $\rho_{i} \sigma_{i}$ are real.
+Equivalently, this sign flip in the potential can be manifested through a sign flip in the charge, but in any case, such observations do not get rid of the negative-energy solutions.
+Indeed, while this did not plague the classical theory, in the quantum theory, when non-static fields are coupled or a perturbation applied, the positive and negative-energy states could not be separated since transitions can occur between such states, and furthermore, lower energy states (i.e. the more negative in this case) would be the energetically preferred states, implying that particles would radiate energy away and fall down the infinite tower of states without bound.
 
-\begin{itemize}
+Dirac, however, made a keen observation that an electron in his theory ``moves in an external field as though it carries a positive charge''.
+One suggestion was just to therefore associate negative-energy states as protons, but this naive reinterpretation is plagued with many paradoxes that violate the fundamental laws of physics, including charge conservation.
+Additionally, such a particle should approach rest by absorbing energy, which is entirely backwards relative to all the other known particles in the universe, and certainly a proton had not been observed with such a property.
 
-    \item In the text following Eq. (2), Dirac notes that if one makes the matrix representation of the operators $\rho_i \sigma_{i}$ real, then the complex conjugate of any solution of Eq. (1) is a solution of Eq. (1) with the sign of the potential reversed (i.e. $e \rightarrow -e$), but either $\psi$ or $\psi^{*}$ must refer to $E < 0$.
+Taking inspiration from the Pauli exclusion principle and the then modern understanding of X-ray energy levels, Dirac proposes a slightly altered view.
+First, Dirac supposes that all or most of the negative-energy states are occupied by electrons.
+Upon absorbing radiation or some perturbation larger than the magnitude of the electron's negative energy, it becomes a positive-energy electron, but of course, in order to satisfy all the known and dearly held conservation laws, Dirac deduces that the hole must have an opposite, positive electric charge, which he incorrectly assumes is a proton.
+In the inverse process, if the positive-energy electron radiates energy away, it drops to fill the hole, annihilating the proton.
 
-    \item When theory coupled to non-static or perturbation applied, transitions may occur between $E > 0$ and $E < 0$ states.
-
-    \item Dirac notices that ``an electron with negative energy moves in an external field as though it carries a positive charge''
-
-    \item Dirac enumerates paradoxes with the interpretation of negative energy electrons as protons: (1) transitions from $E > 0$ to $E < 0$ convert negative to positive charge without creating any extra charge which violates charge conservation, (2) the negative-energy electron, although its motion appears as though a positively charge electron, produces a field as though it possesses negative charge, and (3) a negative-energy electron should have less energy the faster it moves and must absorb energy to be brought to rest.
-
-    \item In the Dirac theory, the most stable electrons are those with negative energy and high velocity, and all electrons will tend to fall to these states by emitting radiation.
-
-    \item Dirac supposes that perhaps the vacuum is (mostly) filled with negative-energy electrons. Thus, by the Pauli exclusion principle, positive-energy electrons are very unlikely to fall into a negative-energy state.
-
-    \item Taking inspiration from the X-ray levels of many electron atoms, Dirac supposes that the holes will have positive energy and behave like ordinary particles with motion corresponding to that of the negative-energy electron, which behaves as though it has positive charge.
-
-    \item The only other known particle with such properties is the proton, so Dirac assumes that the holes must be protons, and when a positive energy-electron drops to fill the hole, the electron and proton annihilate and emit radiation.
-
-    \item Dirac makes note of the asymmetry in the masses of the electrons and protons.
-
-\end{itemize}
-
-}
+It is somewhat interesting that Dirac then discusses the issue of mass asymmetry, also adding that the interpretation with the proton as the particle and electron as anti-particle is as valid as the converse.
+Certainly, Dirac's deduction seems mostly swayed by the times, where the introduction of extra particles into the landscape was discouraged, and hopeful that other issues, such as the origin of the fine-structure constant, could be related and resolved.
+In hindsight, it seems much simpler to have assumed from the onset that the anti-particle of the electron was the as yet unobserved positively charged positron.
 
 
 (b) Weinberg makes note of many ``dissatisfying'' issues with the rationale Dirac used to motivate and develop his theory.
+First, he points out that Dirac's rejection of the Klein-Gordon equation is simply wrong.
+Of course, there are many fundamental and composite spin-0 systems to which it applies, and in fact, such composite systems as the hydrogen or helium atoms were known at the time.
+This leads Weinberg to make the statement that it is difficult to see that case that there is anything fundamentally wrong with the Klein-Gordon equation to spur the development of Dirac's theory in the first place.
+Additionally, Weinberg notes that while the Dirac hole theory correctly predicts the existence of particle-antiparticle fermion pairs, it does not apply to the bosons.
+Indeed, one of the primary motivations for the hole theory is Pauli's exclusion principle, which does not apply to bosons.
+Thus, for a boson, any positive-energy particle can fall down to a negative-energy state without limit, even if another particle occupies the same state.
+Finally, Weinberg discusses the prediction by Dirac's theory of the electron's magnetic moment, which was the first instance of agreement between theory and experiment on this topic, but Weinberg points out that in the original derivation, a Pauli term proportional to $[\gamma^{\mu},\gamma^{\nu}] F_{\mu\nu}$ was missing.
+Such a term would make a contribution to the magnetic moment, and there is no argument on general grounds (i.e. Lorentz/Gauge covariance or invariance) which prohibits this term in any proportion to the Dirac term.
+Thus, the prediction of the electron's magnetic moment from Dirac's theory is more a happy accident than the rigorous account as it was first regarded.
 
-\begin{itemize}
+}
 
-    \item First, Weinberg points out that Dirac's rejection of the Klein-Gordon equation is simply wrong. There are many known elementary particles with spin-0 (not known at the time) as well as composite spin-0 systems (e.g. the hydrogen and helium atoms). Weinberg makes the point that even with the negative probabilities, it is difficult to see the case that there is anything fundamentally wrong with the KG equation which spurred the development of Dirac's equation.
-
-    \item While the hole theory correctly predicts the existence of particle-antiparticle pairs for every fermion, its motivation does not apply to bosons. Fundamentally, bosons do not obey the Pauli-exclusion principle, and hence, the occupance of the negative-energy states does not prohibit particles in the positive-energy states from falling down the energy spectrum. That is, creating a vacuum which is filled with negative-energy states does not correct the problem of stability in the first place.
-
-    \item Weinberg remarks that while one of the purported discoveries of the Dirac theory is its prediction of the electron's magnetic moment, consistent with experimental values at odds with classical predictions, there is nothing prohibiting a Pauli term proportional to $[\gamma^{\mu},\gamma^{\nu}] F_{\mu\nu}$, which would make an additional contribution to the electron's magnetic moment. Essentially, Weinberg points out that the prediction of the electron's magnetic moment from Dirac's theory is merely a happy accident of missing a possible interaction piece. 
-    
-\end{itemize}
     
 \end{document}

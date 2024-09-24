@@ -1,0 +1,110 @@
+\include{../preamble.tex}
+\def\HWnum{3}
+\def\duedate{September 26, 2024}
+
+\begin{document}
+
+\prob{1}{
+
+In this problem we will continue studying the basics of classical field theory by reviewing classical electromagnetism.
+This exercise is based from Peskin \& Schroeder's textbook, problem \#2.1.
+
+\begin{parts}
+
+    \item Using the definition of the electromagnetic tensor, $F_{\mu\nu} = \partial_{\mu} A_{\nu} - \partial_{\nu} A_{\mu}$, show that it satisfies the Bianchi identity,
+        \begin{align}
+            \partial_{\mu} F_{\nu\rho} + \partial_{\nu} F_{\rho\mu} + \partial_{\rho} F_{\mu\nu} = 0
+        .\end{align}
+
+    \item Using the fact that $\epsilon^{ijk} B^{k} = -F^{ij}$, where $B^{k}$ is the $k^{\rm th}$ component of the magnetic field, show that
+        \begin{align}
+            B^{k} = -\frac{\epsilon^{ijk} F^{ij}}{2}
+        .\end{align}
+
+    \item Work through 2.1 in Peskin and Schroeder. (Tip \#1: you might want to use the identities found above to find two of Maxwell's equations in part. Tip \#2: you might need to use the equation of motion for the field.)
+
+        \begin{itemize}
+           
+            \item Classical electromagnetism (with no sources) follows from the action
+                \begin{align}
+                    S = \int \dd[4]{x} \Bigg( -\frac{1}{4} F_{\mu\nu} F^{\mu\nu} \Bigg), \quad {\rm where} F_{\mu\nu} = \partial_{\mu} A^{\nu} - \partial_{\nu} A_{\mu}
+                .\end{align}
+                Derive Maxwell's equations as the Euler Lagrange equations of this action, treating the components $A_{\mu}(x)$ as the dynamical variables.
+                Write the equations in the standard form by identifying $E^{i} = -F^{0i}$ and $\epsilon^{ijk} B^{k} = -F^{ij}$.
+
+            \item Construct the energy-momentum tensor for this theory.
+                Note that the usual procedure does not result in a symmetric tensor.
+                To remedy that, we can add to $T^{\mu\nu}$ a term of the form $\partial_{\lambda} K^{\lambda \mu\nu}$, where $K^{\lambda \mu\nu}$ is antisymmetric in its first two indices.
+                Such an object is automatically divergenceless, so; 
+                \begin{align}
+                    \hat{T}^{\mu\nu} = T^{\mu\nu} + \partial_{\lambda} K^{\lambda \mu\nu}
+                \end{align}
+                is an equally good energy-momentum tensor with the same globally conserved energy and momentum.
+                Show that this construction, with 
+                \begin{align}
+                    K^{\lambda \mu\nu} = F^{\mu\lambda} A^{\nu}
+                \end{align}
+                leads to an energy-momentum tensor $\hat{T}$ that is symmetric and yields the standard formulae for the electromagnetic energy and momentum densities
+                \begin{align}
+                    \mathcal{E} = \frac{1}{2}(E^2 + B^2), \quad \vb*{S} = \vb*{E} \cross \vb*{B}
+                .\end{align}
+
+    
+        \end{itemize}
+   
+\end{parts}
+
+}
+
+\sol{
+
+(a) We can easily show the Bianchi identity directly:
+\begin{align}
+\eqbox{
+\begin{aligned} 
+    \partial_{\mu} &( \partial_{\nu} A_{\rho} - \partial_{\rho} A_{\nu} ) + \partial_{\nu} ( \partial_{\rho} A_{\mu} - \partial_{\mu} A_{\rho} ) + \partial_{\rho} ( \partial_{\mu} A_{\nu} - \partial_{\nu} A_{\mu} ) \nonumber \\
+                   &= [\partial_{\mu},\partial_{\nu}] A_{\rho} + [\partial_{\rho},\partial_{\mu}] A_{\nu} + [\partial_{\nu},\partial_{\rho}] A_{\mu} = 0
+\end{aligned}
+}
+,\end{align}
+where we use the fact that derivatives commute with each other.
+
+
+(b) Again, the primary objective is not too difficult to establish using a well-known identity for the contraction of Levi-Civita symbols:
+\begin{align}
+    \epsilon^{ijk} \epsilon^{ijk'} B^{k'} = 2 \delta^{kk'} B^{k'} = 2 B^{k} = - \epsilon^{ijk} F^{ij} \Rightarrow \eqbox{ B^{k} = -\frac{1}{2} \epsilon^{ijk} F^{ij} }
+.\end{align}
+
+
+(c) The Lagrangian in terms of the 4-potential is given as
+\begin{align}
+    \mathcal{L} &= -\frac{1}{4} ( \partial_{\mu} A_{\nu} - \partial_{\nu} A_{\mu} ) ( \partial^{\mu} A^{\nu} - \partial^{\nu} A^{\mu} ) = -\frac{1}{2} ( \partial_{\mu} A_{\nu} \partial^{\mu} A^{\nu} - \partial_{\mu} A_{\nu} \partial^{\nu} A^{\mu} ) \nonumber \\
+                &= -\frac{1}{2} ( g^{\sigma\alpha} g_{\nu\beta} \partial_{\sigma} A^{\beta} \partial_{\alpha} A^{\nu} - \partial_{\sigma} A^{\nu} \partial_{\nu} A^{\sigma} )
+,\end{align}
+and the Euler-Lagrange equation for $A^{\mu}$ reads
+\begin{gather}
+    \pdv{\mathcal{L}}{A^{\mu}} - \partial_{\rho} \pdv{\mathcal{L}}{(\partial_{\rho} A^{\mu})} = 0 \nonumber \\
+    \frac{1}{2} \partial_{\rho} \Bigg[ g^{\sigma\alpha} g_{\nu\beta} \Big( \delta_{\sigma}^{\rho} \delta^{\beta}_{\mu} \partial_{\alpha} A^{\nu} + \partial_{\sigma} A^{\beta} \delta_{\alpha}^{\rho} \delta^{\nu}_{\mu} \Big) - \Big( \delta_{\sigma}^{\rho} \delta^{\nu}_{\mu} \partial_{\nu} A^{\sigma} + \partial_{\sigma} A^{\nu} \delta_{\nu}^{\rho} \delta^{\sigma}_{\mu} \Big) \Bigg] = 0 \nonumber \\
+    \partial_{\rho} ( \partial^{\rho} A_{\mu} - \partial_{\mu} A^{\rho} ) = 0
+.\end{gather}
+Note that the object in parentheses is the field-strength tensor $F^{\rho}_{\;\mu}$, but we can act with the metric tensor on both sides to raise the index $\mu$ and relabel $\rho \rightarrow \mu$ and $\mu \rightarrow \nu$ to obtain the typical compact presentation of the Maxwell equations:
+\begin{align}
+    \eqbox{
+        \partial_{\mu} F^{\mu\nu} = 0
+    }
+.\end{align}
+
+Unfolding, we have
+\begin{align}
+    \pdv{F^{0\nu}}{t} + \pdv{F^{i\nu}}{x^{i}} = 0
+,\end{align}
+so that
+\begin{gather}
+    \pdv{F^{00}}{t} + \pdv{F^{i 0}}{x^{i}} = -\pdv{E^{i}}{x^{i}} = -\grad \cdot \vb*{E} = 0 \nonumber \\
+    \pdv{F^{0j}}{\pdv{t}} + \pdv{F^{ij}}{x^{i}} = -\pdv{E^{j}}{t} - \epsilon^{ijk} \nabla^{i} B^{k} = \Bigg( \grad \cross \vb*{B} - \pdv{\vb*{E}}{t} \Bigg)_{i} = 0
+.\end{gather}
+
+
+}
+    
+\end{document}
