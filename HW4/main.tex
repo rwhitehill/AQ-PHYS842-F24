@@ -1,0 +1,78 @@
+\include{../preamble.tex}
+\def\HWnum{4}
+\def\duedate{October 3, 2024}
+
+\begin{document}
+
+\prob{1}{
+
+Consider the classical complex Klein-Gordon field with the Lagrangian density
+\begin{align}
+    \mathcal{L} = (\partial_{\mu} \phi) (\partial^{\mu} \phi^{*}) - m^2 \phi \phi^{*}
+.\end{align}
+This has a global symmetry under a phase transformation $\phi \rightarrow \phi e^{i \alpha}$.
+Determine the Noether current corresponding to this symmetry.
+
+}
+
+\sol{}
+
+
+\prob{2}{
+
+Checking steps from class:
+
+\begin{parts}
+   
+\item Consider again the basic simple harmonic oscillator from undergraduate quantum mechanics (a.k.a. the $0+1$ scalar QFT).
+    Show that converting the creation and annihilation operators from the Schr\"{o}dinger to Heisenberg pictures gives
+    \begin{align}
+        \hat{a}_{H}(t) = e^{-i\omega t} \hat{a}(t = 0), \quad \hat{a}_{H}^{\dagger} = e^{i \omega t} \hat{a}^{\dagger}(t = 0)
+    .\end{align}
+    Note: I will always assume $\hbar = c = 1$. 
+    The $H$ subscript means ``Heisenberg operator''.
+
+\item Recall that in treating the 1D lattice theory in class, I used the identity
+    \begin{align}
+        \sum_{j} e^{ikja} = N \delta_{k_0}
+    .\end{align}
+    Prove this expression for a general $N$.
+
+\end{parts}
+
+}
+
+\sol{}
+
+
+\prob{3}{
+
+Repeat the steps from class in constructing a classical lattice field theory in $D$ dimensions, but now include a nonlinear term as follows:
+\begin{align}
+    H = \sum_{x}^{N^{D}} \frac{\dot{q}_{x}^2}{2} + \sum_{x}^{N^{D}} \sum_{\nu} \frac{\kappa}{2} (q_{x + \nu} - q_{x})^2 + \sum_{x}^{N^{D}} \frac{m^2}{2} q_{x}^2 + \frac{\lambda}{4!} \sum_{x}^{N^{D}} q_{x}^{4}
+,\end{align}
+where the constant $\lambda$ determines the strength of the effect of the nonlinear term.
+For taking the continuum limit, make the same replacements I used in class, but also take $\lambda \rightarrow g/a^{D}$, where $g$ is a continuum version of $\lambda$.
+What Hamiltonian density do you get?
+What is the corresponding Lagrangian density?
+Can you solve the quantum version of the theory again by just using $a$'s and $a^{\dagger}$'s as in the linear case?
+If not, what prevents you from doing so?
+In units where $\hbar = c = 1$, what are the units of $g$?
+
+}
+
+\sol{}
+
+
+\prob{4}{
+
+Show that the following Lagrangian density gives a nonrelativistic classical \underline{field} that at least structurally matches the form of a single particle Schr\"{o}dinger equation,
+\begin{align}
+    \mathcal{L} = \frac{i}{2} \psi^{\dagger}(\vb*{x}) \frac{\overleftrightarrow{\partial}}{\partial t} \psi(\vb*{x}) - \frac{1}{2m} \grad \psi^{\dagger}(\vb*{x}) \cdot \grad \psi(\vb*{x}) - V(\vb*{x}) \psi^{\dagger}(\vb*{x}) \psi(\vb*{x})
+.\end{align}
+What is the Hamiltonian density?
+In light of our discussion about the problems with second time derivatives when constructing relativistic wavefunction equations, what is noteworthy about this Hamiltonian?
+
+}
+    
+\end{document}
