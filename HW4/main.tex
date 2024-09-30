@@ -15,7 +15,31 @@ Determine the Noether current corresponding to this symmetry.
 
 }
 
-\sol{}
+\sol{
+
+First, observe that
+\begin{align}
+    \delta \mathcal{L} = \partial_{\mu} (e^{i \alpha} \phi) \partial^{\mu} (e^{-i \alpha} \phi^{*}) - m^2 (e^{i \alpha} \phi) (e^{-i \alpha} \phi^{*}) - \mathcal{L} = 0
+.\end{align}
+Next, observe that under an infinitesimal phase transformation
+\begin{align}
+    \delta \phi = i \alpha \phi, \quad \delta \phi^{*} = - i \alpha \phi
+,\end{align}
+so the conserved current takes the form
+\begin{align}
+    J^{\mu} &= \pdv{\mathcal{L}}{(\partial_{\mu} \phi)} \delta \phi + \pdv{\mathcal{L}}{(\partial_{\mu} \phi^{*})} \delta \phi^{*} \nonumber \\
+            &= ( \partial^{\mu} \phi^{*} ) ( i \alpha \phi ) + ( \partial^{\mu} \phi ) (- i \alpha \phi^{*}) \nonumber \\
+            &= i \alpha ( \phi \partial^{\mu} \phi^{*} - \phi^{*} \partial^{\mu} \phi ) \nonumber \\
+            &= -i \alpha \phi^{*} \overleftrightarrow{\partial}^{\mu} \phi
+,\end{align}
+where $\overleftrightarrow{\partial}^{\mu} = \overrightarrow{\partial}^{\mu} - \overleftarrow{\partial}^{\mu}$.
+Note that we can always rescale our current by a constant, so we redefine the conserved current as
+\begin{align}
+    \eqbox{ J^{\mu} = -i \phi^{*} \overleftrightarrow{\partial}^{\mu} \phi }
+,\end{align}
+which is now independent of $\alpha$.
+
+}
 
 
 \prob{2}{
@@ -34,7 +58,7 @@ Checking steps from class:
 
 \item Recall that in treating the 1D lattice theory in class, I used the identity
     \begin{align}
-        \sum_{j} e^{ikja} = N \delta_{k_0}
+        \sum_{j} e^{ikja} = N \delta_{k 0}
     .\end{align}
     Prove this expression for a general $N$.
 
@@ -42,7 +66,98 @@ Checking steps from class:
 
 }
 
-\sol{}
+\sol{
+
+(a) The Hamiltonian for the harmonic oscillator, in terms of the creation and annihilation operators, is
+\begin{align}
+    H = \omega \Big( a^{\dagger} a + \frac{1}{2} \Big)
+.\end{align}
+These ladder operators satisfy the commutation relations
+\begin{align}
+    [a,a] = [a^{\dagger}, a^{\dagger}] = 0, \quad [a,a^{\dagger}] = 1
+.\end{align}
+Recall for a generic Schr\"{o}dinger picture operator $\hat{A}$ that the Heisenberg picture counterpart is given as
+\begin{align}
+    \hat{A}_{H}(t) = e^{i H t} \hat{A} e^{-i H t}
+,\end{align}
+so
+\begin{align}
+    a_{H}(t) = e^{i H t} a e^{- i H t}
+.\end{align}
+We are now in a position to prove the Baker-Campbell-Hausdorf formula (really a variation of it).
+
+Define a generic operator 
+\begin{align}
+    C = e^{A} B e^{-A}
+.\end{align}
+Then
+\begin{align}
+    C(\lambda) = e^{\lambda A} B e^{-\lambda A}
+,\end{align}
+which obeys the differential equation
+\begin{align}
+    \dv{C}{\lambda} = A C - C A = [A,C]
+.\end{align}
+This is difficult to solve directly (perhaps impossible in all but a few nice cases), but anybody who has gone through a quantum mechanics course grows to love a good iterative solution, which is the way we proceed here:
+\begin{align}
+    C(\lambda) = C(0) + \int \dd{\lambda} [A,C(\lambda)]
+.\end{align}
+Using this, we construct 
+\begin{align}
+    C^{(n)} = B + \int \dd{\lambda} [A,C^{(n-1)}]
+,\end{align}
+where we use $C^{(0)} = C(0) = B$.
+We list out the first few iterative solutions
+\begin{align}
+    C^{(1)} &= B + \int \dd{\lambda} [A,B] = B + \lambda [A,B] \nonumber \\
+    C^{(2)} &= B + \int \dd{\lambda} [A,B + \lambda [A,B]] = B + \lambda [A,B] + \frac{\lambda^2}{2} [A,[A,B]] \nonumber \\
+    C^{(3)} &= B + \lambda [A,B] + \frac{\lambda^2}{2} [A,[A,B]] + \frac{\lambda^3}{3!} [A,[A,[A,B]]]
+.\end{align}
+We can now guess an explicit formula for $C^{(n)}$:
+\begin{align}
+    C^{(n)} = \sum_{k=0}^{n} \frac{\lambda^{k}}{k!} \underbrace{[A,[\ldots,[A}_{k~{\rm times}},B]]
+,\end{align}
+which is easy enough to prove by induction.
+Hence, taking $n \rightarrow \infty$ and $\lambda \rightarrow 1$ to recover $C$, we find
+\begin{align}
+    C = \sum_{k=0}^{\infty} \frac{\lambda^{k}}{k!} \underbrace{[A,[\ldots,[A}_{k~{\rm times}},B]]
+.\end{align}
+
+We have now reduced our problem to that of computing commutators between the Hamiltonian and $a$.
+Observe that
+\begin{align}
+    [H,a] &= \omega \Bigg( a^{\dagger} [a,a] + [a^{\dagger},a] a \Bigg) = -\omega a \nonumber \\
+    [H,[H,a]] &= [H,-\omega a] = -\omega (-\omega a) = (-1)^2 \omega^2 a \nonumber \\
+    \Rightarrow [\underbrace{H,[\ldots,[H}_{n~{\rm times}},a]]] &= (-1)^{n} \omega^{n} a
+,\end{align}
+where the latter relation can be proven by induction again.
+Thus, putting all the pieces together
+\begin{align}
+    \eqbox{ a_{H}(t) = e^{i H t} a e^{-i H t} = \sum_{k=0}^{\infty} \frac{(-i \omega t)^{k}}{k!} a = e^{-i \omega t} a }
+.\end{align}
+A similar result holds for $a^{\dagger}$:
+\begin{align}
+    \eqbox{ a_{H}^{\dagger} = e^{ i \omega t} a^{\dagger} }
+.\end{align}
+
+
+(b) Recall that this result came about in the context where $e^{ikNa} = 1$, which lead to the result
+\begin{align}
+    kNa = 2 m \pi \Rightarrow k = \frac{2 m \pi}{N a}
+,\end{align}
+where $N$ is an even integer.
+Thus
+\begin{align}
+    \sum_{j=1}^{N} e^{}
+.\end{align}
+$k = 2 m \pi / L$, where $m \in ( -N/2,N/2 ]$.
+This result is quite simple to show for $k = 0$:
+\begin{align}
+    \sum_{j=1}^{N} (e^{ija})^{0} = N
+.\end{align}
+
+
+}
 
 
 \prob{3}{
