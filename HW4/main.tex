@@ -141,21 +141,24 @@ A similar result holds for $a^{\dagger}$:
 .\end{align}
 
 
-(b) Recall that this result came about in the context where $e^{ikNa} = 1$, which lead to the result
+(b) Recall the geometric series formula
 \begin{align}
-    kNa = 2 m \pi \Rightarrow k = \frac{2 m \pi}{N a}
-,\end{align}
-where $N$ is an even integer.
-Thus
-\begin{align}
-    \sum_{j=1}^{N} e^{}
+    \sum_{j=0}^{N} a r^{j} = \frac{a(1 - r^{N+1})}{1 - r}
 .\end{align}
-$k = 2 m \pi / L$, where $m \in ( -N/2,N/2 ]$.
-This result is quite simple to show for $k = 0$:
-\begin{align}
-    \sum_{j=1}^{N} (e^{ija})^{0} = N
-.\end{align}
+Note that this formula on the right-hand-side is actually indeterminate when $r = 1$, but in this case it is simple to see that the sum is just $(N+1)a$.
 
+Thus, the sum in question when $k \ne 0$ is
+\begin{align}
+\eqbox{
+    \sum_{j=1}^{N} e^{ikja} = e^{ika} \sum_{j=0}^{N-1} (e^{ika})^{j} = 
+    \begin{cases}
+        \displaystyle \frac{e^{ika}(1 - e^{ikNa})}{1 - e^{ika}} = 0 & k \ne 0 \\
+        N & k = 0
+    \end{cases}
+    = N \delta_{k 0}
+}
+,\end{align}
+where we have used the fact that $e^{ikNa} = 1$.
 
 }
 
@@ -176,7 +179,69 @@ In units where $\hbar = c = 1$, what are the units of $g$?
 
 }
 
-\sol{}
+\sol{
+
+In this problem, we investigate how adding an anharmonic quartic term to our potential, a quartic term in particular here, impacts our analysis.
+Let us introduce a new notation, where $q_{\vb*{n}}$ is the generalized coordinate at position $\vb*{x} = a \vb*{n} = a \sum_{i} n_{i} \vu*{e}_{i}$, where $n_{i} \in \{ 0,1,\ldots,N \}$ and $\vu*{e}_{i}$ is the lattice unit vector along the $i^{\rm th}$ spatial direction ($i \in \{1,2,\ldots,D\}$).
+Note that the generalized coordinate depends implicitly on time.
+The Lagrangian we start with is just
+\begin{align}
+    L = \sum_{\vb*{n}} \frac{\dot{q}_{\vb*{n}}^2}{2} - \sum_{\vb*{n}} \frac{m^2}{2} q_{\vb*{n}}^2 - \frac{m^2}{2} - \sum_{\vb*{n}} \sum_{i} \frac{\kappa}{2} ( q_{\vb*{n} + \vu*{e}_{i}} - q_{\vb*{n}} )^2 - \frac{\lambda}{4!} \sum_{\vb*{n}} q_{\vb*{n}}^{4}
+.\end{align}
+Immediately, we can write down the generalized conjugate momentum
+\begin{align}
+    p_{\vb*{n}} = \pdv{L}{\dot{q}_{\vb*{n}}} = \dot{q}_{\vb*{n}}
+.\end{align}
+Using this, we can recover our desired Hamiltonian:
+\begin{align}
+    H = \sum_{\vb*{n}} \frac{p_{\vb*{n}}^2}{2} + \sum_{\vb*{n}} \sum_{i} \frac{\kappa}{2} (q_{\vb*{n}+\vu*{e}_{i}} - q_{\vb*{n}})^2 + \sum_{\vb*{n}} \frac{m^2}{2} q_{\vb*{n}}^{2} + \frac{\lambda}{4!} \sum_{\vb*{n}} q_{\vb*{n}}^{4}
+.\end{align}
+
+Now, we would like to introduce normal coordinates by expanding $q_{\vb*{n}}$ and $p_{\vb*{n}}$ in a Fourier series:
+\begin{align}
+    q_{\vb*{n}} &= \frac{1}{N^{D/2}} \sum_{\vb*{k}} \bar{q}_{\vb*{k}} e^{i a \vb*{k} \cdot \vb*{n}} \\
+    p_{\vb*{n}} &= \frac{1}{N^{D/2}} \sum_{\vb*{k}} \bar{p}_{\vb*{k}} e^{i a \vb*{k} \cdot \vb*{n}}
+,\end{align}
+where the pre-factor is a convenient normalization introduced by convention.
+We now impose periodic boundary conditions such that
+\begin{align}
+    q_{\vb*{n} + N \sum_{i} \vu*{e}_{i}} = q_{\vb*{n}} \Rightarrow \frac{1}{N^{D/2}} \sum_{\vb*{k}} \bar{q}_{\vb*{k}} e^{ia \vb*{k} \cdot \vb*{n}} ( e^{i a \vb*{k} \cdot \sum_{i} \vu*{e}_{i}} - 1) = 0
+,\end{align}
+where the sum over $i$ is allowed to occur over any subset of $\{1,\ldots,D\}$.
+Since this must be true for all such sums, we must have that
+\begin{align}
+    \vb*{k} = \frac{2 \pi \bar{\vb*{n}}}{N a}
+.\end{align}
+where $\bar{\vb*{n}}$ denotes our reciprocal lattice sites with the integers $\bar{n}_{i} \in (-N/2,N/2]$.
+There seems to be an ambiguity here. 
+One may ask why we shouldn't restrict ourselves to $\bar{n}_{i} \in \{ 0,\ldots,N-1 \}$ or another set related to this one by some integer shift?
+The utility of such a restriction appears when we impose that our generalized coordinates must be real, which yields
+\begin{align}
+    q_{\vb*{n}}^{*} = q_{\vb*{n}} \Rightarrow \bar{q}_{\vb*{k}} = \bar{q}_{-\vb*{k}}^{*}
+.\end{align}
+If we chose another set of integers for $\bar{n}_{i}$, the realness condition may not be as conveniently or simply translated into one on the Fourier modes.
+Additionally, this condition also makes it simple to see that we do not somehow trade from $N^{D}$ degrees of freedom to $2 N^{D}$ degrees of freedom when we introduce $\{ \bar{q}_{\vb*{k}} \}$, which is allowed to be complex above.
+Before proceeding, note that similar results hold for the momentum modes $\bar{p}_{\vb*{k}}$.
+
+At this point, we can plug our Fourier expansions into the Hamiltonian:
+\begin{align}
+    H &= \sum_{\vb*{n},\vb*{k},\vb*{k}'} \frac{1}{2 N^{D}} \bar{p}_{\vb*{k}} \bar{p}_{\vb*{k}'} e^{ia(\vb*{k} + \vb*{k}') \cdot \vb*{n}} + \sum_{\vb*{n},\vb*{k},\vb*{k}'} \sum_{i} \frac{\kappa}{2 N^{D}} \bar{q}_{\vb*{k}} \bar{q}_{\vb*{k}'} e^{ia(\vb*{k} + \vb*{k}') \cdot \vb*{n}} \Big( e^{i a \vb*{k} \cdot \vu*{e}_{i}} - 1 \Big) \Big( e^{i a \vb*{k}' \cdot \vu*{e}_{i}} - 1 \Big) \nonumber \\
+    &+ \sum_{\vb*{n},\vb*{k},\vb*{k}'} \frac{m^2}{2 N^{D}} \bar{q}_{\vb*{k}} \bar{q}_{\vb*{k}'} e^{ia(\vb*{k} + \vb*{k}') \cdot \vb*{n}} + \sum_{\vb*{n},\vb*{k},\vb*{k}',\vb*{k}'',\vb*{k}'''} \frac{\lambda}{4! N^{2D}} \bar{q}_{\vb*{k}} \bar{q}_{\vb*{k}'} \bar{q}_{\vb*{k}''} \bar{q}_{\vb*{k}'''} e^{ia(\vb*{k} + \vb*{k}' + \vb*{k}'' + \vb*{k}''') \cdot \vb*{n}} \nonumber \\
+%%%
+    &= \sum_{\vb*{k}} \Bigg\{ \frac{1}{2} \bar{p}_{\vb*{k}} \bar{p}_{-\vb*{k}} + \frac{1}{2} \underbrace{\Big( 2 \kappa \sum_{i} [1 - \cos(k_{i} a)] + m^2 \Big\} \bar{q}_{\vb*{k}} \Big)}_{\omega_{k}^2} \bar{q}_{-\vb*{k}} \nonumber \\
+    &+ \frac{\lambda}{4! N^{D}} \sum_{\vb*{k},\vb*{k}',\vb*{k}''} \bar{q}_{\vb*{k}} \bar{q}_{\vb*{k}'} \bar{q}_{\vb*{k}''} \bar{q}_{-(\vb*{k} + \vb*{k}' + \vb*{k}'')}
+.\end{align}
+Here is where the machinery breaks down.
+The first contribution is exactly what we obtained for a purely massive harmonic oscillator.
+With only this term, we would introduce creation/annihilation operators $a_{\vb*{k}}$ and $a_{\vb*{k}}^{\dagger}$ and build up our Hilbert space through these operators.
+The extra anharmonic term, however, spoils these nice constructions.
+Namely, eigenstates of the pure harmonic oscillator are not eigenstates of this anharmonic oscillator, and in general, there is no known way to construct the Hilbert space of this system analytically.
+However, there is some hope for us to use perturbation theory to construct approximate eigenstates and energies if $\lambda$ is quite small.
+
+
+
+
+}
 
 
 \prob{4}{
