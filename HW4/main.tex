@@ -197,7 +197,7 @@ Using this, we can recover our desired Hamiltonian:
     H = \sum_{\vb*{n}} \frac{p_{\vb*{n}}^2}{2} + \sum_{\vb*{n}} \sum_{i} \frac{\kappa}{2} (q_{\vb*{n}+\vu*{e}_{i}} - q_{\vb*{n}})^2 + \sum_{\vb*{n}} \frac{m^2}{2} q_{\vb*{n}}^{2} + \frac{\lambda}{4!} \sum_{\vb*{n}} q_{\vb*{n}}^{4}
 .\end{align}
 
-Now, we would like to introduce normal coordinates by expanding $q_{\vb*{n}}$ and $p_{\vb*{n}}$ in a Fourier series:
+Now, we would like to solve this in a similar way to the harmonic oscillator by expanding $q_{\vb*{n}}$ and $p_{\vb*{n}}$ in a Fourier series (i.e. attempting to introduce normal coordinates):
 \begin{align}
     q_{\vb*{n}} &= \frac{1}{N^{D/2}} \sum_{\vb*{k}} \bar{q}_{\vb*{k}} e^{i a \vb*{k} \cdot \vb*{n}} \\
     p_{\vb*{n}} &= \frac{1}{N^{D/2}} \sum_{\vb*{k}} \bar{p}_{\vb*{k}} e^{i a \vb*{k} \cdot \vb*{n}}
@@ -228,17 +228,64 @@ At this point, we can plug our Fourier expansions into the Hamiltonian:
     H &= \sum_{\vb*{n},\vb*{k},\vb*{k}'} \frac{1}{2 N^{D}} \bar{p}_{\vb*{k}} \bar{p}_{\vb*{k}'} e^{ia(\vb*{k} + \vb*{k}') \cdot \vb*{n}} + \sum_{\vb*{n},\vb*{k},\vb*{k}'} \sum_{i} \frac{\kappa}{2 N^{D}} \bar{q}_{\vb*{k}} \bar{q}_{\vb*{k}'} e^{ia(\vb*{k} + \vb*{k}') \cdot \vb*{n}} \Big( e^{i a \vb*{k} \cdot \vu*{e}_{i}} - 1 \Big) \Big( e^{i a \vb*{k}' \cdot \vu*{e}_{i}} - 1 \Big) \nonumber \\
     &+ \sum_{\vb*{n},\vb*{k},\vb*{k}'} \frac{m^2}{2 N^{D}} \bar{q}_{\vb*{k}} \bar{q}_{\vb*{k}'} e^{ia(\vb*{k} + \vb*{k}') \cdot \vb*{n}} + \sum_{\vb*{n},\vb*{k},\vb*{k}',\vb*{k}'',\vb*{k}'''} \frac{\lambda}{4! N^{2D}} \bar{q}_{\vb*{k}} \bar{q}_{\vb*{k}'} \bar{q}_{\vb*{k}''} \bar{q}_{\vb*{k}'''} e^{ia(\vb*{k} + \vb*{k}' + \vb*{k}'' + \vb*{k}''') \cdot \vb*{n}} \nonumber \\
 %%%
-    &= \sum_{\vb*{k}} \Bigg\{ \frac{1}{2} \bar{p}_{\vb*{k}} \bar{p}_{-\vb*{k}} + \frac{1}{2} \underbrace{\Big( 2 \kappa \sum_{i} [1 - \cos(k_{i} a)] + m^2 \Big\} \bar{q}_{\vb*{k}} \Big)}_{\omega_{k}^2} \bar{q}_{-\vb*{k}} \nonumber \\
-    &+ \frac{\lambda}{4! N^{D}} \sum_{\vb*{k},\vb*{k}',\vb*{k}''} \bar{q}_{\vb*{k}} \bar{q}_{\vb*{k}'} \bar{q}_{\vb*{k}''} \bar{q}_{-(\vb*{k} + \vb*{k}' + \vb*{k}'')}
+    &= \sum_{\vb*{k}} \Bigg\{ \frac{1}{2} \bar{p}_{\vb*{k}} \bar{p}_{-\vb*{k}} + \frac{\omega_{k}^2}{2} \bar{q}_{\vb*{k}} \bar{q}_{-\vb*{k}} \Bigg\} + \frac{\lambda}{4! N^{D}} \sum_{\vb*{k},\vb*{k}',\vb*{k}''} \bar{q}_{\vb*{k}} \bar{q}_{\vb*{k}'} \bar{q}_{\vb*{k}''} \bar{q}_{-(\vb*{k} + \vb*{k}' + \vb*{k}'')}
+,\end{align}
+where
+\begin{align}
+    \omega_{k}^2 = m^2 + 2 \kappa \sum_{i} [1 - \cos(k_{i} a)]
 .\end{align}
 Here is where the machinery breaks down.
-The first contribution is exactly what we obtained for a purely massive harmonic oscillator.
+The first contribution is exactly what we obtained for a pure harmonic oscillator.
 With only this term, we would introduce creation/annihilation operators $a_{\vb*{k}}$ and $a_{\vb*{k}}^{\dagger}$ and build up our Hilbert space through these operators.
 The extra anharmonic term, however, spoils these nice constructions.
 Namely, eigenstates of the pure harmonic oscillator are not eigenstates of this anharmonic oscillator, and in general, there is no known way to construct the Hilbert space of this system analytically.
-However, there is some hope for us to use perturbation theory to construct approximate eigenstates and energies if $\lambda$ is quite small.
 
+Let us now take the continuum limit by taking $a \rightarrow 0$ and $N \rightarrow \infty$ but $L$ fixed and finite, defining $\phi(\vb*{x}) = q_{\vb*{n}}/a^{D/2}$, $\pi(\vb*{x}) = p_{\vb*{n}} / a^{D/2}$, and $\lambda \rightarrow g/a^{D}$.
+Putting these definitions into the Lagrangian and Hamiltonian, we find
+\begin{align}
+    L &= \sum_{\vb*{n}} a^{D} \Bigg\{ \frac{1}{2} \dot{\phi}^2(\vb*{x}) - \frac{\kappa}{2} \sum_{i} (\phi(\vb*{x} + a \vu*{e}_{i}) - \phi(\vb*{x}))^2 - \frac{m^2}{2} \phi^2(\vb*{x}) - \frac{g}{4!} \phi^{4}(\vb*{x}) \Bigg\} \nonumber \\
+      &\rightarrow \int_{V} \dd[D]{\vb*{x}} \Bigg\{ \frac{1}{2} \dot{\phi}^2(\vb*{x}) - \frac{\kappa}{2} (\grad \phi(\vb*{x}))^2 - \frac{m^2}{2} \phi^2(\vb*{x}) - \frac{g}{4!} \phi^{4}(\vb*{x}) \Bigg\} \\
+    H &= \sum_{\vb*{n}} a^{D} \Bigg\{ \frac{1}{2} \pi^2(\vb*{x}) + \frac{\kappa}{2} \sum_{i} (\phi(\vb*{x} + a \vu*{e}_{i}) - \phi(\vb*{x}))^2 + \frac{m^2}{2} \phi^2(\vb*{x}) + \frac{g}{4!} \phi^{4}(\vb*{x}) \Bigg\} \nonumber \\
+      &\rightarrow \int_{V} \dd[D]{\vb*{x}} \Bigg\{ \frac{1}{2} \pi^2(\vb*{x}) + \frac{\kappa}{2} (\grad \phi(\vb*{x}))^2 + \frac{m^2}{2} \phi^2(\vb*{x}) + \frac{g}{4!} \phi^{4}(\vb*{x}) \Bigg\}
+.\end{align}
+Thus, the Lagrangian and Hamiltonian densities (setting $\kappa = 1$) are
+\begin{align}
+    \mathcal{L} &= \frac{1}{2} \partial_{\mu} \phi \partial^{\mu} \phi - \frac{1}{2} m^2 \phi^2 - \frac{g}{4!} \phi^{4} \\
+    \mathcal{H} &= \frac{1}{2} \pi^2 + \frac{1}{2} (\grad \phi)^2 + \frac{1}{2} m^2 \phi^2 + \frac{g}{4!} \phi^{4}
+.\end{align}
+Note that $g$ is dimensionless in $D = 3$.
+%We can determine this quite simply by noting that $\phi$ has dimensions of $E^{-1/2}$, so $g$.
+%In natural units, we can label everything in dimensions of energy $E$.
+%It is observed that our generalized coordinates have dimensions of $E^{-1/2}$, so $\lambda$ must have units of $E^3$.
+TThus, $g = a^{D} \lambda$ has dimensions of $E^{3-D}$, becoming unity at $D = 3$ spatial dimensions.
 
+As a last check observe that $\phi$ obeys the equation
+\begin{align}
+    ( \partial^2 + m^2 ) \phi = -\frac{g}{3!} \phi^3
+.\end{align}
+By introducing the Fourier transform of $\phi$, we would run into a similar issue as in the discrete case.
+Let
+\begin{align}
+    \phi(x) = \int \frac{\dd[4]{k}}{(2 \pi)^{4}} \tilde{\phi}(k) e^{-i k \cdot x}
+.\end{align}
+The equation of motion then becomes 
+\begin{align}
+    \int \frac{\dd[4]{\vb*{k}}}{(2 \pi)^4} (-k^2 + m^2) \tilde{\phi}(k) = \int \frac{\dd[4]{k}}{(2\pi)^4} \Bigg\{ - \frac{g}{3!} \int \frac{\dd[4]{k_{1}} \dd[3]{k_{2}}}{(2 \pi)^{8}} \tilde{\phi}(k_{1},t) \tilde{\phi}(k_{2}) \Bigg\} \tilde{\phi}(k)
+.\end{align}
+If $g = 0$, then we simply have $k^2 = (k^{0})^2 - \vb*{k}^2 = m^2$ and can go ahead and write
+\begin{align}
+    \tilde{\phi} = \frac{2\pi}{\sqrt{2 E_{\vb*{k}}}} \Big[ a(\vb*{k}) \delta(k^{0} - E_{\vb*{k}}) + b(\vb*{k}) \delta(k^{0} + E_{\vb*{k}}) \Big]
+,\end{align}
+where $E_{\vb*{k}} = \sqrt{\vb*{k}^2 + m^2}$,
+and
+\begin{align}
+    \tilde{\phi}(\vb*{k}) &= \int \frac{\dd[3]{\vb*{k}}}{(2 \pi)^3 \sqrt{2 E_{\vb*{k}}}} \Big[ a(\vb*{k}) e^{-i (E_{\vb*{k}} t - \vb*{k} \cdot \vb*{x})} + b(\vb*{k}) e^{i(E_{\vb*{k}} t + \vb*{k} \cdot \vb*{x})} \Big] \nonumber \\
+                          &= \int \frac{\dd[3]{\vb*{k}}}{(2 \pi)^3 \sqrt{2 E_{\vb*{k}}}} \Big[ a(\vb*{k}) e^{-i k \cdot x} + a^{*}(\vb*{k}) e^{i k \cdot x} \Big]
+,\end{align}
+where between the first and second equality we have sent $\vb*{k} \mapsto -\vb*{k}$ in the second term and determined $a(\vb*{k}) = b^{*}(-\vb*{k})$ by imposing that $\phi$ is real.
+Additionally, $k$ is on-shell in the last equality.
+Having gone through this exercise, if $g \ne 0$, we can see there is no easy way to directly apply solve the equation of motion in $k$ space or generalize our approach above.
+Again, though, if $g \ll 1$, then we can write the solution for $\phi$ as an interative solution using the $g = 0$ solution as our starting point.
 
 
 }
@@ -252,6 +299,34 @@ Show that the following Lagrangian density gives a nonrelativistic classical \un
 .\end{align}
 What is the Hamiltonian density?
 In light of our discussion about the problems with second time derivatives when constructing relativistic wavefunction equations, what is noteworthy about this Hamiltonian?
+
+}
+
+\sol{
+
+The equations of motion for $\psi$ and $\psi^{\dagger}$ are
+\begin{align}
+    \partial_{t} \pdv{\mathcal{L}}{(\partial_{t} \psi)} + \grad \cdot \pdv{\mathcal{L}}{(\grad \psi)} - \pdv{\mathcal{L}}{\psi} = i \pdv{\psi^{\dagger}}{t} - \frac{1}{2m} \laplacian \psi^{\dagger} + V(\vb*{x}) \psi^{\dagger} = 0 \\
+    \partial_{t} \pdv{\mathcal{L}}{(\partial_{t} \psi^{\dagger})} + \grad \cdot \pdv{\mathcal{L}}{(\grad \psi^{\dagger})} - \pdv{\mathcal{L}}{\psi^{\dagger}} = -i \pdv{\psi}{t} - \frac{1}{2m} \laplacian \psi + V(\vb*{x}) \psi = 0
+,\end{align}
+and rearranging we recover the Schr\"{o}dinger equation
+\begin{align}
+    i \pdv{\psi}{t} = -\frac{1}{2m} \laplacian \psi + V(\vb*{x}) \psi
+\end{align}
+and its complex conjugate.
+
+Now, we determine the Hamiltonian density.
+First, we need to know the conjugate momenta
+\begin{align}
+    \pi_{\psi} = \pdv{\mathcal{L}}{(\partial_{t} \psi)} = \frac{i}{2} \psi^{\dagger}, \quad \pi_{\psi^{\dagger}} = - \frac{i}{2} \psi
+.\end{align}
+Then
+\begin{align}
+    \mathcal{H} &= \pi_{\psi} \partial_{t} \psi + \pi_{\psi^{\dagger}} \partial_{t} \psi^{\dagger} - \mathcal{L} \nonumber \\
+                &= \pi_{\psi} \dot{\psi} + \pi_{\psi^{\dagger}} \dot{\psi^{\dagger}} - \Big( \pi_{\psi} \dot{\psi} + \pi_{\psi^{\dagger}} \dot{\psi}^{\dagger} \Big) + \frac{1}{2m} \grad \psi^{\dagger} \cdot \grad \psi + V(\vb*{x}) \psi^{\dagger} \psi \nonumber \\
+                &= \frac{1}{2m} |\grad \psi|^2 + V(\vb*{x}) |\psi|^2
+.\end{align}
+It is interesting to note that this Hamiltonian does not depend on time derivatives of $\psi$ or $\psi^{\dagger}$ and is positive definite.
 
 }
     
