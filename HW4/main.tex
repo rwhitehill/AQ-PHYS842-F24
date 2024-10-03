@@ -197,7 +197,7 @@ Using this, we can recover our desired Hamiltonian:
     H = \sum_{\vb*{n}} \frac{p_{\vb*{n}}^2}{2} + \sum_{\vb*{n}} \sum_{i} \frac{\kappa}{2} (q_{\vb*{n}+\vu*{e}_{i}} - q_{\vb*{n}})^2 + \sum_{\vb*{n}} \frac{m^2}{2} q_{\vb*{n}}^{2} + \frac{\lambda}{4!} \sum_{\vb*{n}} q_{\vb*{n}}^{4}
 .\end{align}
 
-Now, we would like to solve this in a similar way to the harmonic oscillator by expanding $q_{\vb*{n}}$ and $p_{\vb*{n}}$ in a Fourier series (i.e. attempting to introduce normal coordinates):
+Now, we would like to solve this in a similar way to the harmonic oscillator by expanding $q_{\vb*{n}}$ and $p_{\vb*{n}}$ in a Fourier series (i.e. attempting to introduce ``normal coordinates''):
 \begin{align}
     q_{\vb*{n}} &= \frac{1}{N^{D/2}} \sum_{\vb*{k}} \bar{q}_{\vb*{k}} e^{i a \vb*{k} \cdot \vb*{n}} \\
     p_{\vb*{n}} &= \frac{1}{N^{D/2}} \sum_{\vb*{k}} \bar{p}_{\vb*{k}} e^{i a \vb*{k} \cdot \vb*{n}}
@@ -234,13 +234,13 @@ where
 \begin{align}
     \omega_{k}^2 = m^2 + 2 \kappa \sum_{i} [1 - \cos(k_{i} a)]
 .\end{align}
-Here is where the machinery breaks down.
+Here is where our harmonic oscillator machinery breaks down.
 The first contribution is exactly what we obtained for a pure harmonic oscillator.
 With only this term, we would introduce creation/annihilation operators $a_{\vb*{k}}$ and $a_{\vb*{k}}^{\dagger}$ and build up our Hilbert space through these operators.
 The extra anharmonic term, however, spoils these nice constructions.
 Namely, eigenstates of the pure harmonic oscillator are not eigenstates of this anharmonic oscillator, and in general, there is no known way to construct the Hilbert space of this system analytically.
 
-Let us now take the continuum limit by taking $a \rightarrow 0$ and $N \rightarrow \infty$ but $L$ fixed and finite, defining $\phi(\vb*{x}) = q_{\vb*{n}}/a^{D/2}$, $\pi(\vb*{x}) = p_{\vb*{n}} / a^{D/2}$, and $\lambda \rightarrow g/a^{D}$.
+Even if we cannot solve the discrete system, we can take the continuum limit by taking $a \rightarrow 0$ and $N \rightarrow \infty$ but $L$ fixed and finite, defining $\phi(\vb*{x}) = q_{\vb*{n}}/a^{D/2}$, $\pi(\vb*{x}) = p_{\vb*{n}} / a^{D/2}$, and $\lambda \rightarrow g/a^{D}$.
 Putting these definitions into the Lagrangian and Hamiltonian, we find
 \begin{align}
     L &= \sum_{\vb*{n}} a^{D} \Bigg\{ \frac{1}{2} \dot{\phi}^2(\vb*{x}) - \frac{\kappa}{2} \sum_{i} (\phi(\vb*{x} + a \vu*{e}_{i}) - \phi(\vb*{x}))^2 - \frac{m^2}{2} \phi^2(\vb*{x}) - \frac{g}{4!} \phi^{4}(\vb*{x}) \Bigg\} \nonumber \\
@@ -257,7 +257,7 @@ Note that $g$ is dimensionless in $D = 3$.
 %We can determine this quite simply by noting that $\phi$ has dimensions of $E^{-1/2}$, so $g$.
 %In natural units, we can label everything in dimensions of energy $E$.
 %It is observed that our generalized coordinates have dimensions of $E^{-1/2}$, so $\lambda$ must have units of $E^3$.
-TThus, $g = a^{D} \lambda$ has dimensions of $E^{3-D}$, becoming unity at $D = 3$ spatial dimensions.
+Thus, $g = a^{D} \lambda$ has dimensions of $E^{3-D}$, becoming unity at $D = 3$ spatial dimensions.
 
 As a last check observe that $\phi$ obeys the equation
 \begin{align}
@@ -309,9 +309,9 @@ The equations of motion for $\psi$ and $\psi^{\dagger}$ are
     \partial_{t} \pdv{\mathcal{L}}{(\partial_{t} \psi)} + \grad \cdot \pdv{\mathcal{L}}{(\grad \psi)} - \pdv{\mathcal{L}}{\psi} = i \pdv{\psi^{\dagger}}{t} - \frac{1}{2m} \laplacian \psi^{\dagger} + V(\vb*{x}) \psi^{\dagger} = 0 \\
     \partial_{t} \pdv{\mathcal{L}}{(\partial_{t} \psi^{\dagger})} + \grad \cdot \pdv{\mathcal{L}}{(\grad \psi^{\dagger})} - \pdv{\mathcal{L}}{\psi^{\dagger}} = -i \pdv{\psi}{t} - \frac{1}{2m} \laplacian \psi + V(\vb*{x}) \psi = 0
 ,\end{align}
-and rearranging we recover the Schr\"{o}dinger equation
+and rearranging we recover the ``Schr\"{o}dinger equation''
 \begin{align}
-    i \pdv{\psi}{t} = -\frac{1}{2m} \laplacian \psi + V(\vb*{x}) \psi
+    \eqbox{ i \pdv{\psi}{t} = -\frac{1}{2m} \laplacian \psi + V(\vb*{x}) \psi }
 \end{align}
 and its complex conjugate.
 
@@ -322,9 +322,13 @@ First, we need to know the conjugate momenta
 .\end{align}
 Then
 \begin{align}
+\eqbox{
+\begin{aligned}
     \mathcal{H} &= \pi_{\psi} \partial_{t} \psi + \pi_{\psi^{\dagger}} \partial_{t} \psi^{\dagger} - \mathcal{L} \nonumber \\
                 &= \pi_{\psi} \dot{\psi} + \pi_{\psi^{\dagger}} \dot{\psi^{\dagger}} - \Big( \pi_{\psi} \dot{\psi} + \pi_{\psi^{\dagger}} \dot{\psi}^{\dagger} \Big) + \frac{1}{2m} \grad \psi^{\dagger} \cdot \grad \psi + V(\vb*{x}) \psi^{\dagger} \psi \nonumber \\
                 &= \frac{1}{2m} |\grad \psi|^2 + V(\vb*{x}) |\psi|^2
+.\end{aligned}
+}
 .\end{align}
 It is interesting to note that this Hamiltonian does not depend on time derivatives of $\psi$ or $\psi^{\dagger}$ and is positive definite.
 
