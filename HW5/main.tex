@@ -19,26 +19,120 @@ Get the Heisenberg field operators $\hat{\phi}(x)$ and $\hat{\phi}^{\dagger}$ in
 
 In this problem, we can introduce some system with complex generalized coordinates $q_{\vb*{n}}$ as in HW 4, problem 3 governed by a Lagrangian
 \begin{align}
-    L = \sum_{\vb*{n}} |\dot{q}_{\vb*{n}}|^2 - \sum_{\vb*{n}} m^2 |q_{\vb*{n}}|^2 - \sum_{\vb*{n}} \sum_{i} \kappa |q_{\vb*{n} + \vu*{e}_{i}} - q_{\vb*{n}}|^2
+    L = \sum_{\vb*{n}} \frac{1}{2} |\dot{q}_{\vb*{n}}|^2 - \sum_{\vb*{n}} \frac{m^2}{2} |q_{\vb*{n}}|^2 - \sum_{\vb*{n}} \sum_{i} \frac{\kappa}{2} |q_{\vb*{n} + \vu*{e}_{i}} - q_{\vb*{n}}|^2
 .\end{align}
-We introduce normal coordinates such that
+Notice that we can write this in terms of the real and imaginary parts of $q_{\vb*{n}}$.
+For brevity, let us adopt notation where $\Re(q_{n}) = q_{R,\vb*{n}}$ and $\Im(q_{\vb*{n}}) = q_{I,\vb*{n}}$
 \begin{align}
-    q_{\vb*{n}} = \frac{1}{N^{D/2}} \sum_{\vb*{k}} \bar{q}_{\vb*{k}} e^{i a \vb*{k} \cdot \vb*{n}}, 
-    q_{\vb*{n}} = \frac{1}{N^{D/2}} \sum_{\vb*{k}} \bar{q}_{\vb*{k}}^{*} e^{-i a \vb*{k} \cdot \vb*{n}}, 
+    L &= \sum_{\vb*{n}} \Bigg\{ \frac{1}{2} \dot{q}_{R,\vb*{n}}^2 - \frac{m^2}{2} q_{\vb*{R,\vb*{n}}}^2 - \frac{\kappa}{2} [ q_{R,\vb*{n} + \vu*{e}_{i}} - q_{R,\vb*{n}} ]^2 \Bigg\} \nonumber \\
+      &+ \sum_{\vb*{n}} \Bigg\{ \frac{1}{2} \dot{q}_{I,\vb*{n}}^2 - \frac{m^2}{2} q_{\vb*{I,\vb*{n}}}^2 - \frac{\kappa}{2} [ q_{I,\vb*{n} + \vu*{e}_{i}} - q_{I,\vb*{n}} ]^2 \Bigg\}
+.\end{align}
+Hence, we can treat the real and imaginary parts as separate real-valued generalized coordinates and carry over the treatment from the prior homework and lectures.
+Summarizing, we find that the conjugate momenta to the real and imaginary parts of $q_{\vb*{n}}$ are
+\begin{align}
+    p_{R,\vb*{n}} = \dot{q}_{R,\vb*{n}}, \quad p_{I,\vb*{n}} = \dot{q}_{I,\vb*{n}}
 ,\end{align}
-where $p_{\vb*{n}}$ is the momentum conjugate to $q_{\vb*{n}}$.
-Placing this system in a box of finite volume $L^{D} = (N a)^{D}$ with periodic boundary conditions such that $q_{\vb*{n} + N \sum_{i} \vu*{e}_{i}} = q_{\vb*{n}}$, where the sum is over any subset of $\{ 1,\ldots,D \}$, leaving us with the condition that
+respectively.
+Beware: it is tempting to conflate $p_{R,\vb*{n}}$ and $p_{I,\vb*{n}}$ with the real and imaginary parts of the complex generalized momentum $p_{\vb*{n}}$ conjugate to $q_{\vb*{n}}$, but this is not exactly the case since
+\begin{align}
+    p_{\vb*{n}} = \pdv{L}{\dot{q}_{\vb*{n}}} = \frac{1}{2} \Bigg( \pdv{L}{\dot{q}_{R,\vb*{n}}} - i \pdv{L}{\dot{q}_{I,\vb*{n}}} \Bigg) = \frac{1}{2} ( p_{R,\vb*{n}} - i p_{I,\vb*{n}} ) = \frac{1}{2} \dot{q}_{\vb*{n}}^{*}
+.\end{align}
+In terms of these momenta and coordinates, we find
+\begin{align}
+    H &= \sum_{\vb*{n}} \Bigg\{ \frac{1}{2} p_{R,\vb*{n}}^2 - \frac{m^2}{2} q_{R,\vb*{n}}^2 - \frac{\kappa}{2} [q_{R,\vb*{n} + \vu*{e}_{i}} - q_{R,\vb*{n}}]^2  \Bigg\} \nonumber \\
+    &+ \sum_{\vb*{n}} \Bigg\{ \frac{1}{2} p_{I,\vb*{n}}^2 - \frac{m^2}{2} q_{I,\vb*{n}}^2 - \frac{\kappa}{2} [q_{I,\vb*{n} + \vu*{e}_{i}} - q_{I,\vb*{n}}]^2  \Bigg\}
+.\end{align}
+At this point, normal coordinates are introduced such that
+\begin{align}
+    q_{R/I,\vb*{n}} &= \frac{1}{N^{D/2}} \sum_{\vb*{k}} \bar{q}_{R/I,\vb*{k}} e^{i a \vb*{k} \cdot \vb*{n}} \\
+    p_{R/I,\vb*{n}} &= \frac{1}{N^{D/2}} \sum_{\vb*{k}} \bar{p}_{R/I,\vb*{k}} e^{i a \vb*{k} \cdot \vb*{n}}
+,\end{align}
+and the imposition of periodic boundary conditions in our finite space of volume $L^{D}$ gives
 \begin{align}
     \vb*{k} = \frac{2 \pi \bar{\vb*{n}}}{L}
-,\end{align}
-where the components $\bar{n}_{i} \in (-N/2,N/2]$.
-Using these results, we can write the Hamiltonian in terms of normal coordinates is given by
+\end{align}
+with the components of our reciprocal lattice vector $\bar{n}_{i} \in (-N/2,N/2]$.
+Additionally, imposing the realness of our coordinates and momenta gives that
 \begin{align}
-    H = \sum_{\vb*{k}} \Bigg\{ \frac{1}{2} \bar{p}_{\vb*{k}} \bar{p}_{-\vb*{k}} + \frac{\omega_{\vb*{k}}^2}{2} \bar{q}_{\vb*{k}} \bar{q}_{-\vb*{k}} \Bigg\}
+    \bar{q}_{R/I,\vb*{k}}^{*} = \bar{q}_{R/I,-\vb*{k}}, \quad \bar{q}_{R/I,\vb*{k}}^{*} = \bar{p}_{R/I,-\vb*{k}}
+.\end{align}
+Thus, using all the machinery built up in the previous homeworks and lectures, we can find that
+\begin{align}
+    H &= \sum_{\vb*{k}} \Bigg\{ \frac{1}{2} \bar{p}_{R,\vb*{k}} \bar{p}_{R,-\vb*{k}} + \frac{\omega_{\vb*{k}}^2}{2} \bar{q}_{R,\vb*{k}} \bar{q}_{R,-\vb*{k}} \Bigg\} \nonumber \\
+    &+ \sum_{\vb*{k}} \Bigg\{ \frac{1}{2} \bar{p}_{I,\vb*{k}} \bar{p}_{I,-\vb*{k}} + \frac{\omega_{\vb*{k}}^2}{2} \bar{q}_{I,\vb*{k}} \bar{q}_{I,-\vb*{k}} \Bigg\}
 ,\end{align}
-where $\omega_{\vb*{k}}^2 = m^2 + 2 \kappa \sum_{i} [1 - \cos(k_{i} a)]$
-At this point we must adapt our work to the case of a complex scalar field.
+where
+\begin{align}
+    \omega_{\vb*{k}}^2 = m^2 + 2 \kappa \sum_{i} [ 1 - \cos(k_{i} a) ]
+.\end{align}
+Again, one can see using the realness condition that the real and imaginary parts of the $k$-modes are fully decoupled harmonic oscillators.
+We can then introduce the canonical commutation relations
+\begin{align}
+    [\bar{q}_{R/I,\vb*{k}},\bar{p}_{R/I,-\vb*{k}'}] = i \delta_{\vb*{k},\vb*{k}'}
+,\end{align}
+where the rest of the combinations are identically zero.
+From this, we introduce the creation and annihilation operators $a_{R/I,\vb*{k}}^{\dagger}$ and $a_{R/I,\vb*{k}}$, respectively, such that
+\begin{align}
+    \bar{q}_{R/I,\vb*{k}} = \frac{1}{\sqrt{2 \omega_{\vb*{k}}}} ( a_{R/I,\vb*{k}} + a_{R/I,-\vb*{k}}^{\dagger} ) \\
+    \bar{p}_{R/I,\vb*{k}} = -i \sqrt{\frac{\omega_{\vb*{k}}}{2}} ( a_{R/I,\vb*{k}} - a_{R/I,-\vb*{k}}^{\dagger} )
+.\end{align}
+Observe then that the creation and annihilation satisfy the typical commutation relations:
+\begin{align}
+    [a_{R/I,\vb*{k}},a_{R/I,\vb*{k}'}^{\dagger}] = \delta_{\vb*{k},\vb*{k}'}
+,\end{align}
+and thus, the Hamiltonian can be expressed as
+\begin{align}
+    H = \sum_{\vb*{k}} \omega_{\vb*{k}} \Big( a_{R,\vb*{k}}^{\dagger} a_{R,\vb*{k}} + a_{I,\vb*{k}}^{\dagger} a_{I,\vb*{k}} + 1 \Big)
+.\end{align}
 
+At this point, we would like to translate our results to complex coordinates and momenta.
+In terms of the real and imaginary parts, we have
+\begin{align}
+    q_{\vb*{n}} = \frac{1}{N^{D/2}} \sum_{\vb*{k}} (\bar{q}_{R,\vb*{k}} + i \bar{q}_{I,\vb*{k}}) e^{i a \vb*{k} \cdot \vb*{n}} = \frac{1}{N^{D/2}} \sum_{\vb*{k}} \bar{q}_{\vb*{k}} e^{i a \vb*{k} \cdot \vb*{n}} \nonumber \\
+    p_{\vb*{n}} = \frac{1}{N^{D/2}} \sum_{\vb*{k}} \frac{1}{2} ( \bar{p}_{R,\vb*{k}} - i p_{I,\vb*{k}} ) e^{i a \vb*{k} \cdot \vb*{n}} = \frac{1}{N^{D/2}} \sum_{\vb*{k}} \bar{p}_{\vb*{k}} e^{i a \vb*{k} \cdot \vb*{n}}
+.\end{align}
+Observe that these redefined Fourier coefficients have the desired commutation relations:
+\begin{align}
+    [\bar{q}_{\vb*{k}},\bar{p}_{-\vb*{k}}] = \frac{1}{2} [q_{R,\vb*{k}} + i \bar{q}_{I,\vb*{k}}, \bar{p}_{R,-\vb*{k}} - i \bar{p}_{I,-\vb*{k}}] = i \delta_{\vb*{k}',\vb*{k}'} \\
+    [\bar{q}_{\vb*{k}}^{*},\bar{p}_{-\vb*{k}}^{*}] = \frac{1}{2} [ \bar{q}_{R,\vb*{k}} - i \bar{q}_{I,\vb*{k}}, \bar{p}_{R,-\vb*{k}} + i \bar{p}_{I,-\vb*{k}} ] = i \delta_{\vb*{k},\vb*{k}'}
+.\end{align}
+Additionally, we have 
+\begin{align}
+    \bar{q}_{\vb*{k}} &= \frac{1}{\sqrt{2 \omega_{\vb*{k}}}} \Big[ ( a_{R,\vb*{k}} + i a_{I,\vb*{k}} ) + ( a_{R,-\vb*{k}}^{\dagger} + i a_{I,-\vb*{k}}^{\dagger} ) \Big] = \frac{1}{\sqrt{\omega_{\vb*{k}}}} ( a_{\vb*{k}} + b_{-\vb*{k}}^{\dagger} ) \\
+    \bar{q}_{\vb*{k}}^{*} &= \frac{1}{\sqrt{2 \omega_{\vb*{k}}}} \Big[ ( a_{R,\vb*{k}} - i a_{I,\vb*{k}} ) + ( a_{R,-\vb*{k}}^{\dagger} - i a_{I,-\vb*{k}}^{\dagger} ) \Big] = \frac{1}{\sqrt{\omega_{k}}} ( b_{\vb*{k}} + a_{-\vb*{k}}^{\dagger} )
+,\end{align}
+Again, it is not too difficult to show that these redefined creation and annihilation operators satisfy the necessary commutation relations
+\begin{align}
+    [a_{\vb*{k}},a_{\vb*{k}'}^{\dagger}] = \frac{1}{2} [ a_{R,\vb*{k}} + i a_{I,\vb*{k}}, a_{R,\vb*{k}'}^{\dagger} - i a_{I,\vb*{k}'}^{\dagger} ] = \delta_{\vb*{k},\vb*{k}'} \\
+    [b_{\vb*{k}},b_{\vb*{k}'}^{\dagger}] = \frac{1}{2} [ a_{R,\vb*{k}} - i a_{I,\vb*{k}}, a_{R,\vb*{k}'}^{\dagger} + i a_{I,\vb*{k}'}^{\dagger} ] = \delta_{\vb*{k},\vb*{k}'}
+\end{align}
+and that our Hamiltonian
+\begin{align}
+    H = \sum_{\vb*{k}} \omega_{\vb*{k}} ( a_{\vb*{k}}^{\dagger} a_{\vb*{k}} + b_{\vb*{k}}^{\dagger} b_{\vb*{k}} + 1 )
+.\end{align}
+
+At this point, we can go directly and write the generalized coordinates in terms of these creation and annihilation operators:
+\begin{align}
+    q_{\vb*{n}} &= \frac{1}{N^{D/2}} \sum_{\vb*{k}} \frac{1}{\sqrt{\omega_{\vb*{k}}}} \Big( a_{\vb*{k}} e^{i a \vb*{k} \cdot \vb*{n}} + b_{-\vb*{k}}^{\dagger} e^{i a \vb*{k} \cdot \vb*{n}} \Big) \\
+    q_{\vb*{n}}^{\dagger} &= \frac{1}{N^{D/2}} \sum_{\vb*{k}} \frac{1}{\sqrt{\omega_{\vb*{k}}}} \Big( a_{\vb*{k}}^{\dagger} e^{-i a \vb*{k} \cdot \vb*{n}} + b_{-\vb*{k}} e^{-i a \vb*{k} \cdot \vb*{n}} \Big)
+.\end{align}
+These are the Schr\"{o}dinger picture operators, but we can change pictures using the typical prescription and the fact about the time dependence of the Heisenberg picture creation and annihilation operators:
+\begin{align}
+    q_{\vb*{n}}(t) &= \frac{1}{N^{D/2}} \sum_{\vb*{k}} \frac{1}{\sqrt{\omega_{\vb*{k}}}} \Big( a_{\vb*{k}} e^{- i \omega_{\vb*{k}} t + i a \vb*{k} \cdot \vb*{n}} + b_{\vb*{k}}^{\dagger} e^{i \omega_{\vb*{k}} t - i a \vb*{k} \cdot \vb*{n}} \Big) = \frac{1}{N^{D/2}} \sum_{\vb*{k}} \frac{1}{\sqrt{\omega_{\vb*{k}}}} \Big( a_{\vb*{k}} e^{-i k \cdot x} + b_{\vb*{k}}^{\dagger} e^{i k \cdot x} \Big) \\
+    q_{\vb*{n}}^{\dagger}(t) &= \frac{1}{N^{D/2}} \sum_{\vb*{k}} \frac{1}{\sqrt{\omega_{\vb*{k}}}} \Big( a_{\vb*{k}}^{\dagger} e^{i \omega_{\vb*{k}} t - i a \vb*{k} \cdot \vb*{n}} + b_{\vb*{k}} e^{-i \omega_{\vb*{k}}t + i a \vb*{k} \cdot \vb*{n}} \Big) = \frac{1}{N^{D/2}} \sum_{\vb*{k}} \frac{1}{\sqrt{\omega_{\vb*{k}}}} \Big( a_{\vb*{k}}^{\dagger} e^{i k \cdot x} + b_{\vb*{k}} e^{-ik \cdot x} \Big)
+.\end{align}
+Finally, we take the continuum limit by first taking $a \rightarrow 0$ and $N \rightarrow \infty$, holding $L$ fixed.
+Defining $\phi(\vb*{x}) = q_{\vb*{n}} / a^{D/2}$ and similarly for the complex conjugate, we have
+\begin{align}
+    \phi(\vb*{x}) &= \sum_{\vb*{k}} \frac{1}{L^{D/2} \sqrt{\omega_{\vb*{k}}}} \Big( a_{\vb*{k}} e^{-i k \cdot x} + b_{\vb*{k}}^{\dagger} e^{i k \cdot x} \Big) \\
+    \phi^{\dagger}(\vb*{x}) &= \sum_{\vb*{k}} \frac{1}{L^{D/2} \sqrt{\omega_{\vb*{k}}}} \Big( a_{\vb*{k}}^{\dagger} e^{i k \cdot x} + b_{\vb*{k}} e^{-i k \cdot x} \Big)
+.\end{align}
+Next, we take the infinite volume limit via $L \rightarrow \infty$ and redefining our continuum limit creation and annihilation operators via $a_{\vb*{k}} \rightarrow a_{\vb*{k}} / L^{D/2}$ and similarly for $b_{\vb*{k}}$.
+Thus,
+\begin{align}
+    \phi(\vb*{x}) = \int \frac{\dd[D]{\vb*{k}}}{(2 \pi)^{D} \sqrt{\omega_{\vb*{k}}}} \Big( a_{\vb*{k}} e^{-i k \cdot x} + b_{\vb*{k}}^{\dagger} e^{i k \cdot x} \Big) \\
+    \phi^{\dagger}(\vb*{x}) = \int \frac{\dd[D]{\vb*{k}}}{(2 \pi)^{D} \sqrt{\omega_{\vb*{k}}}} \Big( a_{\vb*{k}}^{\dagger} e^{i k \cdot x} + b_{\vb*{k}} e^{-i k \cdot x} \Big)
+.\end{align}
 
 }
 
@@ -59,17 +153,17 @@ Checking steps from class.
 
 \item As in class, let a single excitation element of a bosonic Fock space at time $t$ be
     \begin{align}
-        \ket{f,1,t} = \int \frac{\dd[3]{\vb*{p}}}{(2\pi)^3 \sqrt{2 E_{\vb*{p}}}} \tilde{f}(\vb*{p}) \ket{\vb*{p}} = \int \frac{\dd[3]{\vb*{p}}}{(2 \pi)^3 \sqrt{2 E_{\vb*{p}}}} a_{\vb*{p}}^{\dagger} \ket{0} \tilde{f}(\vb*{p})
+        \ket{f,1,t} = \int \frac{\dd[3]{\vb*{p}}}{(2\pi)^3 \sqrt{2 E_{\vb*{p}}}} \tilde{f}(\vb*{p}) \ket{\vb*{p}} = \int \frac{\dd[3]{\vb*{p}}}{(2 \pi)^3} a_{\vb*{p}}^{\dagger} \ket{0} \tilde{f}(\vb*{p})
     \end{align}
     with a wavepacket function $\tilde{f}(\vb*{p})$.
     Let the coordinate space wavepacket function be defined by
     \begin{align}
-        f(\vb*{x}) = \int \frac{\dd[3]{\vb*{p}}}{(2 \pi)^3 \sqrt{2 E_{\vb*{p}}}} \tilde{f}(\vb*{p}) e^{-i p \cdot x} = \int \frac{\dd[3]{\vb*{p}}}{(2 \pi)^3 \sqrt{2 E_{\vb*{p}}}} \tilde{f}(\vb*{p}) e^{-i p^{0} t + i \vb*{p} \cdot \vb*{x}}
+        f(x) = \int \frac{\dd[3]{\vb*{p}}}{(2 \pi)^3 \sqrt{2 E_{\vb*{p}}}} \tilde{f}(\vb*{p}) e^{-i p \cdot x} = \int \frac{\dd[3]{\vb*{p}}}{(2 \pi)^3 \sqrt{2 E_{\vb*{p}}}} \tilde{f}(\vb*{p}) e^{-i p^{0} t + i \vb*{p} \cdot \vb*{x}}
     .\end{align}
     Note the time dependence in the exponential despite the fact that the integral is only over spatial components.
     Show that
     \begin{align}
-        \ket{f,1,t} = \int \dd[3]{\vb*{x}} \phi(\vb*{x}) \ket{0} 2 i \pdv{f(\vb*{x})}{t}
+        \ket{f,1,t} = \int \dd[3]{\vb*{x}} \phi(\vb*{x}) \ket{0} 2 i \pdv{f(x)}{t}
     .\end{align}
 
 \item By using Fock states expressed like in Eq. (3) above, show directly that $a_{\vb*{k}}^{\dagger} a_{\vb*{k}}$ is a density of excitations with respect to three momentum.
@@ -78,7 +172,71 @@ Checking steps from class.
 
 }
 
-\sol{}
+\sol{
+
+(a) For simplicity, we work in the context of a free scalar field theory (i.e. real Klein-Gordon theory).
+In this theory, our energy-momentum tensor
+\begin{align}
+    T^{\mu\nu} = \partial^{\mu} \phi \partial^{\nu} \phi - \frac{1}{2} g^{\mu\nu} ( \partial^{\rho} \phi \partial_{\rho} \phi - m^2 \phi^2 )
+.\end{align}
+Thus, the 4-momentum operator
+\begin{align}
+    P^{\mu} = \int \dd[3]{\vb*{x}} T^{0\mu} = \int \dd[3]{\vb*{x}} \Big\{ \dot{\phi} \partial^{\mu} \phi - \frac{1}{2} g^{0 \mu} \Big( \partial^{\rho} \phi \partial_{\rho} \phi - m^2 \phi^2 \Big) \Big\}
+.\end{align}
+The Hamiltonian is then
+\begin{align}
+    H = P^{0} = \frac{1}{2} \int \dd[3]{\vb*{x}} \Bigg\{ \dot{\phi}^2 + ( \grad \phi )^2 + m^2 \phi^2 \Bigg\}
+\end{align}
+whilst the components of the momentum operator
+\begin{align}
+    P^{i} = \int \dd[3]{\vb*{x}} \dot{\phi} \partial^{i} \phi
+.\end{align}
+Inserting the mode expansion of $\phi$ we find
+\begin{align}
+    H &= \int \frac{\dd[3]{\vb*{k}}}{(2 \pi)^3} \frac{\omega_{\vb*{k}}}{2} ( a_{\vb*{k}}^{\dagger} a_{\vb*{k}} + a_{\vb*{k}} a_{\vb*{k}}^{\dagger} ) \Rightarrow :H: = \int \frac{\dd[3]{\vb*{k}}}{(2 \pi)^3} \omega_{\vb*{k}} a_{\vb*{k}}^{\dagger} a_{\vb*{k}} \\
+    P^{i} &= \int \frac{\dd[3]{\vb*{k}}}{(2 \pi)^3} \frac{k^{i}}{2} ( a_{\vb*{k}}^{\dagger} a_{\vb*{k}} + a_{\vb*{k}} a_{\vb*{k}}^{\dagger} ) \Rightarrow :P^{i}: = \int \frac{\dd[3]{\vb*{k}}}{(2 \pi)^3} k^{i} a_{\vb*{k}}^{\dagger} a_{\vb*{k}}
+.\end{align}
+It is simple to see that these normal ordered operators only contain number operators and no infinities.
+
+
+(b) We verify this directly:
+\begin{align}
+    \hat{1} \ket{\vb*{k}_{1},\vb*{k}_{2},\vb*{k}_{3}} &= \sum_{n=0}^{\infty} \frac{1}{n!} \int \prod_{j=0}^{n} \frac{\dd[3]{\vb*{p}_{j}}}{(2 \pi)^3 2 E_{\vb*{p}_{j}}} \ket{p_{n}} \ip{p_{n}}{\vb*{k}_{1},\vb*{k}_{2},\vb*{k}_{3}} \nonumber \\
+                                                      &= \sum_{n=0}^{\infty} \frac{1}{n!} \int \prod_{j=0}^{n} \frac{\dd[3]{\vb*{p}_{j}}}{(2 \pi)^3 2 E_{\vb*{p}_{j}}} \ket{\vb*{p}_{1},\vb*{p}_{2},\vb*{p}_{3}} \delta_{n 3} \sum_{\sigma \in S_{n}} \prod_{\ell} (2 \pi)^3 2 E_{\vb*{k}_{\ell}} \delta(\vb*{k}_{\ell} - \vb*{p}_{\sigma(\ell)}) \nonumber \\
+                                                      &= \frac{1}{3!} \sum_{\sigma \in S_{n}} \ket{\vb*{k}_{\sigma(1)},\vb*{k}_{\sigma(2)},\vb*{k}_{\sigma(3)}} = \ket{\vb*{p}_{1},\vb*{p}_{2},\vb*{p}_{3}}
+.\end{align}
+
+
+(c) We can invert the ``Fourier transform'' via the following procedure
+\begin{gather}
+    \int \dd[3]{\vb*{x}} f(x) e^{i p^{0} t - i \vb*{p} \cdot \vb*{x}} = \int \frac{\dd[3]{\vb*{p}'}}{(2 \pi)^3 \sqrt{2 E_{\vb*{p}'}}} \tilde{f}(\vb*{p}') \underbrace{ \int \dd[3]{\vb*{x}} e^{i ( \vb*{p} - \vb*{p}') \cdot \vb*{x}} }_{(2 \pi)^3 \delta(\vb*{p} - \vb*{p}')} = \frac{1}{\sqrt{2 E_{\vb*{p}}}} \tilde{f}(\vb*{p}) \nonumber \\
+    \tilde{f}(\vb*{p}) = \int \dd[3]{\vb*{x}} \sqrt{2 E_{\vb*{p}}} e^{i p \cdot x} f(x)
+.\end{gather}
+Putting this into the wavepacket state
+\begin{align}
+    \ket{f,1,t} &= \int \frac{\dd[3]{\vb*{p}}}{(2 \pi)^3} a_{\vb*{p}}^{\dagger} \ket{0} \int \dd[3]{\vb*{x}} \sqrt{2 E_{\vb*{p}}} e^{i p \cdot x} f(\vb*{x}) \nonumber \\
+                &= \int \dd[3]{\vb*{x}} f(x) \int \frac{\dd[3]{\vb*{p}}}{(2 \pi)^3 \sqrt{2 E_{\vb*{p}}}} 2 E_{\vb*{p}} a_{\vb*{p}}^{\dagger} e^{i p \cdot k} \ket{0} \nonumber \\
+                &= \int \dd[3]{\vb*{x}} f(x) \Big( -2 i \pdv{t} \phi(x) \ket{0} \Big) \nonumber \\
+                &= \int \dd[3]{\vb*{x}} \phi(x) \ket{0} 2 i \pdv{f(x)}{t}
+.\end{align}
+
+
+(d) We can take the expectation value of the number operator in a generic $n$-``particle'' wavepacket and show that its integral gives us the expected number of particles in such a state:
+\begin{align}
+    \ket{f^{(n)}} = \int \Bigg( \prod_{j=0}^{n} \frac{\dd[3]{\vb*{p}_{j}}}{(2 \pi)^3 \sqrt{2 E_{\vb*{p}_{j}}}} \Bigg) \frac{1}{n!} \tilde{f}^{(n)}(\vb*{p}_{1},\ldots,\vb*{p}_{n}) \ket{\vb*{p}_{1},\ldots,\vb*{p}_{n}}
+,\end{align}
+where the state is normalized if and only if
+\begin{align}
+    \int \prod_{j=0}^{n} \frac{\dd[3]{\vb*{p}_{j}}}{(2 \pi)^3} \tilde{f}^{(n)}(\vb*{p}_{1},\ldots,\vb*{p}_{n}) = 1
+.\end{align}
+Let us now take the expectation value:
+\begin{align}
+    \mel{f^{(n)}}{a_{\vb*{k}}^{\dagger} a_{\vb*{k}}}{f^{(n)}} &= \int \prod_{i,j=0}^{n} \frac{\dd[3]{\vb*{p}_{i}} \dd[3]{\vb*{p}_{j}'}}{(2 \pi)^6} [\tilde{f}^{(n)}(\vb*{p}_{1},\ldots,\vb*{p}_{2})]^{*} \tilde{f}^{(n)}(\vb*{p}_{1}',\ldots,\vb*{p}_{n}') \nonumber \\
+                                                              &\times \mel{\vb*{p}_{1},\ldots,\vb*{p}_{n}'}{a_{\vb*{k}}^{\dagger} a_{\vb*{k}}}{\vb*{p}_{1}',\ldots,\vb*{p}_{n}'}
+.\end{align}
+
+
+}
 
 
 \prob{3}{
