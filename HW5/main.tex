@@ -223,17 +223,46 @@ Putting this into the wavepacket state
 
 (d) We can take the expectation value of the number operator in a generic $n$-``particle'' wavepacket and show that its integral gives us the expected number of particles in such a state:
 \begin{align}
-    \ket{f^{(n)}} = \int \Bigg( \prod_{j=0}^{n} \frac{\dd[3]{\vb*{p}_{j}}}{(2 \pi)^3 \sqrt{2 E_{\vb*{p}_{j}}}} \Bigg) \frac{1}{n!} \tilde{f}^{(n)}(\vb*{p}_{1},\ldots,\vb*{p}_{n}) \ket{\vb*{p}_{1},\ldots,\vb*{p}_{n}}
+    \ket{f^{(n)}} = \int \Bigg( \prod_{j=0}^{n} \frac{\dd[3]{\vb*{p}_{j}}}{(2 \pi)^3 \sqrt{2 E_{\vb*{p}_{j}}}} \Bigg) \tilde{f}^{(n)}(\vb*{p}_{1},\ldots,\vb*{p}_{n}) \ket{\vb*{p}_{1},\ldots,\vb*{p}_{n}}
 ,\end{align}
 where the state is normalized if and only if
 \begin{align}
-    \int \prod_{j=0}^{n} \frac{\dd[3]{\vb*{p}_{j}}}{(2 \pi)^3} \tilde{f}^{(n)}(\vb*{p}_{1},\ldots,\vb*{p}_{n}) = 1
+    \int \prod_{j=0}^{n} \frac{\dd[3]{\vb*{p}_{j}}}{(2 \pi)^3} | \tilde{f}^{(n)}(\vb*{p}_{1},\ldots,\vb*{p}_{n}) |^2 = \frac{1}{n!}
 .\end{align}
 Let us now take the expectation value:
 \begin{align}
-    \mel{f^{(n)}}{a_{\vb*{k}}^{\dagger} a_{\vb*{k}}}{f^{(n)}} &= \int \prod_{i,j=0}^{n} \frac{\dd[3]{\vb*{p}_{i}} \dd[3]{\vb*{p}_{j}'}}{(2 \pi)^6} [\tilde{f}^{(n)}(\vb*{p}_{1},\ldots,\vb*{p}_{2})]^{*} \tilde{f}^{(n)}(\vb*{p}_{1}',\ldots,\vb*{p}_{n}') \nonumber \\
-                                                              &\times \mel{\vb*{p}_{1},\ldots,\vb*{p}_{n}'}{a_{\vb*{k}}^{\dagger} a_{\vb*{k}}}{\vb*{p}_{1}',\ldots,\vb*{p}_{n}'}
+    \mel{f^{(n)}}{a_{\vb*{k}}^{\dagger} a_{\vb*{k}}}{f^{(n)}} &= \int \prod_{i=0}^{n} \frac{\dd[3]{\vb*{p}_{i}}}{(2 \pi)^3 \sqrt{2 E_{\vb*{p}_{i}}}} \prod_{j=0}^{n} \frac{\dd[3]{\vb*{p}_{j}'}}{(2 \pi)^3 \sqrt{2 E_{\vb*{p}_{j}'}}} [\tilde{f}^{(n)}(\vb*{p}_{1},\ldots,\vb*{p}_{2})]^{*} \tilde{f}^{(n)}(\vb*{p}_{1}',\ldots,\vb*{p}_{n}') \nonumber \\
+                                                              &\times \mel{\vb*{p}_{1},\ldots,\vb*{p}_{n}}{a_{\vb*{k}}^{\dagger} a_{\vb*{k}}}{\vb*{p}_{1}',\ldots,\vb*{p}_{n}'}
 .\end{align}
+The relevant thing to determine now is the momentum matrix element of this number operator.
+First, observe that
+\begin{align}
+    a_{\vb*{k}} \ket{\vb*{p}_{1},\ldots,\vb*{p}_{n}} &= \sqrt{2 E_{\vb*{p}_{1}}} \ldots \sqrt{2 E_{\vb*{p}_{n}}} a_{\vb*{k}} a_{\vb*{p}_{1}}^{\dagger} \ldots a_{\vb*{p}_{n}}^{\dagger} \ket{0} \nonumber \\
+    &= \sqrt{2 E_{\vb*{p}_{1}}} \ldots \sqrt{2 E_{\vb*{p}_{n}}} \Big[ (2 \pi)^3 \delta(\vb*{k} - \vb*{p}_{1}) + a_{\vb*{p}_{1}}^{\dagger} a_{\vb*{k}} \Big] a_{\vb*{p}_{2}}^{\dagger} \ldots a_{\vb*{p}_{n}}^{\dagger} \ket{0} \nonumber \\
+    &= (2 \pi)^3 \sum_{i=1}^{n} \sqrt{2 E_{\vb*{p}_{i}}} \delta(\vb*{k} - \vb*{p}_{i}) \ket{\vb*{p}_{1},\ldots,\vb*{p}_{i-1},\vb*{p}_{i+1},\ldots,\vb*{p}_{n}}
+.\end{align}
+Thus
+\begin{align}
+    &\mel{\vb*{p}_{1},\ldots,\vb*{p}_{n}}{a_{\vb*{k}}^{\dagger} a_{\vb*{k}}}{\vb*{p}_{1}',\ldots,\vb*{p}_{n}'} \nonumber \\
+    &= (2 \pi)^{6} \sum_{i,j=1}^{n} \sqrt{2 E_{\vb*{p}_{i}}} \sqrt{2 E_{\vb*{p}_{j}}} \delta(\vb*{k} - \vb*{p}_{i}) \delta(\vb*{k} - \vb*{p}_{j}') \ip{\vb*{p}_{1},\ldots,\vb*{p}_{i-1},\vb*{p}_{i+1},\ldots,\vb*{p}_{n}}{\vb*{p}_{1}',\ldots,\vb*{p}_{j-1}',\vb*{p}_{j+1},\ldots,\vb*{p}_{n}'} \nonumber \\
+    &= (2 \pi)^{6} \sum_{i,j=1}^{n} \sqrt{2 E_{\vb*{p}_{i}}} \sqrt{2 E_{\vb*{p}_{j}}} \delta(\vb*{k} - \vb*{p}_{i}) \delta(\vb*{k} - \vb*{p}_{j}') \sum_{\sigma \in S_{n-1}} \prod_{m} (2 \pi)^3 2 E_{\vb*{p}_{m}} \delta(\vb*{p}_{m} - \vb*{p}_{\sigma(m)}') \nonumber \\
+    &= (2 \pi)^3 (2 \pi)^{3n} 2 E_{\vb*{p}_{1}} \ldots 2 E_{\vb*{p}_{n}} \sum_{i,j=1}^{n} \sum_{\sigma \in S_{n-1}} \delta(\vb*{k} - \vb*{p}_{i}) \delta(\vb*{p}_{i} - \vb*{p}_{j}') \prod_{m} \delta(\vb*{p}_{m} - \vb*{p}_{\sigma(m)}')
+.\end{align}
+Note that the notation for the permutations is not technically correct since we are omitting $i$ from the domain set and $j$ from the codomain set, but it should be understood implicitly nevertheless that we are just forming all possible pairings of momentum delta-functions.
+If we put this back into the expectation value, we see that
+\begin{align}
+    \mel{f^{(n)}}{a_{\vb*{k}}^{\dagger} a_{\vb*{k}}}{f^{(n)}} &= n! \sum_{i=1}^{n} \int \prod_{j \ne i} \frac{\dd[3]{\vb*{p}_{j}}}{(2 \pi)^{3}} | \tilde{f}^{(n)}(\vb*{p}_{1},\ldots,\vb*{p}_{i-1},\vb*{k},\vb*{p}_{i+1},\ldots,\vb*{p}_{n})|^2
+.\end{align}
+At this point, it is difficult to see how we have a number density.
+Recall that densities live to be integrated, so we integrate over all $\vb*{k}$ as follows:
+\begin{align}
+    \int \frac{\dd[3]{\vb*{k}}}{(2 \pi)^3} \mel{f^{(n)}}{a_{\vb*{k}}^{\dagger} a_{\vb*{k}}}{f^{(n)}}  = \mel{f^{(n)}}{ \int \frac{\dd[3]{\vb*{k}}}{(2 \pi)^3} a_{\vb*{k}}^{\dagger} a_{\vb*{k}} }{f^{(n)}} = n
+.\end{align}
+Since the right-hand-side is independent of the shape of our wavepacket, we see that we have a true number density operator:
+\begin{align}
+    \dd{n} = a_{\vb*{k}}^{\dagger} a_{\vb*{k}} \frac{\dd[3]{\vb*{k}}}{(2 \pi)^3}
+.\end{align}
+
 
 
 }
