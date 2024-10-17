@@ -28,7 +28,7 @@ For brevity, let us adopt notation where $\Re(q_{n}) = q_{R,\vb*{n}}$ and $\Im(q
       &+ \sum_{\vb*{n}} \Bigg\{ \frac{1}{2} \dot{q}_{I,\vb*{n}}^2 - \frac{m^2}{2} q_{\vb*{I,\vb*{n}}}^2 - \frac{\kappa}{2} [ q_{I,\vb*{n} + \vu*{e}_{i}} - q_{I,\vb*{n}} ]^2 \Bigg\}
 .\end{align}
 Hence, we can treat the real and imaginary parts as separate real-valued generalized coordinates and carry over the treatment from the prior homework and lectures.
-Summarizing, we find that the conjugate momenta to the real and imaginary parts of $q_{\vb*{n}}$ are
+We therefore find that the conjugate momenta to the real and imaginary parts of $q_{\vb*{n}}$ are
 \begin{align}
     p_{R,\vb*{n}} = \dot{q}_{R,\vb*{n}}, \quad p_{I,\vb*{n}} = \dot{q}_{I,\vb*{n}}
 ,\end{align}
@@ -50,13 +50,13 @@ At this point, normal coordinates are introduced such that
 and the imposition of periodic boundary conditions in our finite space of volume $L^{D}$ gives
 \begin{align}
     \vb*{k} = \frac{2 \pi \bar{\vb*{n}}}{L}
-\end{align}
+,\end{align}
 with the components of our reciprocal lattice vector $\bar{n}_{i} \in (-N/2,N/2]$.
 Additionally, imposing the realness of our coordinates and momenta gives that
 \begin{align}
     \bar{q}_{R/I,\vb*{k}}^{*} = \bar{q}_{R/I,-\vb*{k}}, \quad \bar{q}_{R/I,\vb*{k}}^{*} = \bar{p}_{R/I,-\vb*{k}}
 .\end{align}
-Thus, using all the machinery built up in the previous homeworks and lectures, we can find that
+Thus, using all the machinery built up in the previous homeworks and lectures, we find that
 \begin{align}
     H &= \sum_{\vb*{k}} \Bigg\{ \frac{1}{2} \bar{p}_{R,\vb*{k}} \bar{p}_{R,-\vb*{k}} + \frac{\omega_{\vb*{k}}^2}{2} \bar{q}_{R,\vb*{k}} \bar{q}_{R,-\vb*{k}} \Bigg\} \nonumber \\
     &+ \sum_{\vb*{k}} \Bigg\{ \frac{1}{2} \bar{p}_{I,\vb*{k}} \bar{p}_{I,-\vb*{k}} + \frac{\omega_{\vb*{k}}^2}{2} \bar{q}_{I,\vb*{k}} \bar{q}_{I,-\vb*{k}} \Bigg\}
@@ -66,11 +66,11 @@ where
     \omega_{\vb*{k}}^2 = m^2 + 2 \kappa \sum_{i} [ 1 - \cos(k_{i} a) ]
 .\end{align}
 Again, one can see using the realness condition that the real and imaginary parts of the $k$-modes are fully decoupled harmonic oscillators.
-We can then introduce the canonical commutation relations
+We then introduce the canonical commutation relations
 \begin{align}
     [\bar{q}_{R/I,\vb*{k}},\bar{p}_{R/I,-\vb*{k}'}] = i \delta_{\vb*{k},\vb*{k}'}
 ,\end{align}
-where the rest of the combinations are identically zero.
+where the rest of the combinations give zero.
 From this, we introduce the creation and annihilation operators $a_{R/I,\vb*{k}}^{\dagger}$ and $a_{R/I,\vb*{k}}$, respectively, such that
 \begin{align}
     \bar{q}_{R/I,\vb*{k}} = \frac{1}{\sqrt{2 \omega_{\vb*{k}}}} ( a_{R/I,\vb*{k}} + a_{R/I,-\vb*{k}}^{\dagger} ) \\
@@ -84,7 +84,6 @@ and thus, the Hamiltonian can be expressed as
 \begin{align}
     H = \sum_{\vb*{k}} \omega_{\vb*{k}} \Big( a_{R,\vb*{k}}^{\dagger} a_{R,\vb*{k}} + a_{I,\vb*{k}}^{\dagger} a_{I,\vb*{k}} + 1 \Big)
 .\end{align}
-
 At this point, we would like to translate our results to complex coordinates and momenta.
 In terms of the real and imaginary parts, we have
 \begin{align}
@@ -116,10 +115,12 @@ At this point, we can go directly and write the generalized coordinates in terms
     q_{\vb*{n}} &= \frac{1}{N^{D/2}} \sum_{\vb*{k}} \frac{1}{\sqrt{\omega_{\vb*{k}}}} \Big( a_{\vb*{k}} e^{i a \vb*{k} \cdot \vb*{n}} + b_{-\vb*{k}}^{\dagger} e^{i a \vb*{k} \cdot \vb*{n}} \Big) \\
     q_{\vb*{n}}^{\dagger} &= \frac{1}{N^{D/2}} \sum_{\vb*{k}} \frac{1}{\sqrt{\omega_{\vb*{k}}}} \Big( a_{\vb*{k}}^{\dagger} e^{-i a \vb*{k} \cdot \vb*{n}} + b_{-\vb*{k}} e^{-i a \vb*{k} \cdot \vb*{n}} \Big)
 .\end{align}
-These are the Schr\"{o}dinger picture operators, but we can change pictures using the typical prescription and the fact about the time dependence of the Heisenberg picture creation and annihilation operators:
+These are the Schr\"{o}dinger picture operators, but we can change pictures using the typical prescription ($\mathcal{O}_{H} = e^{i H t} \mathcal{O}_{S} e^{-i H t}$) and the time dependence of the Heisenberg picture creation and annihilation operators (derived in HW 4 problem 2a):
 \begin{align}
-    q_{\vb*{n}}(t) &= \frac{1}{N^{D/2}} \sum_{\vb*{k}} \frac{1}{\sqrt{\omega_{\vb*{k}}}} \Big( a_{\vb*{k}} e^{- i \omega_{\vb*{k}} t + i a \vb*{k} \cdot \vb*{n}} + b_{\vb*{k}}^{\dagger} e^{i \omega_{\vb*{k}} t - i a \vb*{k} \cdot \vb*{n}} \Big) = \frac{1}{N^{D/2}} \sum_{\vb*{k}} \frac{1}{\sqrt{\omega_{\vb*{k}}}} \Big( a_{\vb*{k}} e^{-i k \cdot x} + b_{\vb*{k}}^{\dagger} e^{i k \cdot x} \Big) \\
-    q_{\vb*{n}}^{\dagger}(t) &= \frac{1}{N^{D/2}} \sum_{\vb*{k}} \frac{1}{\sqrt{\omega_{\vb*{k}}}} \Big( a_{\vb*{k}}^{\dagger} e^{i \omega_{\vb*{k}} t - i a \vb*{k} \cdot \vb*{n}} + b_{\vb*{k}} e^{-i \omega_{\vb*{k}}t + i a \vb*{k} \cdot \vb*{n}} \Big) = \frac{1}{N^{D/2}} \sum_{\vb*{k}} \frac{1}{\sqrt{\omega_{\vb*{k}}}} \Big( a_{\vb*{k}}^{\dagger} e^{i k \cdot x} + b_{\vb*{k}} e^{-ik \cdot x} \Big)
+    q_{\vb*{n}}(t) &= \frac{1}{N^{D/2}} \sum_{\vb*{k}} \frac{1}{\sqrt{\omega_{\vb*{k}}}} \Big( a_{\vb*{k}} e^{- i \omega_{\vb*{k}} t + i a \vb*{k} \cdot \vb*{n}} + b_{\vb*{k}}^{\dagger} e^{i \omega_{\vb*{k}} t - i a \vb*{k} \cdot \vb*{n}} \Big) \nonumber \\
+                   &= \frac{1}{N^{D/2}} \sum_{\vb*{k}} \frac{1}{\sqrt{\omega_{\vb*{k}}}} \Big( a_{\vb*{k}} e^{-i k \cdot x} + b_{\vb*{k}}^{\dagger} e^{i k \cdot x} \Big) \\
+    q_{\vb*{n}}^{\dagger}(t) &= \frac{1}{N^{D/2}} \sum_{\vb*{k}} \frac{1}{\sqrt{\omega_{\vb*{k}}}} \Big( a_{\vb*{k}}^{\dagger} e^{i \omega_{\vb*{k}} t - i a \vb*{k} \cdot \vb*{n}} + b_{\vb*{k}} e^{-i \omega_{\vb*{k}}t + i a \vb*{k} \cdot \vb*{n}} \Big) \nonumber \\
+                             &= \frac{1}{N^{D/2}} \sum_{\vb*{k}} \frac{1}{\sqrt{\omega_{\vb*{k}}}} \Big( a_{\vb*{k}}^{\dagger} e^{i k \cdot x} + b_{\vb*{k}} e^{-ik \cdot x} \Big)
 .\end{align}
 Finally, we take the continuum limit by first taking $a \rightarrow 0$ and $N \rightarrow \infty$, holding $L$ fixed.
 Defining $\phi(\vb*{x}) = q_{\vb*{n}} / a^{D/2}$ and similarly for the complex conjugate, we have
@@ -130,13 +131,18 @@ Defining $\phi(\vb*{x}) = q_{\vb*{n}} / a^{D/2}$ and similarly for the complex c
 Next, we take the infinite volume limit via $L \rightarrow \infty$ and redefining our continuum limit creation and annihilation operators via $a_{\vb*{k}} \rightarrow a_{\vb*{k}} / L^{D/2}$ and similarly for $b_{\vb*{k}}$.
 Thus,
 \begin{align}
-    \phi(\vb*{x}) = \int \frac{\dd[D]{\vb*{k}}}{(2 \pi)^{D} \sqrt{\omega_{\vb*{k}}}} \Big( a_{\vb*{k}} e^{-i k \cdot x} + b_{\vb*{k}}^{\dagger} e^{i k \cdot x} \Big) \\
-    \phi^{\dagger}(\vb*{x}) = \int \frac{\dd[D]{\vb*{k}}}{(2 \pi)^{D} \sqrt{\omega_{\vb*{k}}}} \Big( a_{\vb*{k}}^{\dagger} e^{i k \cdot x} + b_{\vb*{k}} e^{-i k \cdot x} \Big)
-.\end{align}
+\eqbox{
+\begin{aligned} 
+    \phi(\vb*{x}) &= \int \frac{\dd[D]{\vb*{k}}}{(2 \pi)^{D} \sqrt{\omega_{\vb*{k}}}} \Big( a_{\vb*{k}} e^{-i k \cdot x} + b_{\vb*{k}}^{\dagger} e^{i k \cdot x} \Big) \\
+    \phi^{\dagger}(\vb*{x}) &= \int \frac{\dd[D]{\vb*{k}}}{(2 \pi)^{D} \sqrt{\omega_{\vb*{k}}}} \Big( a_{\vb*{k}}^{\dagger} e^{i k \cdot x} + b_{\vb*{k}} e^{-i k \cdot x} \Big)
+.\end{aligned}
+}
+\end{align}
 
 }
 
 
+\newpage
 \prob{2}{
 
 Checking steps from class.
@@ -193,18 +199,26 @@ whilst the components of the momentum operator
 .\end{align}
 Inserting the mode expansion of $\phi$ we find
 \begin{align}
+\eqbox{
+\begin{aligned} 
     H &= \int \frac{\dd[3]{\vb*{k}}}{(2 \pi)^3} \frac{\omega_{\vb*{k}}}{2} ( a_{\vb*{k}}^{\dagger} a_{\vb*{k}} + a_{\vb*{k}} a_{\vb*{k}}^{\dagger} ) \Rightarrow :H: = \int \frac{\dd[3]{\vb*{k}}}{(2 \pi)^3} \omega_{\vb*{k}} a_{\vb*{k}}^{\dagger} a_{\vb*{k}} \\
     P^{i} &= \int \frac{\dd[3]{\vb*{k}}}{(2 \pi)^3} \frac{k^{i}}{2} ( a_{\vb*{k}}^{\dagger} a_{\vb*{k}} + a_{\vb*{k}} a_{\vb*{k}}^{\dagger} ) \Rightarrow :P^{i}: = \int \frac{\dd[3]{\vb*{k}}}{(2 \pi)^3} k^{i} a_{\vb*{k}}^{\dagger} a_{\vb*{k}}
-.\end{align}
+.\end{aligned}
+}
+\end{align}
 It is simple to see that these normal ordered operators only contain number operators and no infinities.
 
 
 (b) We verify this directly:
 \begin{align}
-    \hat{1} \ket{\vb*{k}_{1},\vb*{k}_{2},\vb*{k}_{3}} &= \sum_{n=0}^{\infty} \frac{1}{n!} \int \prod_{j=0}^{n} \frac{\dd[3]{\vb*{p}_{j}}}{(2 \pi)^3 2 E_{\vb*{p}_{j}}} \ket{p_{n}} \ip{p_{n}}{\vb*{k}_{1},\vb*{k}_{2},\vb*{k}_{3}} \nonumber \\
-                                                      &= \sum_{n=0}^{\infty} \frac{1}{n!} \int \prod_{j=0}^{n} \frac{\dd[3]{\vb*{p}_{j}}}{(2 \pi)^3 2 E_{\vb*{p}_{j}}} \ket{\vb*{p}_{1},\vb*{p}_{2},\vb*{p}_{3}} \delta_{n 3} \sum_{\sigma \in S_{n}} \prod_{\ell} (2 \pi)^3 2 E_{\vb*{k}_{\ell}} \delta(\vb*{k}_{\ell} - \vb*{p}_{\sigma(\ell)}) \nonumber \\
+\eqbox{
+\begin{aligned} 
+    \hat{1} \ket{\vb*{k}_{1},\vb*{k}_{2},\vb*{k}_{3}} &= \sum_{n=0}^{\infty} \frac{1}{n!} \int \prod_{j=0}^{n} \frac{\dd[3]{\vb*{p}_{j}}}{(2 \pi)^3 2 E_{\vb*{p}_{j}}} \ket{p_{n}} \ip{p_{n}}{\vb*{k}_{1},\vb*{k}_{2},\vb*{k}_{3}} \\
+                                                      &= \sum_{n=0}^{\infty} \frac{1}{n!} \int \prod_{j=0}^{n} \frac{\dd[3]{\vb*{p}_{j}}}{(2 \pi)^3 2 E_{\vb*{p}_{j}}} \ket{\vb*{p}_{1},\vb*{p}_{2},\vb*{p}_{3}} \delta_{n 3} \sum_{\sigma \in S_{n}} \prod_{\ell} (2 \pi)^3 2 E_{\vb*{k}_{\ell}} \delta(\vb*{k}_{\ell} - \vb*{p}_{\sigma(\ell)}) \\
                                                       &= \frac{1}{3!} \sum_{\sigma \in S_{n}} \ket{\vb*{k}_{\sigma(1)},\vb*{k}_{\sigma(2)},\vb*{k}_{\sigma(3)}} = \ket{\vb*{p}_{1},\vb*{p}_{2},\vb*{p}_{3}}
-.\end{align}
+.\end{aligned}
+}
+\end{align}
 
 
 (c) We can invert the ``Fourier transform'' via the following procedure
@@ -216,8 +230,7 @@ Putting this into the wavepacket state
 \begin{align}
     \ket{f,1,t} &= \int \frac{\dd[3]{\vb*{p}}}{(2 \pi)^3} a_{\vb*{p}}^{\dagger} \ket{0} \int \dd[3]{\vb*{x}} \sqrt{2 E_{\vb*{p}}} e^{i p \cdot x} f(\vb*{x}) \nonumber \\
                 &= \int \dd[3]{\vb*{x}} f(x) \int \frac{\dd[3]{\vb*{p}}}{(2 \pi)^3 \sqrt{2 E_{\vb*{p}}}} 2 E_{\vb*{p}} a_{\vb*{p}}^{\dagger} e^{i p \cdot k} \ket{0} \nonumber \\
-                &= \int \dd[3]{\vb*{x}} f(x) \Big( -2 i \pdv{t} \phi(x) \ket{0} \Big) \nonumber \\
-                &= \int \dd[3]{\vb*{x}} \phi(x) \ket{0} 2 i \pdv{f(x)}{t}
+                &= \eqbox{ \int \dd[3]{\vb*{x}} \phi(x) \ket{0} 2 i \pdv{f(x)}{t} }
 .\end{align}
 
 
@@ -241,26 +254,41 @@ First, observe that
     &= \sqrt{2 E_{\vb*{p}_{1}}} \ldots \sqrt{2 E_{\vb*{p}_{n}}} \Big[ (2 \pi)^3 \delta(\vb*{k} - \vb*{p}_{1}) + a_{\vb*{p}_{1}}^{\dagger} a_{\vb*{k}} \Big] a_{\vb*{p}_{2}}^{\dagger} \ldots a_{\vb*{p}_{n}}^{\dagger} \ket{0} \nonumber \\
     &= (2 \pi)^3 \sum_{i=1}^{n} \sqrt{2 E_{\vb*{p}_{i}}} \delta(\vb*{k} - \vb*{p}_{i}) \ket{\vb*{p}_{1},\ldots,\vb*{p}_{i-1},\vb*{p}_{i+1},\ldots,\vb*{p}_{n}}
 .\end{align}
-Thus
+Thus\footnote{
+Note that the notation for the permutations is not technically correct since we are omitting $i$ from the domain set and $j$ from the codomain set, but it should be understood implicitly nevertheless that we are just forming all possible pairings of momentum delta-functions.
+}
 \begin{align}
     &\mel{\vb*{p}_{1},\ldots,\vb*{p}_{n}}{a_{\vb*{k}}^{\dagger} a_{\vb*{k}}}{\vb*{p}_{1}',\ldots,\vb*{p}_{n}'} \nonumber \\
     &= (2 \pi)^{6} \sum_{i,j=1}^{n} \sqrt{2 E_{\vb*{p}_{i}}} \sqrt{2 E_{\vb*{p}_{j}}} \delta(\vb*{k} - \vb*{p}_{i}) \delta(\vb*{k} - \vb*{p}_{j}') \ip{\vb*{p}_{1},\ldots,\vb*{p}_{i-1},\vb*{p}_{i+1},\ldots,\vb*{p}_{n}}{\vb*{p}_{1}',\ldots,\vb*{p}_{j-1}',\vb*{p}_{j+1},\ldots,\vb*{p}_{n}'} \nonumber \\
     &= (2 \pi)^{6} \sum_{i,j=1}^{n} \sqrt{2 E_{\vb*{p}_{i}}} \sqrt{2 E_{\vb*{p}_{j}}} \delta(\vb*{k} - \vb*{p}_{i}) \delta(\vb*{k} - \vb*{p}_{j}') \sum_{\sigma \in S_{n-1}} \prod_{m} (2 \pi)^3 2 E_{\vb*{p}_{m}} \delta(\vb*{p}_{m} - \vb*{p}_{\sigma(m)}') \nonumber \\
     &= (2 \pi)^3 (2 \pi)^{3n} 2 E_{\vb*{p}_{1}} \ldots 2 E_{\vb*{p}_{n}} \sum_{i,j=1}^{n} \sum_{\sigma \in S_{n-1}} \delta(\vb*{k} - \vb*{p}_{i}) \delta(\vb*{p}_{i} - \vb*{p}_{j}') \prod_{m} \delta(\vb*{p}_{m} - \vb*{p}_{\sigma(m)}')
 .\end{align}
-Note that the notation for the permutations is not technically correct since we are omitting $i$ from the domain set and $j$ from the codomain set, but it should be understood implicitly nevertheless that we are just forming all possible pairings of momentum delta-functions.
 If we put this back into the expectation value, we see that
 \begin{align}
     \mel{f^{(n)}}{a_{\vb*{k}}^{\dagger} a_{\vb*{k}}}{f^{(n)}} &= n! \sum_{i=1}^{n} \int \prod_{j \ne i} \frac{\dd[3]{\vb*{p}_{j}}}{(2 \pi)^{3}} | \tilde{f}^{(n)}(\vb*{p}_{1},\ldots,\vb*{p}_{i-1},\vb*{k},\vb*{p}_{i+1},\ldots,\vb*{p}_{n})|^2
 .\end{align}
-At this point, it is difficult to see how we have a number density.
-Recall that densities live to be integrated, so we integrate over all $\vb*{k}$ as follows:
+At this point, it is difficult to see how we have a number density, but recall that densities live to be integrated, so we integrate over all $\vb*{k}$ as follows:
 \begin{align}
     \int \frac{\dd[3]{\vb*{k}}}{(2 \pi)^3} \mel{f^{(n)}}{a_{\vb*{k}}^{\dagger} a_{\vb*{k}}}{f^{(n)}}  = \mel{f^{(n)}}{ \int \frac{\dd[3]{\vb*{k}}}{(2 \pi)^3} a_{\vb*{k}}^{\dagger} a_{\vb*{k}} }{f^{(n)}} = n
 .\end{align}
-Since the right-hand-side is independent of the shape of our wavepacket, we see that we have a true number density operator:
+Since the right-hand-side is independent of our wavepacket construction, we see that we have a true number density operator:
 \begin{align}
-    \dd{n} = a_{\vb*{k}}^{\dagger} a_{\vb*{k}} \frac{\dd[3]{\vb*{k}}}{(2 \pi)^3}
+    \dd{n(\vb*{k})} = a_{\vb*{k}}^{\dagger} a_{\vb*{k}} \frac{\dd[3]{\vb*{k}}}{(2 \pi)^3}
+.\end{align}
+Note that this is Lorentz invariant.
+Under a Lorentz transformation $\Lambda$, where we take $k'^{\mu} = \Lambda^{\mu}_{\;\nu} k^{\nu}$, our creation and annihilation operators transform as
+\begin{align}
+    a_{\vb*{k}} \mapsto \sqrt{\frac{E_{\Lambda \vb*{k}}}{E_{\vb*{k}}}} a_{\Lambda \vb*{k}}, \quad a_{\vb*{k}}^{\dagger} \mapsto \sqrt{\frac{E_{\Lambda \vb*{k}}}{E_{\vb*{k}}}} a_{\Lambda \vb*{k}}^{\dagger}
+,\end{align}
+and therefore
+\begin{align}
+    a_{\vb*{k}}^{\dagger} a_{\vb*{k}} \frac{\dd[3]{\vb*{k}}}{(2 \pi)^3} \mapsto \frac{E_{\Lambda \vb*{k}}}{E_{\vb*{k}}} a_{\Lambda \vb*{k}}^{\dagger} a_{\Lambda \vb*{k}} \frac{E_{\vb*{k}}}{E_{\Lambda \vb*{k}}} \frac{\dd[3]{(\Lambda \vb*{k})}}{(2 \pi)^3} = a_{\Lambda \vb*{k}}^{\dagger} a_{\Lambda \vb*{k}} \frac{\dd[3]{(\Lambda \vb*{k})}}{(2 \pi)^3}
+.\end{align}
+Thus, we can readily define a Lorentz covariant number density operator by moving around some factors of energy in the numerator and denominator:
+\begin{align}
+\eqbox{
+    \dd{n(\vb*{k})} = 2 E_{\vb*{k}} a_{\vb*{k}}^{\dagger} a_{\vb*{k}} \frac{\dd[3]{\vb*{k}}}{(2 \pi)^3 2 E_{\vb*{k}}}
+}
 .\end{align}
 
 
@@ -268,6 +296,7 @@ Since the right-hand-side is independent of the shape of our wavepacket, we see 
 }
 
 
+\newpage
 \prob{3}{
 
 The following is a simple undergraduate electrodynamics problem that I aim to use to motivate you to think about the interpretation of infinite energies:
@@ -280,15 +309,50 @@ Elaborate on the analogy with the ``infinite'' constant we found in the continuu
 
 }
 
-\sol{}
+\sol{
+
+The potential a distance $r$ away from a charge $\dd{q}$ is given by the typical Coulomb expression 
+\begin{align}
+    \dd{V} = \frac{\dd{q}}{4 \pi \epsilon_0} \frac{1}{r}
+,\end{align}
+so setting our line on the $y$ axis, letting $x$ point perpendicular to this line, and summing up all the contributions from the infinitesimal charges on the line, we find
+\begin{align}
+\label{eq:line-potential}
+    V(x) = \frac{\lambda}{4 \pi \epsilon_0} \int_{-\infty}^{\infty} \frac{\dd{y}}{\sqrt{x^2 + y^2}} = \frac{\lambda}{4 \pi \epsilon_0} {\rm arsinh}\Big( \frac{y}{x} \Big) \Bigg|_{-\infty}^{\infty} \rightarrow \infty
+,\end{align}
+which is clearly formally divergent.
+Note, though, that the potential is not a physical quantity.
+Rather, it is potential differences which are physical, and we would like to handle the potential in such a way that we obtain finite answers for the physical observables.
+
+The approach adopted here is to impose a cutoff scale.
+Consider, a finite line charge centered at the origin of length $2L$.
+In this case, if we are at a distance $x$ from the center of the wire, 
+\begin{align}
+    V(x,c) = \frac{\lambda}{2 \pi \epsilon_0} {\rm arsinh}\Big( \frac{L}{x} \Big) 
+.\end{align}
+If we take $L \rightarrow \infty$ as before we arrive at the same divergent answer, but consider the electric field at the position $(x,c)$, obtained by taking the gradient of the above result:
+\begin{align}
+    \vb*{E} = \frac{\lambda}{4 \pi \epsilon_0} \frac{2 L}{x \sqrt{x^2 + L^2}} \vu*{x} 
+\end{align}
+as $L \rightarrow \infty$.
+
+The infinity in the potential here is analogous to the infinity we discovered in our lattice field theory Hamiltonian operator.
+In both cases, the infinities are just references.
+That is, we compute the electric potential here using the Green's function for Laplace's equation, which is derived under the assumption that our charge distribution is local and that the potential vanishes infinitely far away from these sources.
+When we take $L \rightarrow \infty$, though, this assumption is not necessarily correct, but using this cutoff regularization and ordering our limits and differentiation appropriately, there is no issue in putting our reference at $r \rightarrow \infty$.
+In a similar way with the lattice field theory, before taking any continuum or infinite volume limits, we can redefine our Hamiltonian such that the vacuum eigenstate has energy eigenvalue zero, amounting to a simple shift in our absolute energy scale.
+Thus, in both cases, there are no fundamental pathologies and no issues with ``throwing out'' the infinities (of course in a systematic way).
+
+}
 
 
+\newpage
 \prob{4}{
 
     Let $\phi_{\ell}(t)$ be a massless real Klein-Gordon field averaged with a function proportional to $e^{-r^2/\ell^2}$, where $r$ is the distance from the origin of spatial coordinates.
     That is,
     \begin{align}
-        \phi_{\ell}(t) = \frac{\int \dd[3]{\vb*{\ell}} \phi(\vb*{x}) e^{-r^2/\ell^2}}{\int \dd[3]{\vb*{\ell}} e^{-r^2/\ell^2}}
+        \phi_{\ell}(t) = \frac{\int \dd[3]{\vb*{x}} \phi(\vb*{x}) e^{-r^2/\ell^2}}{\int \dd[3]{\vb*{x}} e^{-r^2/\ell^2}}
     .\end{align}
     Calculate the vacuum expectation value of $\phi_{\ell}(t)^2$,
     \begin{align}
@@ -302,6 +366,46 @@ Elaborate on the analogy with the ``infinite'' constant we found in the continuu
 
 }
 
-\sol{}
+\sol{
+
+The ``smeared'' field
+\begin{align}
+    \phi_{\ell}(t) = (\pi \ell^2)^{-3/2} \int \dd[3]{\vb*{x}} \phi(x) e^{-\vb*{x}^2/\ell^2}
+,\end{align}
+so the vacuum fluctuations
+\begin{align}
+    \sigma^2 &= \expval{\phi_{\ell}^2(t)}{0} = (\pi \ell^2)^{-3/2} \int \dd[3]{\vb*{x}} \dd[3]{\vb*{y}} e^{-\vb*{x}^2/\ell^2} e^{-\vb*{y}^2/\ell^2} \expval{\phi(x) \phi(y)}{0} \nonumber \\
+             &= (\pi \ell^2)^{-3} \int \dd[3]{\vb*{x}} \dd[3]{\vb*{y}} \frac{\dd[3]{\vb*{k}} \dd[3]{\vb*{k}'}}{(2 \pi)^{6} 2 \omega_{\vb*{k}} 2 \omega_{\vb*{k}'}} e^{-\vb*{x}^2/\ell^2} e^{-\vb*{y}^2/\ell^2} e^{-i k \cdot x} e^{i k' \cdot y} \ip{\vb*{k}}{\vb*{k}'} \nonumber \\
+             &= (\pi \ell^2)^{-3} \int \frac{\dd[3]{\vb*{k}}}{(2 \pi)^3 2 \omega_{\vb*{k}}} \int \dd[3]{\vb*{x}} e^{-\vb*{x}^2/\ell^2} e^{i \vb*{k} \cdot \vb*{x}} \int \dd[3]{\vb*{y}} e^{-\vb*{y}^2/\ell^2} e^{-i \vb*{k} \cdot \vb*{y}}
+.\end{align}
+We have two similar integrals of the form
+\begin{align}
+    \int \dd[3]{\vb*{x}} e^{-\vb*{x}^2/\ell^2} e^{i \vb*{k} \cdot \vb*{x}} &= 2 \pi \int_{0}^{\infty} \dd{x} x^2 e^{-x^2/\ell^2} \int_{-1}^{1} \dd{(\cos{\theta})} e^{i k x \cos{\theta}} \nonumber \\
+                                                                           &= 2 \pi \int_{0}^{\infty} \dd{x} x^2 e^{-x^2/\ell^2} \frac{e^{ikx} - e^{-ikx}}{i k x} \nonumber \\
+                                                                           &= \frac{2 \pi}{ik} \int_{-\infty}^{\infty} \dd{x} x e^{ikx} e^{-x^2/\ell^2} \nonumber \\
+                                                                           &= -\frac{2 \pi}{k} \pdv{k} \int_{-\infty}^{\infty} \dd{x} e^{ikx} e^{-x^2/\ell^2} = -\frac{2 \pi}{k} (\pi \ell^2)^{1/2} \pdv{k} e^{-\ell^2 k^2 / 4} \nonumber \\
+                                                                           &= (\pi \ell^2)^{3/2} e^{-\ell^2 k^2 / 4}
+.\end{align}
+Then
+\begin{align}
+\eqbox{
+\begin{aligned}
+    \sigma^2 &= (\pi \ell^2)^{-3} \int \frac{\dd[3]{\vb*{k}}}{(2 \pi)^3 2 \omega_{\vb*{k}}} \Bigg[ (\pi \ell^2)^{3/2} e^{-\ell^2 k^2 / 4} \Bigg]^2 = \frac{1}{(2 \pi)^2} \int_{0}^{\infty} \dd{k} \frac{k^2 e^{-\ell^2 k^2 / 2}}{\sqrt{k^2 + m^2}} \\
+             &= \frac{1}{(2 \pi \ell)^2} \int_{0}^{\infty} \dd{u} \frac{u^2}{\sqrt{u^2 + (m \ell)^2}} e^{-u^2 / 2} \rightarrow \frac{1}{(2 \pi \ell^2)}
+.\end{aligned}
+}
+\end{align}
+as $m \rightarrow 0$.
+It is clear from this expression that vacuum fluctuations are only significant in the limit $\ell \rightarrow 0$.
+\fref{prob4} displays the behavior of the integrand as a function of the dimensionless product $m \ell$ and verifies the limiting case above for $m \rightarrow 0$ as well as the expectation that $\sigma^2$ is only significant when $\ell$ is small.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.7\textwidth]{prob4.pdf}
+    \caption{Plot of $\sigma^2$, which is a measure of the zero-point fluctuations, as a function of $m \ell$.}
+    \label{fig:prob4}
+\end{figure}
+
+}
     
 \end{document}
