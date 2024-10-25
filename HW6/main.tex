@@ -1,0 +1,90 @@
+\include{../preamble.tex}
+\def\HWnum{6}
+\def\duedate{October 29, 2024}
+
+\begin{document}
+
+\prob{1}{
+
+We have been thinking carefully about how to set up relativistic wavepackets, which will be important when we get to a formal treatment of the $S$-matrix and scattering theory.
+We used wavepacket functions $\tilde{f}(\vb*{p})$ and $\tilde{g}(\vb*{p})$ to describe the three-momentum parts of initial and final wavepackets.
+I also suggested using 
+\begin{align}
+    F(t - t_0,\Delta t) = \frac{1}{\sqrt{\pi} \Delta t} e^{-(t - t_0)^2/\Delta t^2}
+\end{align}
+for the temporal part of the wavepacket.
+To make analyzing the propagation amplitude
+\begin{align}
+    \ip{g;{\rm out};\Delta}{f;{\rm in};\Delta}
+\end{align}
+more manageable, write out an expression for it that only involves integrals over $\dd[4]{p}$, $\dd{x_0}$, and $\dd{y_0}$.
+The integrand should only involve $\tilde{f}(\vb*{p})$, $\tilde{g}(\vb*{p})$, $1/(p^2 - m^2 + i \epsilon)$, and $F(t - t_0,\Delta t)$.
+
+}
+
+\sol{
+
+In the free, complex Klein-Gordon theory, we set up a simple scattering amplitude, for a particle or anti-particle wave-packet to evolve into some other particle or anti-particle wave-packet, respectively, at some much later time.
+Generically, we found that
+\begin{align}
+    \ip{g;{\rm out};\Delta}{f;{\rm out};\Delta} = \int \dd[4]{x} \dd[4]{y} \underline{g}^{*}(y) \underline{f}(x) \mel{0}{T \phi(y) \phi^{\dagger}(x)}{0}
+.\end{align}
+The time-ordering handily takes care of whether we consider particles or anti-particles, and the propagator
+\begin{align}
+    \mel{0}{T \phi(y) \phi^{\dagger}(x)}{0} = \int \frac{\dd[4]{p}}{(2 \pi)^{4}} \frac{i e^{-i p \cdot (y - x)}}{p^2 - m^2 + i \epsilon}
+.\end{align}
+Recall that we can write
+\begin{align}
+    \underline{f}(x) = 2 i \pdv{f(x)}{t} F(x^{0} - \bar{x}^{0},\Delta x^{0})
+,\end{align}
+where 
+\begin{align}
+    f(x) = \int \frac{\dd[3]{\vb*{p}}}{(2 \pi)^3 \sqrt{2 E_{\vb*{p}}}} \tilde{f}(\vb*{p}) e^{-i p \cdot x}
+\end{align}
+and similarly for $\underline{g}$.
+If we plug the propagator and the wave-packet expressions into the scattering amplitude, we find
+\begin{align}
+    \ip{g}{f} &= \int \frac{\dd[4]{p}}{(2 \pi)^{4}} \frac{i}{p^2 - m^2 + i \epsilon} \Bigg\{ \int \dd[4]{y} 2i \pdv{g(y)}{t} G(y^{0} - \bar{y}^{0},\Delta y^{0}) e^{i p \cdot y} \Bigg\}^{*} \nonumber \\
+    &\times \Bigg\{ \int \dd[4]{x} 2 i \pdv{f(x)}{t} F(x^{0} - \bar{x}^{0},\Delta x^{0}) e^{i p \cdot x} \Bigg\}
+.\end{align}
+
+}
+
+
+\prob{2}{
+
+In our treatment of the charged (complex) Klein-Gordon field, we have treated $\phi$ and $\phi^{\dagger}$ as if they are independent fields, even though knowledge of $\phi$ determines $\phi^{\dagger}$.
+Give a more rigorous explanation for why this is reasonable than what we did in class.
+
+}
+
+\sol{}
+
+
+\prob{3}{
+
+Repeat the steps for quantizing the charged Klein-Gordon field, but now impose anticommutation relations on the fields rather than commutation relations.
+Why would one consider trying this in the first place?
+What happens to the Hamiltonian?
+
+}
+
+\sol{}
+
+
+\prob{4}{
+
+Checking steps from class:
+\begin{parts}
+
+\item In class, I went through the steps for setting up the Dirac field and showing that it gives the Dirac equation quite fast.
+    Fill in the steps for both the symmetrized and non-symmetrized form of the Lagrangian.
+
+\end{parts}
+
+}
+
+\sol{}
+
+    
+\end{document}
