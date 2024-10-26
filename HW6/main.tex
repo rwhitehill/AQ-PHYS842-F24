@@ -47,6 +47,20 @@ If we plug the propagator and the wave-packet expressions into the scattering am
     \ip{g}{f} &= \int \frac{\dd[4]{p}}{(2 \pi)^{4}} \frac{i}{p^2 - m^2 + i \epsilon} \Bigg\{ \int \dd[4]{y} 2i \pdv{g(y)}{t} G(y^{0} - \bar{y}^{0},\Delta y^{0}) e^{i p \cdot y} \Bigg\}^{*} \nonumber \\
     &\times \Bigg\{ \int \dd[4]{x} 2 i \pdv{f(x)}{t} F(x^{0} - \bar{x}^{0},\Delta x^{0}) e^{i p \cdot x} \Bigg\}
 .\end{align}
+Let us analyze one of the integrals in the curly braces:
+\begin{align}
+    &\int \dd[4]{x} 2 i \pdv{f(x)}{t} F(x^{0} - \bar{x}^{0},\Delta x^{0}) e^{i p \cdot x} \nonumber \\
+                   &= \int \dd[4]{x} 2i F(x^{0} - \bar{x}^{0},\Delta x^{0}) e^{i p \cdot x} \pdv{t} \int \frac{\dd[3]{\vb*{k}}}{(2 \pi)^3 \sqrt{2 E_{\vb*{k}}}} \tilde{f}(\vb*{k}) e^{-i k \cdot x} \nonumber \\
+                   &= \int \dd[4]{x} F(x^{0} - \bar{x}^{0},\Delta x^{0}) e^{i p \cdot x} \int \frac{\dd[3]{\vb*{k}}}{(2 \pi)^3} \sqrt{ 2 E_{\vb*{k}} } \tilde{f}(\vb*{k}) e^{-i k \cdot x} \nonumber \\
+                   &= \int \dd{x^{0}} F(x^{0} - \bar{x}^{0},\Delta x^{0}) e^{i (p^{0} - E_{\vb*{k}}) x^{0}} \int \dd[3]{\vb*{k}} \sqrt{2 E_{\vb*{k}}} \tilde{f}(\vb*{k}) \int \frac{\dd[3]{\vb*{x}}}{(2 \pi)^3} e^{-i ( \vb*{p} - \vb*{k} ) \cdot \vb*{x}} \nonumber \\
+                   &= \sqrt{2 E_{\vb*{p}}} \tilde{f}(\vb*{p}) \int \dd{x^{0}} F(x^{0} - \bar{x}^{0},\Delta x^{0}) e^{i (p^{0} - E_{\vb*{p}}) x^{0}}
+.\end{align}
+Thus, the scattering amplitude
+\begin{align}
+    \ip{g}{f} &= \int \frac{\dd[4]{p}}{(2 \pi)^{4}} \frac{i}{p^2 - m^2 + i \epsilon} \Bigg\{ \sqrt{2 E_{\vb*{p}}} \tilde{g}(\vb*{p}) \int \dd{y^{0}} G(y^{0} - \bar{y}^{0},\Delta y^{0}) e^{i (p^{0} - E_{\vb*{p}}) y^{0}} \Bigg\}^{*} \nonumber \\
+              &\times \Bigg\{ \sqrt{2 E_{\vb*{p}}} \tilde{f}(\vb*{p}) \int \dd{x^{0}} F(x^{0} - \bar{x}^{0},\Delta x^{0}) e^{i (p^{0} - E_{\vb*{p}}) x^{0}} \Bigg\} \nonumber \\
+              &= \eqbox{ \int \frac{\dd[4]{p}}{(2 \pi)^{4}} \dd{x^{0}} \dd{y^{0}} \frac{i}{p^2 - m^2 + i \epsilon} 2 E_{\vb*{p}} \tilde{g}^{*}(\vb*{p}) \tilde{f}(\vb*{p}) F(x^{0} - \bar{x}^{0},\Delta x^{0}) G(y^{0} - \bar{y}^{0},\Delta y^{0}) e^{-i(p^{0} - E_{\vb*{p}})(y^{0} - x^{0})} }
+.\end{align}
 
 }
 
@@ -58,7 +72,65 @@ Give a more rigorous explanation for why this is reasonable than what we did in 
 
 }
 
-\sol{}
+\sol{
+
+The Lagrangian for the free, complex Klein-Gordon theory is
+\begin{align}
+    \mathcal{L} = \partial_{\mu} \phi \partial^{\mu} \phi^{*} - m^2 \phi^{*} \phi
+.\end{align}
+Let us rewrite this in terms of some scaled real and imaginary parts of $\phi$, where
+\begin{align}
+    \phi = \frac{1}{\sqrt{2}} ( \phi_1 + i \phi_2 )
+,\end{align}
+then
+\begin{align}
+    \mathcal{L} &= \frac{1}{2} \partial_{\mu} ( \phi_{1} - i \phi_{2} ) \partial^{\mu} ( \phi_{1} + i \phi_{2} ) - \frac{m^2}{2} ( \phi_{1} - i \phi_{2} ) ( \phi_{1} + i \phi_{2} ) \nonumber \\
+                &= \Big( \frac{1}{2} \partial_{\mu} \phi_{1} \partial^{\mu} \phi_{1} - \frac{m^2}{2} \phi_{1}^2 \Big) + \Big( \frac{1}{2} \partial_{\mu} \phi_{2} \partial^{\mu} \phi_{2} - \frac{m^2}{2} \phi_{2}^2 \Big) \nonumber \\
+                &= \mathcal{L}_{1} + \mathcal{L}_{2}
+,\end{align}
+where $\mathcal{L}_{1,2}$ are real scalar KG Lagrangians.
+We already know how to solve the real scalar Klein-Gordon theory, and here we just have two copies:
+\begin{align}
+    \phi_{1,2}(x) = \int \frac{\dd[3]{\vb*{p}}}{(2 \pi)^3 \sqrt{2 E_{\vb*{p}}}} ( a_{\vb*{p}}^{(1,2)} e^{-i p \cdot x} + a_{\vb*{p}}^{(1,2) \, \dagger} e^{i p \cdot x} )
+.\end{align}
+Hence
+\begin{align}
+    \phi &= \int \frac{\dd[3]{\vb*{p}}}{(2 \pi)^3 \sqrt{2 E_{\vb*{p}}}} \Big( \frac{a_{\vb*{p}}^{(1)} + i a_{\vb*{p}}^{(2)}}{\sqrt{2}} e^{-i p \cdot x} + \frac{a_{\vb*{p} \dagger}^{(1) \dagger} + i a_{\vb*{p}}^{(2) \dagger}}{\sqrt{2}} e^{i p \cdot x} \Big) \nonumber \\
+         &= \int \frac{\dd[3]{\vb*{p}}}{(2 \pi)^3 \sqrt{2 E_{\vb*{p}}}} \Big( a_{\vb*{p}} e^{-i p \cdot x} + b_{\vb*{p}}^{\dagger} e^{i p \cdot x} \Big)
+\end{align}
+and similarly for $\phi^{\dagger}$.
+Note that we have defined $a_{\vb*{p}} = (a_{\vb*{p}}^{(1)} + i a_{\vb*{p}}^{(2)})/\sqrt{2}$ and $b_{\vb*{p}} = (a_{\vb*{p}}^{(1)} - i a_{\vb*{p}}^{(2)})/\sqrt{2}$.
+
+Up to this point, we have not dealt directly with the fields $\phi$ and $\phi^{\dagger}$ directly, but as we have seen, there are some nice interpretations that are more transparent when dealing with them as opposed to their real constituents.
+Observe that
+\begin{align}
+    \pdv{\phi} &= \frac{1}{\sqrt{2}} \Big( \pdv{\phi_1} - i \pdv{\phi_2} \Big) \\
+    \pdv{\phi^{*}} &= \frac{1}{\sqrt{2}} \Big( \pdv{\phi_1} + i \pdv{\phi_2} \Big)
+.\end{align}
+Therefore, the two independent Euler-Lagrange equations of motion for the real scalar field $\phi_1$ and $\phi_2$ can be expressed and rewritten to obtain
+\begin{align}
+\begin{cases}
+    \displaystyle \pdv{\mathcal{L}}{\phi_{1}} - \partial_{\mu} \pdv{\mathcal{L}}{(\partial_{\mu} \phi_1)} = 0 \\
+    \displaystyle \pdv{\mathcal{L}}{\phi_{2}} - \partial_{\mu} \pdv{\mathcal{L}}{(\partial_{\mu} \phi_2)} = 0
+\end{cases}
+\Leftrightarrow
+\begin{cases}
+    \displaystyle \pdv{\mathcal{L}}{\phi} - \partial_{\mu} \pdv{\mathcal{L}}{(\partial_{\mu} \phi)} = 0 \\
+    \displaystyle \pdv{\mathcal{L}}{\phi^{*}} - \partial_{\mu} \pdv{\mathcal{L}}{(\partial_{\mu} \phi^{*})} = 0
+.\end{cases}
+\end{align}
+Thus, we have exchanged our two independent real scalar fields for $\phi$ and $\phi^{*}$.
+Here, we can see a justification for treating $\phi$ and $\phi^{*}$ independently. 
+The Euler-Lagrange equations for the real scalar fields and the complex scalar fields are equivalent only when we have the two equations on the right-hand-side for $\phi$ and $\phi^{*}$.
+
+Note that the resulting equations of motion for $\phi$ and $\phi^{\dagger}$ are identical and take the form
+\begin{align}
+    (\partial^2 + m^2) \phi &= 0 \\
+    (\partial^2 + m^2) \phi^{\dagger} &= 0
+,\end{align}
+and because our differential operator is real, or $(\partial^2 + m^2)^{*} = \partial^2 + m^2$, once $\phi$ is known, we can immediately determine $\phi^{\dagger}$ by simply taking the hermitian conjugate of $\phi$ (i.e. the differential operator and complex conjugation commute).
+
+}
 
 
 \prob{3}{
@@ -69,7 +141,38 @@ What happens to the Hamiltonian?
 
 }
 
-\sol{}
+\sol{
+
+Writing our solutions for the field and conjugate momenta we have
+\begin{align}
+    \phi &= \int \frac{\dd[3]{\vb*{p}}}{(2 \pi)^3 \sqrt{2 E_{\vb*{p}}}} ( a_{\vb*{p}} e^{-i p \cdot x} + b_{\vb*{p}}^{\dagger} e^{i p \cdot x} ) \\
+    \phi^{\dagger} &= \int \frac{\dd[3]{\vb*{p}}}{(2 \pi)^3 \sqrt{2 E_{\vb*{p}}}} ( a_{\vb*{p}}^{\dagger} e^{i p \cdot x} + b_{\vb*{p}} e^{-i p \cdot x} ) \\
+    \pi_{\phi} &= - i \int \frac{\dd[3]{\vb*{p}}}{(2 \pi)^3} \sqrt{\frac{E_{\vb*{p}}}{2}} ( a_{\vb*{p}} e^{-i p \cdot x} - b_{\vb*{p}}^{\dagger} e^{i p \cdot x} ) \\
+    \pi_{\phi^{\dagger}} &= i \int \frac{\dd[3]{\vb*{p}}}{(2 \pi)^3} \sqrt{\frac{E_{\vb*{p}}}{2}} ( a_{\vb*{p}}^{\dagger} e^{i p \cdot x} - b_{\vb*{p}} e^{-i p \cdot x} )
+.\end{align}
+We can take Fourier transforms and set $t = 0$ to obtain
+\begin{align}
+    \tilde{\phi}(\vb*{p}) = \frac{1}{\sqrt{2 E_{\vb*{p}}}} ( a_{\vb*{p}} + b_{-\vb*{p}}^{\dagger} ) \\
+    \tilde{\phi}^{\dagger}(\vb*{p}) = \frac{1}{\sqrt{2 E_{\vb*{p}}}} ( a_{-\vb*{p}}^{\dagger} + b_{\vb*{p}} ) \\
+    \tilde{\pi}_{\phi}(\vb*{p}) = -i \sqrt{\frac{E_{\vb*{p}}}{2}} ( a_{\vb*{p}} - b_{-\vb*{p}}^{\dagger} ) \\
+    \tilde{\pi}_{\phi^{\dagger}}(\vb*{p}) = i \sqrt{\frac{E_{\vb*{p}}}{2}} ( a_{-\vb*{p}}^{\dagger} - b_{\vb*{p}} )
+\end{align}
+and
+\begin{align}
+    a_{\vb*{p}} &= \sqrt{\frac{E_{\vb*{p}}}{2}} \tilde{\phi}(\vb*{p}) + \frac{i}{\sqrt{2 E_{\vb*{p}}}} \tilde{\pi}_{\phi}(\vb*{p}) = \int \dd[3]{\vb*{x}} \Big( \sqrt{\frac{E_{\vb*{p}}}{2}} \phi(\vb*{x}) + \frac{i}{\sqrt{2 E_{\vb*{p}}}} \pi_{\phi}(\vb*{x}) \Big) e^{i \vb*{p} \cdot \vb*{x}} \nonumber \\
+    b_{\vb*{p}}^{\dagger} &= \sqrt{\frac{E_{\vb*{p}}}{2}} \tilde{\phi}(-\vb*{p}) - \frac{i}{\sqrt{2 E_{\vb*{p}}}} \tilde{\pi}_{\phi}(-\vb*{p}) = \int \dd[3]{\vb*{x}} \Big( \sqrt{\frac{E_{\vb*{p}}}{2}} \phi(\vb*{x}) - \frac{i}{\sqrt{2 E_{\vb*{p}}}} \pi_{\phi}(\vb*{x}) \Big) e^{-i \vb*{p} \cdot \vb*{x}} \nonumber \\ \nonumber \\
+    a_{\vb*{p}}^{\dagger} &= \sqrt{\frac{E_{\vb*{p}}}{2}} \tilde{\phi}^{\dagger}(\vb*{p}) - \frac{i}{\sqrt{2 E_{\vb*{p}}}} \tilde{\pi}_{\phi^{\dagger}}(\vb*{p}) = \int \dd[3]{\vb*{x}} \Big( \sqrt{\frac{E_{\vb*{p}}}{2}} \phi^{\dagger}(\vb*{x}) - \frac{i}{\sqrt{2 E_{\vb*{p}}}} \pi_{\phi^{\dagger}}(\vb*{x}) \Big) e^{-i \vb*{p} \cdot \vb*{x}} \nonumber \\ \nonumber \\
+    b_{\vb*{p}} &= \sqrt{\frac{E_{\vb*{p}}}{2}} \tilde{\phi}^{\dagger}(-\vb*{p}) + \frac{i}{\sqrt{2 E_{\vb*{p}}}} \tilde{\pi}_{\phi^{\dagger}}(-\vb*{p}) = \int \dd[3]{\vb*{x}} \Big( \sqrt{\frac{E_{\vb*{p}}}{2}} \phi^{\dagger}(\vb*{x}) + \frac{i}{\sqrt{2 E_{\vb*{p}}}} \pi_{\phi^{\dagger}}(\vb*{x}) \Big) e^{i \vb*{p} \cdot \vb*{x}}
+.\end{align}
+From here, we can see that imposing anti-commutation relations for the fields and conjugate momenta yields
+\begin{align}
+    \{ a_{\vb*{p}}, a_{\vb*{p}'}^{\dagger} \} &= \int \dd[3]{\vb*{x}} \dd[3]{\vb*{y}} \Bigg[ \frac{\sqrt{E_{\vb*{p}} E_{\vb*{p}'}}}{2} \{ \phi(\vb*{x}), \phi^{\dagger}(\vb*{y}) \} - \frac{i}{2}\sqrt{\frac{E_{\vb*{p}}}{E_{\vb*{p}'}}} \{ \phi(\vb*{x}), \pi_{\phi^{\dagger}}(\vb*{y}) \} \nonumber \\
+                                              &+ \frac{i}{2} \sqrt{\frac{E_{\vb*{p}'}}{E_{\vb*{p}}}} \{ \pi_{\phi}(\vb*{x}), \phi(\vb*{y}) \} + \frac{1}{2 \sqrt{E_{\vb*{p}} E_{\vb*{p}'}}} \{ \pi_{\phi}(\vb*{x}), \pi_{\phi^{\dagger}}(\vb*{y}) \} \Bigg] e^{i \vb*{p} \cdot \vb*{x}} e^{-i \vb*{p}' \cdot \vb*{y}} \nonumber \\
+                                              &= 0
+\end{align}
+and the same with $\{ b_{\vb*{p}}, b_{\vb*{p}}^{\dagger} \}$.
+
+}
 
 
 \prob{4}{
@@ -84,7 +187,38 @@ Checking steps from class:
 
 }
 
-\sol{}
+\sol{
+
+The typical Dirac Lagrangian is 
+\begin{align}
+    \mathcal{L} = \bar{\psi} ( i \gamma^{\mu} \partial_{\mu} - m ) \psi = \bar{\psi} ( i \gamma^{0} \partial_{0} + i \gamma^{i} \partial_{i} - m ) \psi = \psi^{\dagger} ( i \partial_{0} + i \gamma^{0} \gamma^{i} \partial_{i} - m \gamma^{0} ) \psi
+.\end{align}
+Hence the equation of motion for $\psi$ is
+\begin{align}
+    \pdv{\mathcal{L}}{\psi^{\dagger}} - \partial_{\mu} \pdv{\mathcal{L}}{(\partial_{\mu} \psi^{\dagger})} = (i \partial_{0} + i \gamma^{0} \gamma^{i} \partial_{i} - m \gamma^{0}) \psi = 0
+,\end{align}
+and if we multiply by $\gamma^{0}$, we obtain
+\begin{align}
+    ( i \gamma^{0} \partial_{0} + i \gamma^{i} \partial_{i} - m ) \psi = (i \gamma^{\mu} \partial_{\mu} - m) \psi = 0
+.\end{align}
+
+Next, we can define the symmetrized Lagrangian as
+\begin{align}
+    \mathcal{L}_{\rm sym} = \frac{\mathcal{L} + \mathcal{L}^{*}}{2}
+.\end{align}
+Observe that 
+\begin{align}
+    \mathcal{L}^{*} &= \psi^{\dagger} ( -i \overleftarrow{\partial}_{0} - i \gamma^{0} \gamma^{0} \gamma^{i} \gamma^{0} \overleftarrow{\partial}_{i} - m \gamma^{0} ) \psi \nonumber \\
+                    &= \bar{\psi} ( -i \gamma^{0} \overleftarrow{\partial}_{0} + i \gamma^{i} \overleftarrow{\partial}_{i} - m ) \psi \nonumber \\
+                    &= \bar{\psi} (- i \gamma^{\mu} \overleftarrow{\partial}^{\mu} - m) \psi + 2 i \gamma^{i} \overleftarrow{\partial}_{i}
+.\end{align}
+Thus
+\begin{align}
+    \mathcal{L}_{\rm sym} = \frac{i}{2} \bar{\psi} ( \gamma^{\mu} \overleftrightarrow{\partial}_{\mu} - m ) \psi 
+.\end{align}
+
+
+}
 
     
 \end{document}
