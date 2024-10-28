@@ -208,14 +208,16 @@ Next, we can define the symmetrized Lagrangian as
 .\end{align}
 Observe that 
 \begin{align}
-    \mathcal{L}^{*} &= \psi^{\dagger} ( -i \overleftarrow{\partial}_{0} - i \gamma^{0} \gamma^{0} \gamma^{i} \gamma^{0} \overleftarrow{\partial}_{i} - m \gamma^{0} ) \psi \nonumber \\
-                    &= \bar{\psi} ( -i \gamma^{0} \overleftarrow{\partial}_{0} + i \gamma^{i} \overleftarrow{\partial}_{i} - m ) \psi \nonumber \\
-                    &= \bar{\psi} (- i \gamma^{\mu} \overleftarrow{\partial}^{\mu} - m) \psi + 2 i \gamma^{i} \overleftarrow{\partial}_{i}
+    \mathcal{L}^{*} &= - i \psi^{\dagger} \overleftarrow{\partial_{\mu}} \gamma^{0} \gamma^{\mu} \gamma^{0} \gamma^{0} \psi - m \bar{\psi} \psi \nonumber \\
+    &= \bar{\psi} ( - i \gamma^{\mu} \overleftarrow{\partial_{\mu}} - m ) \psi
 .\end{align}
 Thus
 \begin{align}
-    \mathcal{L}_{\rm sym} = \frac{i}{2} \bar{\psi} ( \gamma^{\mu} \overleftrightarrow{\partial}_{\mu} - m ) \psi 
+    \mathcal{L}_{\rm sym} &= \frac{i}{2} \bar{\psi} \gamma^{\mu} \overleftrightarrow{\partial}_{\mu} \psi - m \bar{\psi} \psi \nonumber \\
+    &= \frac{i}{2} \bar{\psi} \gamma^{\mu} ( 2 \partial_{\mu} - \partial_{\mu} - \overleftarrow{\partial}_{\mu} ) \psi - m \bar{\psi} \psi \nonumber \\
+    &= \mathcal{L} - \partial_{\mu} ( i \bar{\psi} \gamma^{\mu} \psi )
 .\end{align}
+Observe that the symmetrized Lagrangian is related to the original Lagrangian by the addition of an overall derivative, which does not impact the equations of motion.
 
 
 }
