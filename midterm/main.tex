@@ -1,0 +1,156 @@
+\include{preamble.tex}
+\def\HWnum{Midterm Notes}
+\def\duedate{November 6, 2024}
+
+\begin{document}
+
+\section{Introduction}
+\label{sec:introduction}
+
+In the first part of our course, we focused heavily on the development of a quantum theory which is compatible with special relativity, and from our studies, we have formulated two theories: one based on the Klein-Gordon equation
+\begin{align}
+    ( \partial^2 + m^2 ) \psi = 0
+\end{align}
+and another based on the Dirac equation
+\begin{align}
+    ( \slashed{\partial} + m ) \psi = 0
+.\end{align}
+As they are written here, we will think of them in the context of $\psi$ being a wave-function and not a field, even though such a treatment is plagued with inconsistencies and difficulties.
+Note that as they are written above, the wave-function $\psi$ is that for a free particle.
+For both equations, though, we will be particularly interested in the situation where our particle is interacting with a potential.
+This is typically done through the minimal substitution
+\begin{align}
+    p^{\mu} \rightarrow p^{\mu} - V^{\mu}
+,\end{align}
+where $p^{\mu} = - i \partial^{\mu}$ is the 4-momentum operator.
+In the sections below, we will introduce such a substitution for both equations of interest, demonstrate how to take their non-relativistic limits, and discuss some results and observations of interest.
+
+
+
+\section{Non-relativistic limit of the Klein Gordon equation}
+\label{sec:nr-limit-of-the-kg-equation}
+
+\subsection{Wave-function ansatz}
+
+Before introducing any potential, let us recall the free solution for the wave-function
+\begin{align}
+    \psi(\vb*{x},t) = \int \frac{\dd[3]{\vb*{k}}}{(2 \pi)^3} \Big[ a(\vb*{k}) e^{-i E_{\vb*{k}} t} + b(\vb*{k}) e^{i E_{\vb*{k}} t} \Big] e^{i \vb*{k} \cdot \vb*{x}}
+,\end{align}
+where $E_{\vb*{k}} = \sqrt{m^2 + \vb*{k}^2}$.
+We of course have both our positive and negative energy modes that contribute to the wave-function, and their relative weights are determined by $a(\vb*{k})$ and $b(\vb*{k})$.
+In our non-relativistic studies, we are used to having only a term like the first one here, and because we are troubled by the existence of the second term corresponding to the negative energy modes, we discard them for our discussion here such that 
+\begin{align}
+    \psi(\vb*{x},t) = \int \frac{\dd[3]{\vb*{k}}}{(2 \pi)^3} a(\vb*{k}) e^{-i E_{\vb*{k}} t} e^{i \vb*{k} \cdot \vb*{x}}
+.\end{align}
+A particle described by such a wave-packet should have $a(\vb*{k})$ peaked around $|\vb*{k}| = 0$ such that $E_{\vb*{k}} = m + \vb*{k}^2/(2m) + \mathcal{O}(\vb*{k}^{4}/m^3)$.
+Hence, we can perform an expansion in the time-dependent exponential (as in the stationary phase method):
+\begin{align}
+    \psi(\vb*{x},t) = e^{-i m t} \int \frac{\dd[3]{\vb*{k}}}{(2 \pi)^3} a(\vb*{k}) e^{-i \frac{\vb*{k}^2 t}{2m} + \mathcal{O}(\vb*{k}^{4}/m^3)} e^{i \vb*{k} \cdot \vb*{x}} = \phi(\vb*{x},t) e^{-i m t}
+.\end{align}
+This is the ansatz we will use for our wave-function in this and the next section, but the motivation is clearly illustrated here, which is that the exponential factor extracted explicitly above has a much larger time derivative than $\dot{\phi}$.
+
+
+\subsection{Two-component representation of the Klein-Gordon equation}
+
+Let us make the minimal substitution presribed above by introducing a 4-potential $V^{\mu}$.
+Under this substitution, the Klein Gordon equation becomes
+\begin{align}
+    \Big( - ( p^{\mu} - V^{\mu} ) ( p_{\mu} - V_{\mu} ) + m^2 \Big) \psi = \Big( \partial^2 + m^2 + U(x) \Big) \psi = 0
+,\end{align}
+where 
+\begin{align}
+    U(x) = i \partial_{\mu} V^{\mu} + i V^{\mu} \partial_{\mu} - V^2
+.\end{align}
+
+One of the primary difficulties of the Klein-Gordon is that it is second order in time.
+It is possible, however, to introduce two independent functions and obtain a set of coupled differential equations which are first order in time.
+A first naive approach is to use the set $\{ \psi,\dot{\psi} \}$.
+We then have
+\begin{align}
+    \ddot{\psi} = - 2 i V^{0} \dot{\psi} - \Big[ (\vb*{p} - \vb*{V})^2 + m^2 + i \pdv{V^{0}}{t} - (V^{0})^2 \Big] \psi \\
+,\end{align}
+which allows us to combine the two equations as
+\begin{align}
+    i \pdv{\Psi}{t} = H_{\psi} \Psi
+,\end{align}
+where
+\begin{align}
+    H_{\psi} = i
+    \begin{pmatrix}
+        -2 i V^{0} & - \Big[ (\vb*{p} - \vb*{V})^2 + i \dot{V}^{0} + m^2 - (V^{0})^2 \Big] \\
+        1 & 0
+    \end{pmatrix},
+    \Psi = 
+    \begin{pmatrix}
+        \dot{\psi} \\ \psi
+    \end{pmatrix}    
+.\end{align}
+While we have indeed managed to transform our second order equation into a coupled system of first order equations, its current form is not quite useful.
+
+Let us make the change of basis from $\Psi$ to $\Phi$ such that $\Phi = A \Psi$, where
+\begin{align}
+    A = \frac{1}{\sqrt{2 m}} 
+    \begin{pmatrix}
+        i & - V^{0} + m \\
+        -i & V^{0} + m
+    \end{pmatrix}    
+,\end{align}
+where we denote the upper and lower components of $\Phi$ as $\phi_{1}$ and $\phi_{2}$, respectively.
+The equation of motion for $\Phi$ can be determined from that of $\Psi$ quite easily as follows:
+\begin{gather}
+    i \pdv{t} ( A^{-1} \Phi ) = i \pdv{A^{-1}}{t} \Phi + i A^{-1} \pdv{\Phi}{t} = H_{\psi} A^{-1} \Phi \\
+    i \pdv{\Phi}{t} = A \Big[ - i \pdv{A^{-1}}{t} + H_{\psi} A^{-1} \Big] \Phi = H_{\phi} \Phi
+.\end{gather}
+The matrix
+\begin{align}
+    H_{\phi} &= 
+    \begin{pmatrix}
+        m + V^{0} + \frac{(\vb*{p} - \vb*{V})^2}{2m} & \frac{(\vb*{p} - \vb*{V})^2}{2m} \\
+        - \frac{(\vb*{p} - \vb*{V})^2}{2m} & -m + V^{0} - \frac{(\vb*{p} - \vb*{V})^2}{2m}
+    \end{pmatrix} 
+    \\
+    &= \Bigg( m + \frac{(\vb*{p} - \vb*{V})^2}{2m} \Bigg) \sigma^{3} + V^{0} + \frac{(\vb*{p} - \vb*{V})^2}{2m} i \sigma^{2}
+,\end{align}
+where $\sigma^{i}$ is the $i^{\rm th}$ the Pauli matrix.
+We can begin to see the utility of this particular reformulation of the Klein Gordon equation of motion in taking the non-relativistic limit.
+
+Let us now start taking the desired limit by assuming an ansatz of the form
+\begin{align}
+    \Phi = 
+    \begin{pmatrix}
+        \chi \\ \eta
+    \end{pmatrix}
+    e^{-i E t}
+.\end{align}
+For this limit, we separate the small kinetic energy $T$ and rest energy $m$ of our particle by writing $E = m + T$.
+Putting all of this into the equation for $\Phi$ above, we find
+\begin{align}
+    T \chi &= \Big( \frac{(\vb*{p} - \vb*{V})^2}{2m} + V^{0} \Big) \chi + \frac{(\vb*{p} - \vb*{V})^2}{2m} \eta \\
+    (2 m + T) \eta &= -\frac{(\vb*{p} - \vb*{V})^2}{2m} \chi - \Big( \frac{(\vb*{p} - \vb*{V})^2}{2m} - V^{0} \Big) \eta
+.\end{align}
+From the second of these equations, we can write
+\begin{align}
+    \eta = - \Bigg\{ 1 + \frac{T - V^{0}}{2m} + \frac{(\vb*{p} - \vb*{V})^2}{4m^2}  \Bigg\}^{-1} \frac{(\vb*{p} - \vb*{V})^2}{4m^2} \chi = \Bigg\{ -\frac{(\vb*{p} - \vb*{V})^2}{4 m^2} + \mathcal{O}(m^{-3}) \Bigg\} \chi
+,\end{align}
+which tells us that the lower component of our column vector $\eta$ is suppressed by two powers of $m$ relative to $\chi$.
+Taking only the first term in the above expansion and substituting into the equation for $\chi$, we find
+\begin{align}
+    \eqbox{T \chi = \Bigg\{ \frac{(\vb*{p} - \vb*{V})^2}{2m} + V^{0} - \frac{(\vb*{p} - \vb*{V})^2}{8m^3} + \mathcal{O}(m^{-4}) \Bigg\} \chi }
+.\end{align}
+Here we have it: the time-independent Schr\"{o}dinger equation (or rather the energy eigenvalue equation).
+We can see our usual kinetic and energy operators for the first two terms on the right-hand-side, and in addition, we have the first relativistic fine-structure correction for a spin-0 particle's energy.
+
+
+\section{Non-relativistic limit of the Dirac equation}
+\label{sec:nr-limit-of-the-kg-equation}
+
+
+
+
+\section{Conclusion}
+
+
+
+
+    
+\end{document}
