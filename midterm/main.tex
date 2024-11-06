@@ -23,16 +23,20 @@ This is typically done through the minimal substitution
     p^{\mu} \rightarrow p^{\mu} - V^{\mu}
 ,\end{align}
 where $p^{\mu} = - i \partial^{\mu}$ is the 4-momentum operator.
-In the sections below, we will introduce such a substitution for both equations of interest, demonstrate how to take their non-relativistic limits, and discuss some results and observations of interest.
+
+In the sections below, we will first demonstrate how the free Klein-Gordon and Dirac equations reduce to the Schr\"{o}dinger equation.
+Next, we will introduce a substitution for both equations of interest and demonstrate how to take their non-relativistic limits in order to obtain the nonrelativistic energy eigenvalue equation.
+Finally, we will discuss some results and observations of interest.
 
 
+\section{Reduction of free Klein-Gordon and Dirac equations to the Schr\"{o}dinger equation}
+\label{sec:reduction-of-free-KG-and-dirac-eq-to-the-SE}
 
-\section{Non-relativistic limit of the Klein Gordon equation}
-\label{sec:nr-limit-of-the-kg-equation}
 
 \subsection{Wave-function ansatz}
 
-Before introducing any potential, let us recall the free solution for the wave-function
+Before introducing any potential or interaction terms to our equation of motion, let us first analyze the case of free particles.
+recall the free solution for the wave-function
 \begin{align}
     \psi(\vb*{x},t) = \int \frac{\dd[3]{\vb*{k}}}{(2 \pi)^3} \Big[ a(\vb*{k}) e^{-i E_{\vb*{k}} t} + b(\vb*{k}) e^{i E_{\vb*{k}} t} \Big] e^{i \vb*{k} \cdot \vb*{x}}
 ,\end{align}
@@ -47,7 +51,67 @@ Hence, we can perform an expansion in the time-dependent exponential (as in the 
 \begin{align}
     \psi(\vb*{x},t) = e^{-i m t} \int \frac{\dd[3]{\vb*{k}}}{(2 \pi)^3} a(\vb*{k}) e^{-i \frac{\vb*{k}^2 t}{2m} + \mathcal{O}(\vb*{k}^{4}/m^3)} e^{i \vb*{k} \cdot \vb*{x}} = \phi(\vb*{x},t) e^{-i m t}
 .\end{align}
-This is the ansatz we will use for our wave-function in this and the next section, but the motivation is clearly illustrated here, which is that the exponential factor extracted explicitly above has a much larger time derivative than $\dot{\phi}$.
+This is the ansatz we will use for our wave-function in this and the next section, but the motivation is clearly illustrated here, which is that the exponential factor extracted explicitly above has a much larger time derivative than $\dot{\phi}$, suppressed by a factor of $1/m$:
+\begin{align}
+    \dot{\phi} &= -\frac{i}{2m} \int \frac{\dd[3]{\vb*{k}}}{(2 \pi)^3} a(\vb*{k}) \vb*{k}^2 e^{-i \frac{\vb*{k}^2 t}{2m} + \mathcal{O}(\vb*{k}^{4}/m^3)} e^{i \vb*{k} \cdot \vb*{x}}
+.\end{align}
+
+
+\subsection{Taking the free non-relativistic limits}
+
+Starting with the Klein Gordon equation, we have
+\begin{align}
+    \Big( \pdv[2]{t} - \grad^2 + m^2 \Big) \phi e^{-i m t} = \Bigg( \ddot{\phi} - 2 i m \dot{\phi} - m^2 \phi - \grad^2 \phi + m^2 \phi \Bigg) e^{- i m t} = 0
+.\end{align}
+At this point, we keep only the leading order terms in $m$, yielding
+\begin{align}
+    \eqbox{ i \dot{\phi} = -\frac{1}{2 m} \grad^2 \phi }
+\end{align}
+as desired.
+
+Next, we analyze the Dirac equation.
+It can be shown in a similar way as above that the spinor wave-function $\psi(\vb*{x},t) = \phi(\vb*{x},t) e^{-i m t}$ if we neglect the negative energy contribution.
+Putting this into the Dirac equations, we obtain
+\begin{align}
+    \Big( i \gamma^{0} \pdv{t} + i \gamma^{i} \partial_{i} - m \Big) \phi e^{-i m t} = \Big( i \gamma^{0} \dot{\phi} + i \gamma^{i} \partial_{i} \phi + m [ \gamma^{0} - 1] \phi \Big) e^{-i m t} = 0
+.\end{align}
+At this point, we write separate the upper and lower two component pieces of the 4-component spinor $\phi$ by defining
+\begin{align}
+    \phi = \begin{pmatrix}
+        \chi \\ \eta
+    \end{pmatrix}
+.\end{align}
+Additionally, recall the Dirac representation of the $\gamma$-matrices:
+\begin{align}
+    \gamma^{0} = 
+    \begin{pmatrix}
+        1 & 0 \\
+        0 & -1
+    \end{pmatrix},
+    \gamma^{i} = 
+    \begin{pmatrix}
+        0 & \sigma^{i} \\
+        -\sigma^{i} & 0
+    \end{pmatrix}
+.\end{align}
+In terms of the two-component spinors, we have the coupled system of equations
+\begin{align}
+    i \dot{\chi} &= -i \vb*{\sigma} \cdot \grad \eta \\
+    -i \dot{\eta} &= i \vb*{\sigma} \cdot \grad \chi + 2 m \eta
+.\end{align}
+At this point, we notice that the lower 2-component spinor $\eta$ is suppressed relative to $\chi$ by a factor of $m$, so in the second equation, we neglect $\dot{\eta}$, resulting in
+\begin{align}
+    \eta = -\frac{i}{2m} \vb*{\sigma} \cdot \grad \chi
+,\end{align}
+which is then inserted into the first equation for $\chi$, yielding
+\begin{align}
+    \eqbox{ i \dot{\chi} = -i ( \vb*{\sigma} \cdot \grad ) \Big( -\frac{i}{2m} \vb*{\sigma} \cdot \grad \chi \Big) = -\frac{1}{2m} \Bigg[ \grad \cdot \grad \chi + i \vb*{\sigma} \cdot ( \grad \cross \grad \chi ) \Bigg] = -\frac{1}{2m} \grad^2 \chi }
+.\end{align}
+
+
+
+\section{Non-relativistic limit of the Klein Gordon equation}
+\label{sec:nr-limit-of-the-kg-equation}
 
 
 \subsection{Two-component representation of the Klein-Gordon equation}
@@ -140,15 +204,94 @@ Taking only the first term in the above expansion and substituting into the equa
 Here we have it: the time-independent Schr\"{o}dinger equation (or rather the energy eigenvalue equation).
 We can see our usual kinetic and energy operators for the first two terms on the right-hand-side, and in addition, we have the first relativistic fine-structure correction for a spin-0 particle's energy.
 
+As a further comment, we can expand the first term which has canonical momentum with the mechanical momentum shifted by the vector potential.
+In most cases, such a setup is relevant for electromagnetism where $\vb*{V} = -e \vb*{A}$.
+In this case,
+\begin{align}
+    \frac{1}{2m} (\vb*{p} - e \vb*{A})^2 = \frac{1}{2m} \Big( \vb*{p}^2 - e \vb*{p} \cdot \vb*{A} - e \vb*{A} \cdot \vb*{p} + e^2 \vb*{A}^2 \Big)
+.\end{align}
+Of course, the first term just corresponds to the mechanical kinetic energy, but the second term is novel (in a sense that in NR QM, we just put it in by hand) and corresponds to the Zeeman effect.
+Over an atomic region, if we suppose a constant magnetic field $\vb*{B}$, then $\vb*{A} = -(\vb*{x} \cross \vb*{B})/2$, and
+\begin{align}
+    -\frac{e}{2m} ( \vb*{p} \cdot \vb*{A} + \vb*{A} \cdot \vb*{p} ) &= -\frac{e}{2m} ( p_{i} A_{i} + A_{i} p_{i} ) = -\frac{e}{4m} \epsilon_{ijk} ( p_{i} x_{j} B_{k} + x_{j} B_{k} p_{i} ) \nonumber \\
+                                                                    &= -\frac{e}{4m} \epsilon_{ijk} ( \underbrace{ [p_{i},x_{j}] }_{i \delta_{ij}} B_{k} + x_{j} p_{i} B_{k} + x_{j} B_{k} p_{i} ) \nonumber \\
+                                                                    &= -\frac{e}{2m} B_{k} \underbrace{ \epsilon_{kij} x_{j} p_{i} }_{\vb*{x} \cross \vb*{p}} = \eqbox{ -\frac{e}{2m} \vb*{B} \cdot \vb*{L} }
+.\end{align}
+
 
 \section{Non-relativistic limit of the Dirac equation}
 \label{sec:nr-limit-of-the-kg-equation}
 
+As we did in the KG case, before taking any limits, we make the minimal substitution in the Dirac equation to include a potential term:
+\begin{gather}
+    \Big( i \pdv{t} - V^{0} \Big) \psi = \Big( \vb*{\alpha} \cdot ( \vb*{p} - \vb*{V} ) + m \beta \Big) \psi \nonumber \\
+    i \pdv{\psi}{t} = \Big( \vb*{\alpha} \cdot ( \vb*{p} - \vb*{V} ) + V_0 + m \beta \Big) \psi
+.\end{gather}
+Note that we use the original form of the linearized Hamiltonian, where
+\begin{align}
+    \vb*{\alpha} = \begin{pmatrix}
+        0 & \vb*{\sigma} \\
+        \vb*{\sigma} & 0
+    \end{pmatrix}
+    ,
+    \beta = \begin{pmatrix}
+        1 & 0 \\
+        0 & -1
+    \end{pmatrix}
+.\end{align}
+Let us now suppose our ansatz
+\begin{align}
+    \psi = 
+    \begin{pmatrix}
+        \chi \\ \eta
+    \end{pmatrix}
+    e^{-i E t}
+,\end{align}
+where $E = T + m$, where $T \ll m$.
+If we plug this into the Dirac equation above, we have
+\begin{align}
+    T \chi &= V^{0} \chi + \vb*{\sigma} \cdot (\vb*{p} - \vb*{V}) \eta \\
+    (2m + T) \eta &= V^{0} \eta + \vb*{\sigma} \cdot ( \vb*{p} - \vb*{V} ) \chi
+.\end{align}
+We could naively proceed by solving the second equation for $\eta$ and substituting for $\chi$ as in the Klein-Gordon case, yielding
+\begin{align}
+    \eta = \frac{1}{2m} \Bigg\{ 1 + \frac{T - V^{0}}{2m} \Bigg\}^{-1} \vb*{\sigma} \cdot (\vb*{p} - \vb*{V}) \chi
+\end{align}
+and
+\begin{align}
+    T \chi &= V^{0} \chi + \vb*{\sigma} \cdot (\vb*{p} - \vb*{V}) \frac{1}{2m} \Bigg\{ 1 + \frac{T - V^{0}}{2m} \Bigg\}^{-1} \vb*{\sigma} \cdot (\vb*{p} - \vb*{V}) \chi \nonumber \\
+           &= V^{0} \chi + \frac{1}{2m} \vb*{\sigma} \cdot (\vb*{p} - \vb*{V}) \Bigg\{ 1 - \frac{T - V^{0}}{2m} + \mathcal{O}(m^{-2}) \Bigg\} \vb*{\sigma} \cdot (\vb*{p} - \vb*{V}) \chi \nonumber \\
+           &= \frac{[\vb*{\sigma} \cdot (\vb*{p} - \vb*{V})] [\vb*{\sigma} \cdot (\vb*{p} - \vb*{V})]}{2m} \chi + V^{0} \chi - \frac{1}{4 m^2} [ \vb*{\sigma} \cdot (\vb*{p} - \vb*{V}) ] (T - V^{0}) [ \vb*{\sigma} \cdot (\vb*{p} - \vb*{V}) ] \chi + \mathcal{O}(m^{-3}) \nonumber \\
+           &= \frac{(\vb*{p} - \vb*{V})^2}{2m} \chi + V^{0} \chi + \frac{i}{2m} \vb*{\sigma} \cdot (\vb*{p} - \vb*{V}) \cross (\vb*{p} - \vb*{V}) + \mathcal{O}(m^{-2}) \nonumber \\
+           &= \frac{(\vb*{p} - \vb*{V})^2}{2m} \chi + V^{0} \chi - \frac{e}{2m} \vb*{\sigma} \cdot \vb*{B} + \mathcal{O}(m^{-2}) \nonumber \\
+           &= \eqbox{ \frac{(\vb*{p} - \vb*{V})^2}{2m} \chi + V^{0} \chi - \frac{g e}{2m} \vb*{S} \cdot \vb*{B} + \mathcal{O}(m^{-2}) }
+.\end{align}
+Here we have derived that $g = 2$!
+The effect of coupling our particle's magnetic moment to a magnetic field is of the same order as the kinetic and potential energy terms.
+The other higher order corrections such as the fine structure, spin-orbit coupling, and Darwin-Foldy terms as one usually sees in the perturbation theory sections of a quantum mechanics textbook can indeed be derived from the Dirac equation, but doing so requires a longer, more delicate treatment than we can provide here, given that $T$ appears on the right-hand-side of the equation.
+We can however sketch the main idea of the Foldy-Wouthuysen transformation, which is the systematic method used to generate these corrections.
+Observe that we can transform our spinor via the unitary transformation
+\begin{align}
+    \psi' = e^{i S} \psi
+,\end{align}
+so the Dirac equation becomes
+\begin{align}
+    i \pdv{\psi'}{t} = e^{i S} \Big( H - i \pdv{t} \Big) e^{-i S} \psi'
+.\end{align}
+A typical choice is 
+\begin{align}
+    S = \vb*{\gamma} \cdot \vu*{p} \, \theta
+,\end{align}
+where $\theta$ is a free paramter chosen so that the off-diagonal elements of our new Hamiltonian are small relative to the diagonal ones.
+One can then expand everything as usual in powers of $m$ and keep only those up to a desired accuracy and discard the rest.
+Again, the detailed analysis is quite cumbersome and time-consuming, so this is where we leave the Foldy-Wouthuysen transformation for the time being.
 
 
 
 \section{Conclusion}
 
+In this set of notes, we have shown how the relativistic descriptions of spin-0 and spin-1/2 systems via the Klein-Gordon and Dirac equations reduces to a Schr\"{o}dinger equation description in the non-relativistic limit.
+Additionally, we have shown how the fine structure correction for a spin-0 system appears as a natural correction from the KG equation as well as the magnetic coupling of a spin-1/2 system to an external magnetic field, giving rise to the prediction of $g = 2$ for an electron.
 
 
 
