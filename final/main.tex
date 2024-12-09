@@ -1,9 +1,58 @@
 \include{../preamble.tex}
-\def\HWnum{\textbf{HW \#}}
-\def\duedate{\textbf{DUE DATE}}
+\def\HWnum{Final}
+\def\duedate{December 13, 2024}
+
+\usepackage{slashed}
 
 \begin{document}
 
-Text goes here.
+\prob{1}{
+
+Consider the classical Lagrangian densities for the following relativistic quantum field theories,
+\begin{align}
+\label{eq:LY}
+    \mathcal{L}_{Y} &= \frac{i}{2} \bar{\psi} \overleftrightarrow{\partial} \psi - M \bar{\psi} \psi + \frac{1}{2} (\partial \phi)^2 - \frac{1}{2} m_{s}^2 \phi^2 - g \bar{\psi} \psi \phi - \frac{\lambda_{1}}{3!} \phi^3 - \frac{\lambda_2}{4!} \phi^{4} \\
+\label{eq:LV}
+    \mathcal{L}_{V} &= \frac{i}{2} \bar{\psi} \overleftrightarrow{\partial} \psi - M \bar{\psi} \psi - \frac{1}{4} F^{\mu\nu} F_{\mu\nu} + \frac{m_{V}^2}{2} A^{\mu} A_{\mu} - g \bar{\psi} \slashed{A} \psi
+.\end{align}
+We could envision each of these being proposed as moels of the interactions between spinor ``nucleons'' of mass $M$ represented by the Fermi field $\psi$.
+In the first case, the interaction is then mediated by a scalar ``pion'' field $\phi$ with mass $m_{s}$, and in the second it is mediated by a vector field $A^{\mu}$ with mass $m_{V}$.
+As usual, the field strength tensor $F^{\mu\nu} = \partial^{\mu} A^{\nu} - \partial^{\nu} A^{\mu}$.
+(Note that to be realistic we should really have \underline{pseudo}scalar and vector interactions.)
+In the second theory, we would get the Maxwell field if we set $m_{V} = 0$.
+
+\begin{parts}
+
+\item Use the fast mnemonic that we developed in class for translating a classical Lagrangian density into QFT Feynman rules to write down all the Feynman rules for the two theories above.
+    Make a comment about where each factor of ``$i$'' comes from.
+    Use straight lines for $\psi$, dashed lines for $\phi$, and wavy lines for $A^{\mu}$.
+
+\item Draw a two-loop diagram for the vector field case.
+    Draw an example of a diagram that would give problems if you have not worried about the ``reduction'' of external leg states.
+
+\item What happens if we then place $m_{V} = 0$ in the vector field?
+    A standard way to deal with the problem is to replace $\frac{m_{V}^2}{2} A_{\mu} A^{\mu} \rightarrow -\frac{1}{2 \xi} (\partial_{\mu} A^{\mu})^2$.
+    This effectively uses the Lagrange multiplier technique to fix the Lorenz gauge condition $\partial_{\mu} A^{\mu} = 0$.
+    What are the Feynman rules if I make this replacement?
+    What if I further specify the gauge by fixing $\xi = 1$, where $\xi$ is a real constant that will be chosen later?
+
+\item Using Eq. (\ref{eq:LY}), draw all the Feynman diagrams that would contribute to the $2 \rightarrow 2$ cross section, $\psi \bar{\psi} \rightarrow \psi \bar{\psi}$ \underline{through} order $g^2$ and $g^2 \lambda_1^2$.
+
+\item Still using Eq. (\ref{eq:LY}), consider the cross section for the $2 \rightarrow 2$ scattering process $\psi \psi \rightarrow \psi \psi$.
+    Start with the general cross section expression derived in class,
+    \begin{align}
+        \dd{\sigma} = \frac{|M|^2}{2 \sqrt{\lambda(s,m_{A}^2,m_{B}^2)}} \frac{\dd[3]{\vb*{p}_{1}}}{(2 \pi)^3 2 E_{1}} \ldots \frac{\dd[3]{\vb*{p}_{N}}}{(2 \pi)^3 2 E_{N}} (2 \pi)^{4} \delta\Big( k_{A} + k_{B} - \sum_{i=1}^{N} p_{i} \Big)
+    ,\end{align}
+    with
+    \begin{align}
+        \lambda(s,m_{A}^2,m_{B}^2) = s^2 + m_{A}^{4} + m_{B}^{4} - 2 s m_{A}^2 - 2 s m_{B}^2 - 2 m_{A}^2 m_{B}^2
+    ,\end{align}
+    and derive the order $g^2$ expression for the unpolarized differential cross section $\dv*{\sigma}{\Omega}|_{\rm CM}$ in the center-of-mass system.
+    Since it is an unpolarized cross section, you should sum over the final and average over initial nucleon spins.
+    Let $p_{A}$ and $p_{B}$ label the initial four-momenta and $p_{C}$ and $p_{D}$ label the final four-momenta and express your result in terms of Mandelstam variables.
+    
+\end{parts}
+
+}
     
 \end{document}
