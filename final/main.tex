@@ -98,6 +98,7 @@ Because our tensor structures are linearly independent, we have the following eq
 \end{align}
 Hence,
 \begin{align}
+\label{eq:A-B-proca-prop}
     A &= -\frac{1}{p^2 - m_{V}^2} \\
     B &= \frac{1}{m_{V}^2( p^2 - m_{V}^2 )}
 ,\end{align}
@@ -106,10 +107,12 @@ and the propagator for a Proca particle is
     {\rm Prop}_{\mu\nu} = \frac{-i ( g_{\mu\nu} - p_{\mu} p_{\nu} / m_{V}^2 )}{p^2 - m_{V}^2 + i \epsilon}
 .\end{align}
 
-Summarizing, the Feynman rules for the Yukawa theory are as follows:
-\begin{table}
+The Feynman rules for the Yukawa and vector theories specified by Eqs. (\ref{eq:LY}) and (\ref{eq:LV}) are given in Tables \ref{tab:Feynman-rules-Y} and \ref{tab:Feynman-rules-V}, respectively.
+
+\begin{table}[h!tb]
 \centering
-\begin{tabular}{c|c|c}
+    \begin{tabular}{|c|c|c|}
+    \hline
     Type & Diagram & Expression \\
     \hline
     Propagator & \includegraphics[width=0.2\linewidth]{KG_prop.jpeg} & $\frac{i}{p^2 - m^2 + i \epsilon}$ \\
@@ -120,9 +123,87 @@ Summarizing, the Feynman rules for the Yukawa theory are as follows:
     \hline
     Vertex & \includegraphics[width=0.2\linewidth]{Y_int2.jpeg} & $- i \lambda_1$ \\
     \hline
-    Vertex & \includegraphics[width=0.2\linewidth]{Y_int3.jpeg} & $- i \lambda_2$
+    Vertex & \includegraphics[width=0.2\linewidth]{Y_int3.jpeg} & $- i \lambda_2$ \\
+    \hline
 \end{tabular}
+\caption{Fundamental components for the Feynman diagrams contributing to amplitudes in the Yukawa theory and their corresponding momentum space expressions.}
+\label{tab:Feynman-rules-Y}
 \end{table}
+
+
+\begin{table}[h!tb]
+\centering
+\begin{tabular}{|c|c|c|}
+    \hline
+    Type & Diagram & Expression \\
+    \hline
+    Propagator & \includegraphics[width=0.2\linewidth]{D_prop.jpeg} & $\frac{i( \slashed{p} + M )}{p^2 - M^2 + i \epsilon}$ \\
+    \hline
+    Propagator & \includegraphics[width=0.2\linewidth]{P_prop.jpeg} & $\frac{-i ( g_{\mu\nu} - p_{\mu} p_{\nu} / m_{V}^2 )}{p^2 - m_{V}^2 + i \epsilon}$ \\
+    \hline
+    Vertex & \includegraphics[width=0.2\linewidth]{V_int.jpeg} & $- i g \gamma^{\mu}$ \\
+    \hline
+\end{tabular}
+\caption{Fundamental components for the Feynman diagrams contributing to amplitudes in the vector theory and their corresponding momentum space expressions.}
+\label{tab:Feynman-rules-V}
+\end{table}
+
+
+(b) The diagrams for this part are shown below.
+On the left, we have a scattering process where the vector particle produces a particle-antiparticle pair, and on the right, we have simply the self-energy diagram for the particle in the vector theory.
+
+\begin{center}
+    %\includegraphics[width=\linewidth]{part_b.jpeg}
+\end{center}
+
+(c) If we place $m_{V} = 0$ in the original vector Lagrangian, then our equations for $A$ and $B$ given in Eq. (\ref{eq:A-B-proca-prop}) leave $B$ unconstrained.
+If we introduce the term $(\partial_{\mu} A^{\mu})^2 / 2 \xi$ with $\xi$ as our Lagrange multiplier, then we have instead
+\begin{align}
+    D = - p^2 g_{\mu\nu} + \Big( 1 - \frac{1}{\xi} \Big) p_{\mu} p_{\nu}
+,\end{align}
+which gives us the equations
+\begin{align}
+\begin{cases}
+    - A p^2 = 1 \\
+    - B p^2 + A \Big( 1 - \frac{1}{\xi} \Big) + B \Big( 1 - \frac{1}{\xi} \Big) p^2 = 0
+\end{cases}
+,\end{align}
+which yields the propagator
+\begin{align}
+    {\rm Prop}_{\mu\nu} = \frac{-i [ g_{\mu\nu} - (1 - \xi) p_{\mu} p_{\nu} / p^2 ]}{p^2 + i \epsilon}
+.\end{align}
+A typical choice for the undetermined Lagrange multiplier is $\xi = 1$, which corresponds to Feynman gauge.
+
+
+(d) The leading order diagrams contributing to the $\psi \psi \rightarrow \psi \psi$ scattering amplitude are shown below.
+
+\begin{center}
+    %\includegraphics[width=\linewidth]{psi-psi.jpeg}
+\end{center}
+
+Translating using the Feynman rules, we have $\mathcal{M} = \mathcal{M}_{t} + \mathcal{M}_{u}$, where
+\begin{align}
+    i \mathcal{M}_{t} &= \big[ \bar{u}_{s_1}(p_1) (-i g) u_{s_{A}}(k_{A}) \Big] \frac{i}{(p_1 - k_{A})^2 - m_{s}^2 + i \epsilon} \big[ \bar{u}_{s_2}(p_2) (-i g) u_{s_{B}}(k_{B}) \big] \nonumber \\
+    &= -\frac{i g^2}{t^2 - m_{s}^2} \bar{u}_{s_1}(p_1) u_{s_{A}}(k_{A}) \bar{u}_{s_2}(p_2) u_{s_{B}}(k_{B}) \\
+%
+    i \mathcal{M}_{u} &= \big[ \bar{u}_{s_2}(p_2) (-i g) u_{s_{A}}(k_{A}) \Big] \frac{i}{(p_2 - k_{A})^2 - m_{s}^2 + i \epsilon} \big[ \bar{u}_{s_1}(p_1) (-i g) u_{s_{B}}(k_{B}) \big] \nonumber \\
+    &= -\frac{i g^2}{u^2 - m_{s}^2} \bar{u}_{s_2}(p_2) u_{s_{A}}(k_{A}) \bar{u}_{s_1}(p_1) u_{s_{B}}(k_{B})
+.\end{align}
+The squared amplitude is then
+\begin{align}
+    |\mathcal{M}|^2 &= |\mathcal{M}_{t}|^2 + |\mathcal{M}_{u}|^2 + 2 \Re{ \mathcal{M}_{t}^{*} \mathcal{M}_{u} }
+.\end{align}
+Analyzing each term separately, we find
+\begin{align}
+    |\mathcal{M}_{t}|^2 &= \frac{g^{4}}{(t^2 - m_{s}^2)^2} \bar{u}_{s_{B}}(k_{B}) u_{s_2}(p_2) \bar{u}_{s_{A}}(k_{A}) u_{s_1}(p_1) \bar{u}_{s_1}(p_1) u_{s_{A}}(k_{A}) \bar{u}_{s_2}(p_2) u_{s_{B}}(k_{B}) \nonumber \\
+    &\rightarrow \frac{g^{4}}{(t^2 - m_{s}^2)^2} \Tr[ (\slashed{p}_{1} + M) (\slashed{k}_{A} + M) ] \Tr[ (\slashed{k}_{B} + M) (\slashed{p}_{2} + M) ] \nonumber \\
+    &= \frac{16 g^{4} ( p_1 \cdot k_{A} + M^2 ) ( p_2 \cdot k_{B} + M^2 )}{(t^2 - m_{s}^2)^2} \\
+%
+    |\mathcal{M}_{u}|^2 &\rightarrow \frac{16 g^{4} ( p_2 \cdot k_{A} + M^2 ) ( p_1 \cdot k_{B} + M^2 )}{(u^2 - m_{s}^2)^2} \\
+%
+    \mathcal{M}_{t}^{*} \mathcal{M}_{u} &= \frac{g^{4}}{(t^2 - m_{s}^2) (u^2 - m_{s}^2)} \bar{u}_{s_{B}}(k_{B}) u_{s_1}(p_1) \bar{u}_{s_{A}}(k_{A}) u_{s_2}(p_2) \bar{u}_{s_1}(p_1) u_{s_{A}}(k_{A}) \bar{u}_{s_2}(p_2) u_{s_{B}}(k_{B}) \nonumber \\
+    &\rightarrow \frac{g^{4}}{(t^2 - m_{s}^2)(u^2 - m_{s}^2)} \Tr[ ( \slashed{k}_{B} + M ) ( \slashed{p}_{1} + M ) ( \slashed{k}_{A} + M ) ( \slashed{p}_{2} + M ) ]
+.\end{align}
 
 
 }
