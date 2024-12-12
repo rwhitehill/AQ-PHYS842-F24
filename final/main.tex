@@ -119,6 +119,14 @@ The Feynman rules for the Yukawa and vector theories specified by Eqs. (\ref{eq:
     \hline
     Propagator & \includegraphics[width=0.2\linewidth]{D_prop.jpeg} & $\frac{i( \slashed{p} + M )}{p^2 - M^2 + i \epsilon}$ \\
     \hline
+    Incoming line & \includegraphics[width=0.2\linewidth]{D-part-inc.jpeg} & $u_{s}(p)$ \\
+    \hline
+    Incoming line & \includegraphics[width=0.2\linewidth]{D-apart-inc.jpeg} & $v_{s}(p)$ \\
+    \hline
+    Outgoing line & \includegraphics[width=0.2\linewidth]{D-part-out.jpeg} & $\bar{u}_{s}(p)$ \\
+    \hline
+    Outgoing line & \includegraphics[width=0.2\linewidth]{D-apart-out.jpeg} & $\bar{u}_{s}(p)$ \\
+    \hline
     Vertex & \includegraphics[width=0.2\linewidth]{Y_int1.jpeg} & $- i g$ \\
     \hline
     Vertex & \includegraphics[width=0.2\linewidth]{Y_int2.jpeg} & $- i \lambda_1$ \\
@@ -141,7 +149,15 @@ The Feynman rules for the Yukawa and vector theories specified by Eqs. (\ref{eq:
     \hline
     Propagator & \includegraphics[width=0.2\linewidth]{P_prop.jpeg} & $\frac{-i ( g_{\mu\nu} - p_{\mu} p_{\nu} / m_{V}^2 )}{p^2 - m_{V}^2 + i \epsilon}$ \\
     \hline
-    Vertex & \includegraphics[width=0.2\linewidth]{V_int.jpeg} & $- i g \gamma^{\mu}$ \\
+    Incoming line & \includegraphics[width=0.2\linewidth]{D-part-inc.jpeg} & $u_{s}(p)$ \\
+    \hline
+    Incoming line & \includegraphics[width=0.2\linewidth]{D-apart-inc.jpeg} & $v_{s}(p)$ \\
+    \hline
+    Outgoing line & \includegraphics[width=0.2\linewidth]{D-part-out.jpeg} & $\bar{u}_{s}(p)$ \\
+    \hline
+    Outgoing line & \includegraphics[width=0.2\linewidth]{D-apart-out.jpeg} & $\bar{u}_{s}(p)$ \\
+    \hline
+    Vertex & \includegraphics[width=0.2\linewidth]{V_int.jpeg} & $-i g \gamma^{\mu}$ \\
     \hline
 \end{tabular}
 \caption{Fundamental components for the Feynman diagrams contributing to amplitudes in the vector theory and their corresponding momentum space expressions.}
@@ -153,11 +169,11 @@ The Feynman rules for the Yukawa and vector theories specified by Eqs. (\ref{eq:
 On the left, we have a scattering process where the vector particle produces a particle-antiparticle pair, and on the right, we have simply the self-energy diagram for the particle in the vector theory.
 
 \begin{center}
-    %\includegraphics[width=\linewidth]{part_b.jpeg}
+    \includegraphics[width=\linewidth]{part_b.jpeg}
 \end{center}
 
 (c) If we place $m_{V} = 0$ in the original vector Lagrangian, then our equations for $A$ and $B$ given in Eq. (\ref{eq:A-B-proca-prop}) leave $B$ unconstrained.
-If we introduce the term $(\partial_{\mu} A^{\mu})^2 / 2 \xi$ with $\xi$ as our Lagrange multiplier, then we have instead
+If we introduce the term $-\frac{1}{2 \xi} (\partial_{\mu} A^{\mu})^2$ with $\xi$ as our Lagrange multiplier, then we have instead
 \begin{align}
     D = - p^2 g_{\mu\nu} + \Big( 1 - \frac{1}{\xi} \Big) p_{\mu} p_{\nu}
 ,\end{align}
@@ -166,8 +182,8 @@ which gives us the equations
 \begin{cases}
     - A p^2 = 1 \\
     - B p^2 + A \Big( 1 - \frac{1}{\xi} \Big) + B \Big( 1 - \frac{1}{\xi} \Big) p^2 = 0
-\end{cases}
-,\end{align}
+,\end{cases}
+\end{align}
 which yields the propagator
 \begin{align}
     {\rm Prop}_{\mu\nu} = \frac{-i [ g_{\mu\nu} - (1 - \xi) p_{\mu} p_{\nu} / p^2 ]}{p^2 + i \epsilon}
@@ -175,19 +191,28 @@ which yields the propagator
 A typical choice for the undetermined Lagrange multiplier is $\xi = 1$, which corresponds to Feynman gauge.
 
 
-(d) The leading order diagrams contributing to the $\psi \psi \rightarrow \psi \psi$ scattering amplitude are shown below.
+(d) The diagrams for this part are shown below.
+On the left, we have the $s$-channel where the two annihilate, produce a virtual $\phi$, which subsequently produces another $\psi \bar{\psi}$ pair.
+On the right, we include a scalar loop on the virtual exchange line.
 
 \begin{center}
-    %\includegraphics[width=\linewidth]{psi-psi.jpeg}
+    \includegraphics[width=\linewidth]{part_d.jpeg}
+\end{center}
+
+
+(e) The leading order diagrams contributing to the $\psi \psi \rightarrow \psi \psi$ scattering amplitude are shown below.
+
+\begin{center}
+    \includegraphics[width=0.6\linewidth]{part_e.jpeg}
 \end{center}
 
 Translating using the Feynman rules, we have $\mathcal{M} = \mathcal{M}_{t} + \mathcal{M}_{u}$, where
 \begin{align}
     i \mathcal{M}_{t} &= \big[ \bar{u}_{s_1}(p_1) (-i g) u_{s_{A}}(k_{A}) \Big] \frac{i}{(p_1 - k_{A})^2 - m_{s}^2 + i \epsilon} \big[ \bar{u}_{s_2}(p_2) (-i g) u_{s_{B}}(k_{B}) \big] \nonumber \\
-    &= -\frac{i g^2}{t^2 - m_{s}^2} \bar{u}_{s_1}(p_1) u_{s_{A}}(k_{A}) \bar{u}_{s_2}(p_2) u_{s_{B}}(k_{B}) \\
+    &= -\frac{i g^2}{t - m_{s}^2} \bar{u}_{s_1}(p_1) u_{s_{A}}(k_{A}) \bar{u}_{s_2}(p_2) u_{s_{B}}(k_{B}) \\
 %
     i \mathcal{M}_{u} &= \big[ \bar{u}_{s_2}(p_2) (-i g) u_{s_{A}}(k_{A}) \Big] \frac{i}{(p_2 - k_{A})^2 - m_{s}^2 + i \epsilon} \big[ \bar{u}_{s_1}(p_1) (-i g) u_{s_{B}}(k_{B}) \big] \nonumber \\
-    &= -\frac{i g^2}{u^2 - m_{s}^2} \bar{u}_{s_2}(p_2) u_{s_{A}}(k_{A}) \bar{u}_{s_1}(p_1) u_{s_{B}}(k_{B})
+    &= -\frac{i g^2}{u - m_{s}^2} \bar{u}_{s_2}(p_2) u_{s_{A}}(k_{A}) \bar{u}_{s_1}(p_1) u_{s_{B}}(k_{B})
 .\end{align}
 The squared amplitude is then
 \begin{align}
@@ -195,15 +220,66 @@ The squared amplitude is then
 .\end{align}
 Analyzing each term separately, we find
 \begin{align}
-    |\mathcal{M}_{t}|^2 &= \frac{g^{4}}{(t^2 - m_{s}^2)^2} \bar{u}_{s_{B}}(k_{B}) u_{s_2}(p_2) \bar{u}_{s_{A}}(k_{A}) u_{s_1}(p_1) \bar{u}_{s_1}(p_1) u_{s_{A}}(k_{A}) \bar{u}_{s_2}(p_2) u_{s_{B}}(k_{B}) \nonumber \\
-    &\rightarrow \frac{g^{4}}{(t^2 - m_{s}^2)^2} \Tr[ (\slashed{p}_{1} + M) (\slashed{k}_{A} + M) ] \Tr[ (\slashed{k}_{B} + M) (\slashed{p}_{2} + M) ] \nonumber \\
-    &= \frac{16 g^{4} ( p_1 \cdot k_{A} + M^2 ) ( p_2 \cdot k_{B} + M^2 )}{(t^2 - m_{s}^2)^2} \\
+    |\mathcal{M}_{t}|^2 &= \frac{g^{4}}{(t - m_{s}^2)^2} \bar{u}_{s_{B}}(k_{B}) u_{s_2}(p_2) \bar{u}_{s_{A}}(k_{A}) u_{s_1}(p_1) \bar{u}_{s_1}(p_1) u_{s_{A}}(k_{A}) \bar{u}_{s_2}(p_2) u_{s_{B}}(k_{B}) \nonumber \\
+    &\rightarrow \frac{g^{4}}{4 (t - m_{s}^2)^2} \Tr[ (\slashed{p}_{1} + M) (\slashed{k}_{A} + M) ] \Tr[ (\slashed{k}_{B} + M) (\slashed{p}_{2} + M) ] \nonumber \\
+    &= \frac{16 g^{4}}{(t - m_{s}^2)^2} ( p_1 \cdot k_{A} + M^2 ) ( p_2 \cdot k_{B} + M^2 ) \\
 %
-    |\mathcal{M}_{u}|^2 &\rightarrow \frac{16 g^{4} ( p_2 \cdot k_{A} + M^2 ) ( p_1 \cdot k_{B} + M^2 )}{(u^2 - m_{s}^2)^2} \\
+    |\mathcal{M}_{u}|^2 &\rightarrow \frac{4 g^{4}}{(u - m_{s}^2)^2} ( p_2 \cdot k_{A} + M^2 ) ( p_1 \cdot k_{B} + M^2 ) \\
 %
-    \mathcal{M}_{t}^{*} \mathcal{M}_{u} &= \frac{g^{4}}{(t^2 - m_{s}^2) (u^2 - m_{s}^2)} \bar{u}_{s_{B}}(k_{B}) u_{s_1}(p_1) \bar{u}_{s_{A}}(k_{A}) u_{s_2}(p_2) \bar{u}_{s_1}(p_1) u_{s_{A}}(k_{A}) \bar{u}_{s_2}(p_2) u_{s_{B}}(k_{B}) \nonumber \\
-    &\rightarrow \frac{g^{4}}{(t^2 - m_{s}^2)(u^2 - m_{s}^2)} \Tr[ ( \slashed{k}_{B} + M ) ( \slashed{p}_{1} + M ) ( \slashed{k}_{A} + M ) ( \slashed{p}_{2} + M ) ]
+    \mathcal{M}_{t}^{*} \mathcal{M}_{u} &= \frac{g^{4}}{(t - m_{s}^2) (u - m_{s}^2)} \bar{u}_{s_{B}}(k_{B}) u_{s_1}(p_1) \bar{u}_{s_{A}}(k_{A}) u_{s_2}(p_2) \bar{u}_{s_1}(p_1) u_{s_{A}}(k_{A}) \bar{u}_{s_2}(p_2) u_{s_{B}}(k_{B}) \nonumber \\
+    &\rightarrow \frac{g^{4}}{4 (t - m_{s}^2)(u - m_{s}^2)} \Tr[ ( \slashed{k}_{B} + M ) ( \slashed{p}_{1} + M ) ( \slashed{k}_{A} + M ) ( \slashed{p}_{2} + M ) ] \nonumber \\
+    &= \frac{g^{4}}{4 (t - m_{s}^2) (u - m_{s}^2)} \nonumber \\
+    &\times \Bigg\{ \Tr( \slashed{k}_{B} \slashed{p}_{1} \slashed{k}_{A} \slashed{p}_{2} ) + M^2 \Tr( \slashed{k}_{B} \slashed{p}_{1} + \slashed{k}_{B} \slashed{k}_{A} + \slashed{k}_{B} \slashed{p}_2 + \slashed{p}_{1} \slashed{k}_{A} + \slashed{p}_{1} \slashed{p}_{2} + \slashed{k}_{A} \slashed{p}_{2} ) + 4 M^{4} \Bigg\} \nonumber \\
+    &= \frac{g^{4}}{(t - m_{s}^2) (u - m_{s}^2)} \Bigg\{ ( k_{B} \cdot p_{1} ) ( k_{A} \cdot p_2 ) - ( k_{B} \cdot k_{A} ) ( p_1 \cdot p_2 ) + ( k_{B} \cdot p_2 ) ( p_1 \cdot k_{A} ) \nonumber \\
+    &+ M^2 \Big( k_{B} \cdot p_1 + k_{B} \cdot k_{A} + k_{B} \cdot p_2 + p_1 \cdot k_{A} + p_1 \cdot p_2 + k_{A} \cdot p_2 \Big) + M^{4} \Bigg\}
 .\end{align}
+We would like to translate these dot products into Mandelstam variables, which can be done by writing
+\begin{align}
+    s = (k_{A} + k_{B})^2 = 2 ( k_{A} \cdot k_{B} + M^2 ) \Rightarrow k_{A} \cdot k_{B} &= \frac{s - 2 M^2}{2} \\
+    s = (p_1 + p_2)^2 = 2 ( p_1 \cdot p_2 + M^2 ) \Rightarrow p_1 \cdot p_2 &= \frac{s - 2 M^2}{2} \\
+    t = (k_{A} - p_1)^2 = 2 (M^2 - k_{A} \cdot p_1) \Rightarrow k_{A} \cdot p_1 &= \frac{2 M^2 - t}{2} \\
+    t = (k_{B} - p_2)^2 = 2 (M^2 - 2 k_{B} \cdot p_2) \Rightarrow k_{B} \cdot p_2 &= \frac{2 M^2 - t}{2} \\
+    u = (k_{A} - p_2)^2 = 2 (M^2 - k_{A} \cdot p_2) \Rightarrow k_{A} \cdot p_2 &= \frac{2 M^2 - u}{2} \\
+    u = (k_{B} - p_1)^2 = 2 ( M^2 - k_{B} \cdot p_1 ) \Rightarrow k_{B} \cdot p_1 &= \frac{2 M^2 - u}{2}
+.\end{align}
+Thus,
+\begin{align}
+    |\mathcal{M}_{t}|^2 &= \frac{4 g^{4}}{(t - m_{s}^2)^2} \frac{(4 M^2 - t)^2}{4} = g^{4} \Bigg( \frac{t - 4 M^2}{t - m_{s}^2} \Bigg)^2 \\
+    |\mathcal{M}_{u}|^2 &= g^{4} \Bigg( \frac{u - 4 M^2}{u - m_{s}^2} \Bigg)^2 \\
+    2 \Re{\mathcal{M}_{t} \mathcal{M}_{u}} &= \frac{g^{4}}{2 (t - m_{s}^2) (u - m_{s}^2)} \Bigg\{ 16 M^{4} + 8 M^2 (s - t - u) - s^2 + t^2 + u^2 \Bigg\}
+.\end{align}
+
+Let us now look at the cross section and massage the general form of this quantity.
+First, the triangle function
+\begin{align}
+    \lambda(s,M^2,M^2) = s^2 - 4 s M^2 = s ( s - 4 M^2 )
+.\end{align}
+Thus,
+\begin{align}
+    \dd[6]{\sigma} = \frac{|\mathcal{M}|^2}{2 \sqrt{s(s - 4 M^2)}} \frac{\dd[3]{\vb*{p}_1}}{(2 \pi)^3 2 E_1} \frac{\dd[3]{\vb*{p}_{2}}}{(2 \pi)^3 2 E_2} (2 \pi)^{4} \delta^{(4)}(k_{A} + k_{B} - p_1 - p_2)
+.\end{align}
+If we integrate over $\vb*{p}_{2}$, then
+\begin{align}
+    \dd[3]{\sigma} &= \frac{\dd[3]{\vb*{p}_{1}}}{(2 \pi)^2 2 E_1} \int \frac{\dd[3]{\vb*{p}_{2}}}{2 E_2} \frac{|\mathcal{M}|^2}{2 \sqrt{s (s - 4 M^2)}} \delta^{(3)}(\vb*{k}_{A} + \vb*{k}_{B} - \vb*{p}_{1} - \vb*{p}_{2}) \delta(E_{A} + E_{B} - E_{1} - E_{2}) \nonumber \\
+                   &= \frac{\dd[3]{\vb*{p}_{1}}}{(2 \pi)^2 \sqrt{s}} \frac{|\mathcal{M}|^2}{2 \sqrt{s (s - 4 M^2)}} \delta\Big( \sqrt{s} - 2 \sqrt{\vb*{p}_{1}^2 + M^2} \Big) \nonumber \\
+                   &= \frac{|\vb*{p}_{1}|^2 \dd{|\vb*{p}_{1}| \dd{\Omega_{\rm CM}}}}{(2 \pi)^2 s} \frac{|\mathcal{M}|^2}{2 \sqrt{s (s - 4 M^2)}} \delta\Big( \sqrt{s} - 2 \sqrt{\vb*{p}_{1}^2 + M^2} \Big)
+,\end{align}
+where we have assumed that we are in the CM frame such that $\vb*{k}_{A} + \vb*{k}_{B} = 0$ and $E_{A} + E_{B} = \sqrt{s}$.
+Finally, we can integrate over $|\vb*{p}_{1}|$, using 
+\begin{align}
+    \delta\Big( \sqrt{s} - 2 \sqrt{\vb*{p}_{1}^2 + M^2} \Big) = \frac{\sqrt{s}}{4 |\vb*{p}_{1}|} \delta\Big( |\vb*{p}_{1}| - \frac{1}{2} \sqrt{s - 4 M^2} \Big)
+,\end{align}
+to find
+\begin{align}
+    \dv{\sigma}{\Omega_{\rm CM}} = \frac{|\mathcal{M}|^2}{64 \pi^2 s}
+.\end{align}
+From here, we can insert the expressions above for the squared amplitude, imposing momentum conservation, which is equivalent to imposing the relation between Mandelstam variables $s + t + u = 4 M^2$.
+Lastly, in the CM frame, we have
+\begin{align}
+    t = 2 (M^2 - k_{A} \cdot p_1) = \frac{1}{2} \Big( 4 M^2 + (s - 4 M^2) \cos{\theta} \Big)
+,\end{align}
+where $\theta$ is the angle between $\vb*{k}_{A}$ and $\vb*{p}_{1}$.
+
 
 
 }
