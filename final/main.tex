@@ -62,7 +62,7 @@ In the second theory, we would get the Maxwell field if we set $m_{V} = 0$.
     \mathcal{L}_{Y} &= \mathcal{L}_{D,\rm sym} + \mathcal{L}_{\rm KG} - g \bar{\psi} \psi \phi - \frac{\lambda_1}{3!} \phi^3 - \frac{\lambda_2}{4!} \phi^{4} \\
     \mathcal{L}_{V} &= \mathcal{L}_{D,\rm sym} + \mathcal{L}_{\rm P} - g \bar{\psi} \slashed{A} \psi
 ,\end{align}
-where $\mathcal{L}_{D,\rm sym} = \bar{\psi} (\frac{i}{2} \overleftrightarrow{\slashed{\partial}} - M ) \psi$ is the free Dirac Lagrangian for spin-1/2 spinor fields, $\mathcal{L}_{KG} = \frac{1}{2} \partial_{\mu} \phi \partial^{\mu} \phi - \frac{m_{s}^2}{2} \phi$ is the free Klein-Gordon Lagrangian for real scalar particles, and $\mathcal{L}_{P} = -\frac{1}{4} F^{\mu\nu} F_{\mu\nu} + \frac{m_{V}^2}{2} A^{\mu} A_{\mu}$ is the free Proca Lagrangian for a spin-1 vector particles.
+where $\mathcal{L}_{D,\rm sym} = \bar{\psi} (\frac{i}{2} \overleftrightarrow{\slashed{\partial}} - M ) \psi$ is the free Dirac Lagrangian for spin-1/2 spinor fields, $\mathcal{L}_{KG} = \frac{1}{2} \partial_{\mu} \phi \partial^{\mu} \phi - \frac{m_{s}^2}{2} \phi$ is the free Klein-Gordon Lagrangian for real scalar particles, and $\mathcal{L}_{P} = -\frac{1}{4} F^{\mu\nu} F_{\mu\nu} + \frac{m_{V}^2}{2} A^{\mu} A_{\mu}$ is the free Proca Lagrangian for a massive spin-1 vector particle.
 The vertices are simple enough to read from the Lagrangian since they are just the coefficients without any factor included for symmetries multiplied by $i$.
 We can determine the propagators easily enough from the mnemonic.
 For the KG scalar propagator, we list out the steps as follows:
@@ -167,6 +167,7 @@ The Feynman rules for the Yukawa and vector theories specified by Eqs. (\ref{eq:
 
 (b) The diagrams for this part are shown below.
 On the left, we have a scattering process where the vector particle produces a particle-antiparticle pair, and on the right, we have simply the self-energy diagram for the particle in the vector theory.
+For example, we could include this self energy contribution on any of the external legs in the left diagram of part (d) for $\psi \bar{\psi}$ scattering with the scalar $\phi$ replaced with the vector $A$ particle.
 
 \begin{center}
     \includegraphics[width=\linewidth]{part_b.jpeg}
@@ -273,7 +274,7 @@ to find
 \begin{align}
     \dv{\sigma}{\Omega_{\rm CM}} = \frac{|\mathcal{M}|^2}{64 \pi^2 s}
 .\end{align}
-From here, we can insert the expressions above for the squared amplitude, imposing momentum conservation, which is equivalent to imposing the relation between Mandelstam variables $s + t + u = 4 M^2$.
+From here, we can insert the expressions above for the squared amplitude, imposing momentum conservation, which is equivalent to imposing the relation between Mandelstam variable, $s + t + u = 4 M^2$.
 Lastly, in the CM frame, we have
 \begin{align}
     t = 2 (M^2 - k_{A} \cdot p_1) = \frac{1}{2} \Big( 4 M^2 + (s - 4 M^2) \cos{\theta} \Big)
